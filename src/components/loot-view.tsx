@@ -70,13 +70,13 @@ export const LootView = ({
   const retainedSlots = retained.reduce((total, entry) => total + entry.stats.slots, 0);
   const retainedValue = retained.reduce((total, entry) => total + bestValue(entry.stats, mode), 0);
 
-  const addItem = (item: CatalogItem) => {
+  const addItem = (item: CatalogItem, qty = 1) => {
     setLoot((lines) => {
       const existing = lines.find((line) => line.id === item.id);
       if (existing) {
-        return lines.map((line) => (line.id === item.id ? { ...line, qty: line.qty + 1 } : line));
+        return lines.map((line) => (line.id === item.id ? { ...line, qty: line.qty + qty } : line));
       }
-      return [...lines, { id: item.id, qty: 1 }];
+      return [...lines, { id: item.id, qty }];
     });
   };
 
@@ -95,7 +95,11 @@ export const LootView = ({
         eyebrow="Ce que tu hésites à ramener"
         className="workspace__side"
       >
-        <ItemSearch onPick={addItem} exclude={new Set(loot.map((line) => line.id))} />
+        <ItemSearch
+          onPick={addItem}
+          onPickStack={(item) => addItem(item, item.stack)}
+          exclude={new Set(loot.map((line) => line.id))}
+        />
       </Panel>
 
       <div className="workspace__main">

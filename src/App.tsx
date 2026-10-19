@@ -78,15 +78,15 @@ const App = () => {
     [inventory],
   );
 
-  const addToStash = (item: CatalogItem) => {
+  const addToStash = (item: CatalogItem, qty = 1) => {
     setInventory((lines) => {
       const existing = lines.find((line) => line.id === item.id);
       if (existing) {
-        return lines.map((line) => (line.id === item.id ? { ...line, qty: line.qty + 1 } : line));
+        return lines.map((line) => (line.id === item.id ? { ...line, qty: line.qty + qty } : line));
       }
-      return [...lines, { id: item.id, qty: 1 }];
+      return [...lines, { id: item.id, qty }];
     });
-    notify(`${item.name} ajouté au stash`);
+    notify(`${qty}× ${item.name} ajouté${qty > 1 ? "s" : ""} au stash`);
   };
 
   const mergeIntoStash = (lines: InventoryLine[]) => {
@@ -254,8 +254,8 @@ const App = () => {
         <ItemModal
           item={inspected}
           onClose={() => setInspected(null)}
-          onAddToStash={(item) => {
-            addToStash(item);
+          onAddToStash={(item, qty) => {
+            addToStash(item, qty);
             setInspected(null);
           }}
         />

@@ -100,13 +100,13 @@ export const StashView = ({
     { recycle: 0, sell: 0, keep: 0 },
   );
 
-  const addItem = (item: CatalogItem) => {
+  const addItem = (item: CatalogItem, qty = 1) => {
     setInventory((lines) => {
       const existing = lines.find((line) => line.id === item.id);
       if (existing) {
-        return lines.map((line) => (line.id === item.id ? { ...line, qty: line.qty + 1 } : line));
+        return lines.map((line) => (line.id === item.id ? { ...line, qty: line.qty + qty } : line));
       }
-      return [...lines, { id: item.id, qty: 1 }];
+      return [...lines, { id: item.id, qty }];
     });
   };
 
@@ -146,7 +146,11 @@ export const StashView = ({
     <div className="workspace">
       <Panel title="Ajouter du butin" eyebrow="Base de données" className="workspace__side">
         <InventoryImport onImport={importInventory} />
-        <ItemSearch onPick={addItem} exclude={new Set(inventory.map((line) => line.id))} />
+        <ItemSearch
+          onPick={addItem}
+          onPickStack={(item) => addItem(item, item.stack)}
+          exclude={new Set(inventory.map((line) => line.id))}
+        />
       </Panel>
 
       <div className="workspace__main">

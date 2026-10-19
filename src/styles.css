@@ -1480,12 +1480,12 @@ main {
 .search-result {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 4px;
   width: 100%;
   border: 1px solid transparent;
   border-radius: 9px;
   background: transparent;
-  padding: 7px;
+  padding: 0;
   text-align: left;
 }
 
@@ -1496,6 +1496,42 @@ main {
 
 .search-result.is-added {
   opacity: 0.55;
+}
+
+.search-result__main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  padding: 7px;
+  text-align: left;
+}
+
+.search-result__main:focus-visible,
+.search-result__stack:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.search-result__stack {
+  flex: 0 0 auto;
+  margin-right: 6px;
+  border: 1px solid rgba(246, 167, 35, 0.4);
+  border-radius: 6px;
+  background: var(--accent-soft);
+  padding: 4px 6px;
+  color: var(--accent-2);
+  font-size: 9px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.search-result__stack:hover {
+  background: var(--accent);
+  color: #17120a;
 }
 
 .search-result__body {
@@ -2158,6 +2194,12 @@ main {
   border-top: 1px solid var(--line);
   padding: 16px 24px;
   font-size: 10.5px;
+}
+
+.modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .toast {

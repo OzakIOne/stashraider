@@ -14,9 +14,11 @@ const rarityByName: Record<string, string> = {
 
 export const ItemSearch = ({
   onPick,
+  onPickStack,
   exclude = new Set<string>(),
 }: {
   onPick: (item: CatalogItem) => void;
+  onPickStack: (item: CatalogItem) => void;
   exclude?: Set<string>;
 }) => {
   const [query, setQuery] = useState("");
@@ -74,23 +76,31 @@ export const ItemSearch = ({
           results.map((item) => {
             const alreadyAdded = exclude.has(item.id);
             return (
-              <button
-                key={item.id}
-                type="button"
-                className={`search-result${alreadyAdded ? " is-added" : ""}`}
-                onClick={() => onPick(item)}
-              >
-                <ItemIcon item={item} size="sm" />
-                <span className="search-result__body">
-                  <span className="search-result__name">{item.name}</span>
-                  <span className="search-result__meta">
-                    <RarityBadge item={item} />
-                    <span>{item.stack} / stack</span>
-                    {item.sell > 0 ? <span>{formatCredits(item.sell)} CR</span> : null}
+              <div key={item.id} className={`search-result${alreadyAdded ? " is-added" : ""}`}>
+                <button type="button" className="search-result__main" onClick={() => onPick(item)}>
+                  <ItemIcon item={item} size="sm" />
+                  <span className="search-result__body">
+                    <span className="search-result__name">{item.name}</span>
+                    <span className="search-result__meta">
+                      <RarityBadge item={item} />
+                      <span>{item.stack} / stack</span>
+                      {item.sell > 0 ? <span>{formatCredits(item.sell)} CR</span> : null}
+                    </span>
                   </span>
-                </span>
-                <span className="search-result__add">{alreadyAdded ? "✓" : "+"}</span>
-              </button>
+                  <span className="search-result__add">{alreadyAdded ? "✓" : "+"}</span>
+                </button>
+                {item.stack > 1 ? (
+                  <button
+                    type="button"
+                    className="search-result__stack"
+                    onClick={() => onPickStack(item)}
+                    title={`Ajouter un stack complet (${item.stack})`}
+                    aria-label={`Ajouter un stack complet de ${item.name} (${item.stack})`}
+                  >
+                    +{item.stack}
+                  </button>
+                ) : null}
+              </div>
             );
           })
         )}

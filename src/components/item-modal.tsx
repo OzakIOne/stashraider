@@ -38,7 +38,7 @@ export const ItemModal = ({
 }: {
   item: CatalogItem;
   onClose: () => void;
-  onAddToStash: (item: CatalogItem) => void;
+  onAddToStash: (item: CatalogItem, qty: number) => void;
 }) => {
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -148,13 +148,34 @@ export const ItemModal = ({
         ) : null}
 
         <footer className="modal__foot">
-          <button
-            type="button"
-            className="button button--primary"
-            onClick={() => onAddToStash(item)}
-          >
-            Ajouter au stash
-          </button>
+          <div className="modal__actions">
+            {item.stack > 1 ? (
+              <>
+                <button
+                  type="button"
+                  className="button button--ghost"
+                  onClick={() => onAddToStash(item, 1)}
+                >
+                  Ajouter 1
+                </button>
+                <button
+                  type="button"
+                  className="button button--primary"
+                  onClick={() => onAddToStash(item, item.stack)}
+                >
+                  Ajouter un stack ({item.stack})
+                </button>
+              </>
+            ) : (
+              <button
+                type="button"
+                className="button button--primary"
+                onClick={() => onAddToStash(item, 1)}
+              >
+                Ajouter au stash
+              </button>
+            )}
+          </div>
           <span className="muted">La fiche ne remplace pas l'écran de recyclage du jeu.</span>
         </footer>
       </div>
