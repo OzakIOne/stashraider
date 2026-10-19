@@ -2,6 +2,8 @@
 
 Optimiseur de stash pour **Arc Raiders**. Il répond à trois questions :
 
+**Site en ligne : [ozakione.github.io/stashraider](https://ozakione.github.io/stashraider/)**
+
 1. **Je garde ou je recycle ?** Chaque ligne du stash est valorisée à la revente et au
    recyclage, avec les rendements actuels et la place réellement consommée.
 2. **Qu'est-ce que je ramène du raid ?** Les candidats sont classés à la valeur par slot,
