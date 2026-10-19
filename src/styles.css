@@ -994,6 +994,10 @@ main {
   font-variant-numeric: tabular-nums;
 }
 
+.mobile-slot {
+  display: none;
+}
+
 .verdict {
   display: grid;
   gap: 2px;
@@ -2012,14 +2016,19 @@ main {
     justify-self: end;
   }
 
-  .line .metric:nth-of-type(1) {
+  .line .metric--slots {
     display: none;
   }
 
-  .line .metric:nth-of-type(2) {
+  .line .metric--value {
     grid-area: value;
     justify-self: end;
     text-align: right;
+  }
+
+  .mobile-slot {
+    display: block;
+    color: var(--accent-2);
   }
 
   .line .verdict {
@@ -2049,11 +2058,11 @@ main {
     justify-self: end;
   }
 
-  .loot-row .metric:nth-of-type(1) {
+  .loot-row .metric--slots {
     display: none;
   }
 
-  .loot-row .metric:nth-of-type(2) {
+  .loot-row .metric--value {
     grid-area: value;
   }
 
@@ -2093,7 +2102,15 @@ main {
   }
 
   .hero__board-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero__board-stats div {
+    padding: 9px 8px;
+  }
+
+  .hero__board-stats strong {
+    font-size: 12px;
   }
 
   .panel__head {

@@ -239,13 +239,16 @@ export const StashView = ({
                         onChange={(qty) => setQty(stats.item.id, qty)}
                         compact
                       />
-                      <div className="metric">
+                      <div className="metric metric--slots">
                         <strong>{stats.slots}</strong>
                         <small>slot{stats.slots > 1 ? "s" : ""}</small>
                       </div>
-                      <div className="metric">
+                      <div className="metric metric--value">
                         <strong>{formatCredits(lineValue)} CR</strong>
                         <small>{formatCredits(lineValue / Math.max(1, stats.slots))} / slot</small>
+                        <small className="mobile-slot">
+                          {stats.slots} slot{stats.slots > 1 ? "s" : ""}
+                        </small>
                       </div>
                       <div className={`verdict verdict--${recommendation.kind}`}>
                         <span>{recommendation.label}</span>

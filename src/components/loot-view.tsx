@@ -179,13 +179,16 @@ export const LootView = ({
                         onChange={(qty) => setQty(stats.item.id, qty)}
                         compact
                       />
-                      <div className="metric">
+                      <div className="metric metric--slots">
                         <strong>{stats.slots}</strong>
                         <small>slot{stats.slots > 1 ? "s" : ""}</small>
                       </div>
-                      <div className="metric">
+                      <div className="metric metric--value">
                         <strong>{formatCredits(value)} CR</strong>
                         <small>{formatCredits(value / Math.max(1, stats.slots))} / slot</small>
+                        <small className="mobile-slot">
+                          {stats.slots} slot{stats.slots > 1 ? "s" : ""}
+                        </small>
                       </div>
                       <div className={`take${take ? " take--yes" : " take--no"}`}>
                         {take ? "Prendre" : "Laisser"}
