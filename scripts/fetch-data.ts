@@ -326,7 +326,24 @@ const main = async () => {
     items,
   };
 
-  await writeFile(DATA_FILE, `${JSON.stringify(catalog)}\n`);
+  type ExistingCatalog = { generatedAt?: string };
+
+  let previous: ExistingCatalog | null = null;
+  try {
+    previous = JSON.parse(await readFile(DATA_FILE, "utf8")) as ExistingCatalog;
+  } catch {
+    previous = null;
+  }
+
+  if (previous?.generatedAt) {
+    const comparable = (value: ExistingCatalog) =>
+      JSON.stringify({ ...value, generatedAt: undefined });
+    if (comparable(previous) === comparable(catalog)) {
+      catalog.generatedAt = previous.generatedAt;
+    }
+  }
+
+  await writeFile(DATA_FILE, `${JSON.stringify(catalog, null, 2)}\n`);
 
   const rocketeer = items.find((item) => item.name === "Rocketeer Driver");
   console.info(`Wrote ${items.length} items to ${DATA_FILE}`);
