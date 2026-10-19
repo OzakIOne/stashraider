@@ -1,0 +1,30 @@
+name: Sync game data
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun scripts/fetch-data.ts
+      - name: Commit changes
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Data already up to date."
+            exit 0
+          fi
+          git config user.name "stashraider-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/data/catalog.json public/icons
+          git commit -m "chore(data): sync ARC Raiders wiki"
+          git push
