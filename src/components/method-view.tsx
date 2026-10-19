@@ -48,6 +48,14 @@ export const MethodView = () => {
               et le rendement par slot plein.
             </p>
           </section>
+          <section>
+            <h3>5. Les objectifs</h3>
+            <p>
+              Pour chaque composant voulu, les sources recyclables plus denses qu'un stack du
+              composant direct sont réservées d'abord, puis le composant direct, puis les sources
+              moins denses. Tout ce qui reste est du surplus à vendre ou recycler.
+            </p>
+          </section>
         </div>
 
         <div className="formula">

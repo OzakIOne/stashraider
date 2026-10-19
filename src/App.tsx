@@ -9,6 +9,7 @@ import {
   formatCredits,
   statsForLines,
   totalSlots,
+  type Goal,
   type InventoryLine,
   type ValueMode,
 } from "./lib/optimizer";
@@ -38,6 +39,8 @@ const demoStash: InventoryLine[] = [
   { id: "glitched-arc-light-ring", qty: 1 },
 ];
 
+const demoGoals: Goal[] = [{ id: "advanced-electrical-components", qty: 10 }];
+
 const shortDate = new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "short" });
 
 const App = () => {
@@ -46,6 +49,7 @@ const App = () => {
   const [loot, setLoot] = useLocalStorage<InventoryLine[]>("stashraider.loot", []);
   const [capacity, setCapacity] = useLocalStorage<number>("stashraider.capacity", 280);
   const [mode, setMode] = useLocalStorage<ValueMode>("stashraider.value-mode", "sell");
+  const [goals, setGoals] = useLocalStorage<Goal[]>("stashraider.goals", []);
   const [inspected, setInspected] = useState<CatalogItem | null>(null);
   const [toast, setToast] = useState<string | null>(null);
 
@@ -144,9 +148,9 @@ const App = () => {
                 Chaque slot <em>compte.</em>
               </h1>
               <p>
-                Sélectionne ce que tu as, ce que tu hésites à ramener, ou le matériau qu'il te
-                manque. Le site croise stacks, prix et rendements de recyclage pour dire quoi
-                garder, vendre ou démonter.
+                Monte ton inventaire, fixe tes objectifs de composants, et le site réserve ce qu'il
+                faut avant de désigner le surplus à vendre. Il croise stacks, prix et rendements de
+                recyclage pour dire quoi garder, vendre ou démonter.
               </p>
               <div className="hero__meta">
                 <span className="dot" />
@@ -209,8 +213,11 @@ const App = () => {
             onInspect={setInspected}
             onLoadDemo={() => {
               setInventory(demoStash);
+              setGoals(demoGoals);
               notify("Stash d’exemple chargé");
             }}
+            goals={goals}
+            setGoals={setGoals}
           />
         ) : null}
 

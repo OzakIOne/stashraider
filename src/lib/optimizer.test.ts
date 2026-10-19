@@ -1,10 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { itemsById } from "./catalog";
 import {
+  formatCredits,
   lineStats,
   outputValue,
+  planRetention,
   planTarget,
   recommend,
+  retentionRecommendation,
   reverseSources,
   slotsFor,
   totalSlots,
@@ -72,5 +75,61 @@ describe("reverse lookup", () => {
     expect(rocketeer?.unitsNeeded).toBe(5);
     expect(rocketeer?.slotsNeeded).toBe(2);
     expect(rocketeer?.leftover).toBe(0);
+  });
+});
+
+describe("objective retention", () => {
+  it("keeps recyclable sources before direct components", () => {
+    const plan = planRetention(
+      [
+        { id: "advanced-electrical-components", qty: 12 },
+        { id: "rocketeer-driver", qty: 4 },
+      ],
+      [{ id: "advanced-electrical-components", qty: 10 }],
+    );
+
+    expect(plan.keepById["rocketeer-driver"]?.qty).toBe(4);
+    expect(plan.keepById["advanced-electrical-components"]?.qty).toBe(2);
+    expect(plan.goals[0]?.covered).toBe(10);
+    expect(plan.goals[0]?.gap).toBe(0);
+    expect(plan.surplusUnits).toBe(10);
+    expect(plan.surplusValue).toBe(17500);
+  });
+
+  it("reports the missing quantity when the stash cannot cover a goal", () => {
+    const plan = planRetention(
+      [{ id: "advanced-electrical-components", qty: 3 }],
+      [{ id: "advanced-electrical-components", qty: 5 }],
+    );
+
+    expect(plan.keepById["advanced-electrical-components"]?.qty).toBe(3);
+    expect(plan.goals[0]?.gap).toBe(2);
+    expect(plan.coveredGoals).toBe(0);
+  });
+
+  it("prefers direct components over lower-density sources", () => {
+    const plan = planRetention(
+      [
+        { id: "advanced-electrical-components", qty: 12 },
+        { id: "frequency-modulation-box", qty: 2 },
+      ],
+      [{ id: "advanced-electrical-components", qty: 10 }],
+    );
+
+    expect(plan.keepById["advanced-electrical-components"]?.qty).toBe(10);
+    expect(plan.keepById["frequency-modulation-box"]).toBeUndefined();
+    expect(plan.surplusUnits).toBe(4);
+  });
+
+  it("labels the split between kept and surplus units", () => {
+    const stats = lineStats({ id: "advanced-electrical-components", qty: 12 });
+    if (!stats) throw new Error("missing Advanced Electrical Components");
+    const recommendation = retentionRecommendation(stats, {
+      qty: 2,
+      reasons: ["2× Advanced Electrical Components gardés pour compléter 10×"],
+    });
+
+    expect(recommendation.label).toBe("Garder 2 / vendre");
+    expect(recommendation.detail).toContain(formatCredits(17500));
   });
 });

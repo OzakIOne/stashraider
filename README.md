@@ -1,17 +1,21 @@
 # StashRaider
 
-Optimiseur de stash pour **Arc Raiders**. Il répond à trois questions :
+Optimiseur de stash pour **Arc Raiders**. Il répond à quatre questions :
 
 **Site en ligne : [ozakione.github.io/stashraider](https://ozakione.github.io/stashraider/)**
 
 1. **Je garde ou je recycle ?** Chaque ligne du stash est valorisée à la revente et au
    recyclage, avec les rendements actuels et la place réellement consommée.
-2. **Qu'est-ce que je ramène du raid ?** Les candidats sont classés à la valeur par slot,
+2. **Quels composants je prépare ?** Les objectifs réservent d'abord les sources
+   recyclables plus rentables en place, puis le composant direct, et exposent le surplus.
+3. **Qu'est-ce que je ramène du raid ?** Les candidats sont classés à la valeur par slot,
    avec la place libre restante et un plan de transfert vers le stash.
-3. **Quel item recycler pour obtenir ce matériau ?** La recherche inversée classe les
+4. **Quel item recycler pour obtenir ce matériau ?** La recherche inversée classe les
    sources par place nécessaire et par rendement par slot, avec le coût d'opportunité.
 
 ![Aperçu de StashRaider](docs/preview.png)
+
+![Objectifs et surplus](docs/preview-goals.png)
 
 ## Ce que le site calcule
 
@@ -20,6 +24,11 @@ Optimiseur de stash pour **Arc Raiders**. Il répond à trois questions :
 - Valeur de recyclage = somme des sorties, valorisées au prix de vente wiki.
 - Verdict : recycler si le rendement dépasse la vente de plus de 8 %, garder les items
   rares utilisés en craft, vendre sinon.
+- Objectifs : une source recyclable est réservée si son rendement par slot dépasse le
+  stack du composant direct. Sinon le composant direct passe d'abord. Le reste du stack
+  est du surplus, avec sa valeur de sortie.
+- Import d'inventaire : une ligne par item, quantité avant ou après le nom, par exemple
+  `12 Advanced Electrical Components` ou `Rocketeer Driver x4`.
 - Recherche inversée : `items = ⌈besoin ÷ rendement⌉` puis `slots = ⌈items ÷ stack⌉`.
 
 Les prix, stacks, rendements de recyclage et recettes viennent des tables Cargo

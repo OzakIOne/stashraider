@@ -1,16 +1,21 @@
 import { useMemo, useState, type Dispatch, type SetStateAction } from "react";
-import { typeLabel, type CatalogItem } from "../lib/catalog";
+import { catalog, hiddenFromLoot, typeLabel, type CatalogItem } from "../lib/catalog";
 import {
   bestValue,
   capacityAdvice,
   formatCredits,
+  planRetention,
   recommend,
+  retentionRecommendation,
   statsForLines,
   totalSlots,
   totalValue,
+  type Goal,
   type InventoryLine,
   type ValueMode,
 } from "../lib/optimizer";
+import { GoalsPanel } from "./goals-panel";
+import { InventoryImport } from "./inventory-import";
 import { ItemSearch } from "./item-search";
 import {
   CapacityBar,
@@ -34,6 +39,8 @@ export const StashView = ({
   setMode,
   onInspect,
   onLoadDemo,
+  goals,
+  setGoals,
 }: {
   inventory: InventoryLine[];
   setInventory: Dispatch<SetStateAction<InventoryLine[]>>;
@@ -43,20 +50,41 @@ export const StashView = ({
   setMode: (mode: ValueMode) => void;
   onInspect: (item: CatalogItem) => void;
   onLoadDemo: () => void;
+  goals: Goal[];
+  setGoals: Dispatch<SetStateAction<Goal[]>>;
 }) => {
   const [sort, setSort] = useState<SortMode>("density");
+  const targets = useMemo(
+    () =>
+      catalog.items
+        .filter((item) => !hiddenFromLoot.has(item.type))
+        .sort(
+          (left, right) =>
+            typeLabel(left.type).localeCompare(typeLabel(right.type), "fr") ||
+            left.name.localeCompare(right.name, "fr"),
+        ),
+    [],
+  );
+  const retention = useMemo(() => planRetention(inventory, goals), [inventory, goals]);
 
   const plans = useMemo(
     () =>
       statsForLines(inventory)
-        .map((stats) => ({ stats, recommendation: recommend(stats) }))
+        .map((stats) => {
+          const keep = retention.keepById[stats.item.id];
+          return {
+            stats,
+            keepQty: keep?.qty ?? 0,
+            recommendation: keep ? retentionRecommendation(stats, keep) : recommend(stats),
+          };
+        })
         .sort((left, right) => {
           if (sort === "name")
             return left.stats.item.name.localeCompare(right.stats.item.name, "fr");
           if (sort === "slots") return right.stats.slots - left.stats.slots;
           return right.stats.density - left.stats.density;
         }),
-    [inventory, sort],
+    [inventory, sort, retention],
   );
 
   const used = totalSlots(inventory);
@@ -90,9 +118,34 @@ export const StashView = ({
     );
   };
 
+  const importInventory = (lines: InventoryLine[]) => {
+    setInventory((current) => {
+      const merged = new Map(current.map((line) => [line.id, line.qty]));
+      for (const line of lines) merged.set(line.id, (merged.get(line.id) ?? 0) + line.qty);
+      return [...merged].map(([id, qty]) => ({ id, qty }));
+    });
+  };
+
+  const addGoal = (goal: Goal) => {
+    setGoals((current) =>
+      current.some((entry) => entry.id === goal.id)
+        ? current.map((entry) => (entry.id === goal.id ? goal : entry))
+        : [...current, goal],
+    );
+  };
+
+  const updateGoal = (id: string, qty: number) => {
+    setGoals((current) =>
+      qty <= 0
+        ? current.filter((entry) => entry.id !== id)
+        : current.map((entry) => (entry.id === id ? { ...entry, qty } : entry)),
+    );
+  };
+
   return (
     <div className="workspace">
       <Panel title="Ajouter du butin" eyebrow="Base de données" className="workspace__side">
+        <InventoryImport onImport={importInventory} />
         <ItemSearch onPick={addItem} exclude={new Set(inventory.map((line) => line.id))} />
       </Panel>
 
@@ -119,6 +172,15 @@ export const StashView = ({
         >
           <CapacityBar used={used} capacity={capacity} />
 
+          <GoalsPanel
+            goals={goals}
+            plan={retention}
+            targets={targets}
+            onAdd={addGoal}
+            onUpdate={updateGoal}
+            onRemove={(id) => updateGoal(id, 0)}
+          />
+
           <div className="stats">
             <Stat
               label="Slots occupés"
@@ -143,6 +205,26 @@ export const StashView = ({
               tone="accent"
             />
           </div>
+
+          {goals.length > 0 ? (
+            <div className="objective-summary">
+              <span>
+                <strong>
+                  {retention.coveredGoals}/{goals.length}
+                </strong>{" "}
+                objectifs couverts
+              </span>
+              <span>
+                <strong>{retention.reservedLines}</strong> lignes réservées
+              </span>
+              <span>
+                <strong>{retention.surplusUnits}</strong> unités hors objectifs
+              </span>
+              <span>
+                <strong>{formatCredits(retention.surplusValue)} CR</strong> de valeur brute
+              </span>
+            </div>
+          ) : null}
 
           {plans.length === 0 ? (
             <EmptyState
@@ -215,7 +297,7 @@ export const StashView = ({
                   <span>Valeur</span>
                   <span>Verdict</span>
                 </div>
-                {plans.map(({ stats, recommendation }) => {
+                {plans.map(({ stats, recommendation, keepQty }) => {
                   const lineValue = bestValue(stats, mode);
                   return (
                     <div className="line" key={stats.item.id}>
@@ -230,6 +312,7 @@ export const StashView = ({
                           <small>
                             <RarityBadge item={stats.item} />
                             {typeLabel(stats.item.type)} · stack {stats.item.stack}
+                            {keepQty > 0 ? <span className="goal-tag">Objectif</span> : null}
                           </small>
                         </span>
                       </button>
