@@ -1,16 +1,8 @@
-import {
-  catalog,
-  itemsById,
-  itemsByName,
-  recycleEntries,
-  salvageEntries,
-  type CatalogItem,
-} from "./catalog";
+import { catalog, itemsById, itemsByName, type CatalogItem } from "./catalog";
 
 export type InventoryLine = { id: string; qty: number };
 export type ValueMode = "sell" | "recycle";
-export type YieldKind = "recycle" | "salvage";
-export type ActionKind = YieldKind | "sell" | "keep";
+export type ActionKind = "recycle" | "sell" | "keep";
 
 export type LineStats = {
   item: CatalogItem;
@@ -18,11 +10,7 @@ export type LineStats = {
   slots: number;
   sellValue: number;
   recycleValue: number;
-  salvageValue: number;
-  bestYieldValue: number;
-  bestYieldKind: YieldKind;
   density: number;
-  fullStackValue: number;
 };
 
 export type Recommendation = {
@@ -32,17 +20,11 @@ export type Recommendation = {
   detail: string;
 };
 
-export type ActionPlan = {
-  stats: LineStats;
-  recommendation: Recommendation;
-};
-
 export type SourceOption = {
   item: CatalogItem;
   outputQty: number;
   yieldPerSlot: number;
   sellPerOutput: number;
-  slotsPerStack: number;
 };
 
 export type TargetPlan = SourceOption & {
@@ -67,21 +49,14 @@ export const lineStats = (line: InventoryLine): LineStats | null => {
   const slots = slotsFor(qty, item.stack);
   const sellValue = item.sell * qty;
   const recycleValue = outputValue(item.recycle, qty);
-  const salvageValue = outputValue(item.salvage, qty);
-  const bestYieldValue = Math.max(recycleValue, salvageValue);
-  const bestYieldKind: YieldKind = recycleValue >= salvageValue ? "recycle" : "salvage";
-  const bestValue = Math.max(sellValue, bestYieldValue);
+  const bestValue = Math.max(sellValue, recycleValue);
   return {
     item,
     qty,
     slots,
     sellValue,
     recycleValue,
-    salvageValue,
-    bestYieldValue,
-    bestYieldKind,
     density: slots > 0 ? bestValue / slots : 0,
-    fullStackValue: item.sell * item.stack,
   };
 };
 
@@ -92,17 +67,15 @@ export const statsForLines = (lines: InventoryLine[]): LineStats[] =>
   });
 
 export const recommend = (stats: LineStats): Recommendation => {
-  const { item, sellValue, recycleValue, salvageValue, bestYieldValue, bestYieldKind } = stats;
-  const yieldLabel = bestYieldKind === "recycle" ? "Recyclage" : "Salvage";
-  const yieldAction = bestYieldKind === "recycle" ? "Recycler" : "Salvager";
+  const { item, sellValue, recycleValue } = stats;
 
-  if (bestYieldValue > sellValue * 1.08 && bestYieldValue > 0) {
-    const gain = bestYieldValue - sellValue;
+  if (recycleValue > sellValue * 1.08 && recycleValue > 0) {
+    const gain = recycleValue - sellValue;
     return {
-      kind: bestYieldKind,
-      label: yieldAction,
-      value: bestYieldValue,
-      detail: `${yieldLabel} ${formatCredits(bestYieldValue)} CR contre ${formatCredits(sellValue)} CR à la vente (+${formatCredits(gain)} CR).`,
+      kind: "recycle",
+      label: "Recycler",
+      value: recycleValue,
+      detail: `Recyclage ${formatCredits(recycleValue)} CR contre ${formatCredits(sellValue)} CR à la vente (+${formatCredits(gain)} CR).`,
     };
   }
 
@@ -110,27 +83,27 @@ export const recommend = (stats: LineStats): Recommendation => {
     return {
       kind: "keep",
       label: "Garder",
-      value: Math.max(sellValue, bestYieldValue),
+      value: Math.max(sellValue, recycleValue),
       detail: `${item.usedIn.length} recette${item.usedIn.length > 1 ? "s" : ""} utilise${item.usedIn.length > 1 ? "nt" : ""} cet item. À vendre seulement en surplus.`,
     };
   }
 
   if (sellValue > 0) {
-    const gain = sellValue - bestYieldValue;
+    const gain = sellValue - recycleValue;
     return {
       kind: "sell",
       label: "Vendre",
       value: sellValue,
-      detail: `Vente ${formatCredits(sellValue)} CR contre ${formatCredits(bestYieldValue)} CR en ${yieldLabel.toLowerCase()}${gain > 0 ? ` (+${formatCredits(gain)} CR)` : ""}.`,
+      detail: `Vente ${formatCredits(sellValue)} CR contre ${formatCredits(recycleValue)} CR en recyclage${gain > 0 ? ` (+${formatCredits(gain)} CR)` : ""}.`,
     };
   }
 
-  if (recycleValue > 0 || salvageValue > 0) {
+  if (recycleValue > 0) {
     return {
-      kind: bestYieldKind,
-      label: yieldAction,
-      value: bestYieldValue,
-      detail: `Aucune valeur de vente. ${yieldLabel} pour récupérer des matériaux.`,
+      kind: "recycle",
+      label: "Recycler",
+      value: recycleValue,
+      detail: "Aucune valeur de vente. Recyclage pour récupérer des matériaux.",
     };
   }
 
@@ -143,16 +116,7 @@ export const recommend = (stats: LineStats): Recommendation => {
 };
 
 export const bestValue = (stats: LineStats, mode: ValueMode): number =>
-  mode === "sell" ? stats.sellValue : stats.bestYieldValue;
-
-export const sortedByDensity = (lines: InventoryLine[], mode: ValueMode): LineStats[] =>
-  statsForLines(lines)
-    .map((stats) => ({ stats, value: bestValue(stats, mode) }))
-    .sort(
-      (left, right) =>
-        right.value / Math.max(1, right.stats.slots) - left.value / Math.max(1, left.stats.slots),
-    )
-    .map((entry) => entry.stats);
+  mode === "sell" ? stats.sellValue : stats.recycleValue;
 
 export const totalSlots = (lines: InventoryLine[]): number =>
   statsForLines(lines).reduce((total, stats) => total + stats.slots, 0);
@@ -177,20 +141,10 @@ export const capacityAdvice = (
     .slice(0, limit);
 };
 
-export const fullStackDensity = (item: CatalogItem, mode: ValueMode): number => {
-  const sell = item.sell * item.stack;
-  const recycle = Math.max(outputValue(item.recycle), outputValue(item.salvage)) * item.stack;
-  return mode === "sell" ? sell : recycle;
-};
-
 export const reverseTargets = (): CatalogItem[] => {
   const ids = new Set<string>();
   for (const item of catalog.items) {
     for (const name of Object.keys(item.recycle)) {
-      const target = itemsByName.get(name);
-      if (target) ids.add(target.id);
-    }
-    for (const name of Object.keys(item.salvage)) {
       const target = itemsByName.get(name);
       if (target) ids.add(target.id);
     }
@@ -201,13 +155,12 @@ export const reverseTargets = (): CatalogItem[] => {
     .sort((left, right) => left.name.localeCompare(right.name, "fr"));
 };
 
-export const reverseSources = (targetId: string, kind: YieldKind): SourceOption[] => {
+export const reverseSources = (targetId: string): SourceOption[] => {
   const target = itemsById.get(targetId);
   if (!target) return [];
   return catalog.items
     .flatMap((item): SourceOption[] => {
-      const outputs = kind === "recycle" ? item.recycle : item.salvage;
-      const outputQty = outputs[target.name] ?? 0;
+      const outputQty = item.recycle[target.name] ?? 0;
       if (outputQty <= 0) return [];
       return [
         {
@@ -215,7 +168,6 @@ export const reverseSources = (targetId: string, kind: YieldKind): SourceOption[
           outputQty,
           yieldPerSlot: outputQty * item.stack,
           sellPerOutput: item.sell / outputQty,
-          slotsPerStack: 1,
         },
       ];
     })
@@ -227,8 +179,8 @@ export const reverseSources = (targetId: string, kind: YieldKind): SourceOption[
     );
 };
 
-export const planTarget = (targetId: string, kind: YieldKind, needed: number): TargetPlan[] =>
-  reverseSources(targetId, kind)
+export const planTarget = (targetId: string, needed: number): TargetPlan[] =>
+  reverseSources(targetId)
     .map((source) => {
       const unitsNeeded = Math.ceil(needed / source.outputQty);
       return {
@@ -245,21 +197,4 @@ export const planTarget = (targetId: string, kind: YieldKind, needed: number): T
         left.unitsNeeded - right.unitsNeeded,
     );
 
-export const yieldSummary = (
-  item: CatalogItem,
-  kind: YieldKind,
-): { name: string; qty: number; known: boolean; value: number }[] => {
-  const entries = kind === "recycle" ? recycleEntries(item) : salvageEntries(item);
-  return entries.map(([name, qty]) => {
-    const output = itemsByName.get(name);
-    return { name, qty, known: Boolean(output), value: (output?.sell ?? 0) * qty };
-  });
-};
-
 export const formatCredits = (value: number): string => Math.round(value).toLocaleString("fr-FR");
-
-export const formatPercent = (value: number): string =>
-  new Intl.NumberFormat("fr-FR", {
-    style: "percent",
-    maximumFractionDigits: 0,
-  }).format(value);

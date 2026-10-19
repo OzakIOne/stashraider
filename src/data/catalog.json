@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-19T22:14:57.845Z",
+  "generatedAt": "2026-10-19T22:53:25.420Z",
   "source": "ARC Raiders Wiki",
   "sourceUrl": "https://arcraiders.wiki",
   "counts": {
     "items": 563,
-    "recycling": 1020,
+    "recycling": 654,
     "crafting": 298,
     "unknownOutputs": 1
   },
@@ -26,7 +26,6 @@
       ],
       "image": "/icons/amplification-module-mk-i.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -44,7 +43,6 @@
       ],
       "image": "/icons/amplification-module-mk-ii.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -62,7 +60,6 @@
       ],
       "image": "/icons/amplification-module-mk-iii.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -80,7 +77,6 @@
       ],
       "image": "/icons/amplification-module-mk-iv.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -98,7 +94,6 @@
       ],
       "image": "/icons/amplification-module-mk-v.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -114,7 +109,6 @@
       "locations": [],
       "image": "/icons/leviathan-s-crown-ship-model.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -133,9 +127,6 @@
         "Wires": 6,
         "Metal Parts": 4
       },
-      "salvage": {
-        "Wires": 3
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -153,9 +144,6 @@
       "recycle": {
         "Amplified Fragments": 5
       },
-      "salvage": {
-        "Amplified Fragments": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -171,7 +159,6 @@
       "locations": [],
       "image": "/icons/bronze-statuette.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -187,7 +174,6 @@
       "locations": [],
       "image": "/icons/colorful-shoes-legendary.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -203,7 +189,6 @@
       "locations": [],
       "image": "/icons/elephant-obelisk.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -219,7 +204,6 @@
       "locations": [],
       "image": "/icons/emperor-gateway-conduit.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -257,7 +241,6 @@
       ],
       "image": "/icons/emperor-modulator.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -273,7 +256,6 @@
       "locations": [],
       "image": "/icons/frigate-diagnostic-node.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -292,7 +274,6 @@
         "Advanced ARC Powercell": 2,
         "ARC Circuitry": 2
       },
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -313,7 +294,6 @@
         "Exodus Modules": 1,
         "ARC Alloy": 6
       },
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -331,9 +311,6 @@
       "recycle": {
         "Mod Components": 1,
         "Duct Tape": 2
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [],
       "usedIn": []
@@ -353,9 +330,6 @@
       "image": "/icons/matriarch-reactor.webp",
       "recycle": {
         "Power Rod": 1,
-        "Magnetic Accelerator": 1
-      },
-      "salvage": {
         "Magnetic Accelerator": 1
       },
       "craftedFrom": [],
@@ -379,7 +353,6 @@
       "locations": [],
       "image": "/icons/mri-duck.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -399,9 +372,6 @@
       "recycle": {
         "Power Rod": 1,
         "Magnetic Accelerator": 1
-      },
-      "salvage": {
-        "Power Rod": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -431,9 +401,6 @@
       "recycle": {
         "Power Rod": 1,
         "Rope": 3
-      },
-      "salvage": {
-        "Advanced Electrical Components": 2
       },
       "craftedFrom": [
         {
@@ -470,7 +437,6 @@
       "locations": [],
       "image": "/icons/sirena-dorata-ship-model.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -486,7 +452,6 @@
       "locations": [],
       "image": "/icons/amplified-fragments.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -504,7 +469,6 @@
       ],
       "image": "/icons/arc-conductive-coupler.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -528,7 +492,6 @@
       ],
       "image": "/icons/arc-data-module.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -546,7 +509,6 @@
       ],
       "image": "/icons/arc-insulated-coupler.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -570,7 +532,6 @@
       ],
       "image": "/icons/arc-plated-coupler.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -592,7 +553,6 @@
       "locations": [],
       "image": "/icons/arcade-duck.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -612,7 +572,6 @@
       ],
       "image": "/icons/archive-desk-lamp.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -633,9 +592,6 @@
         "Advanced Mechanical Components": 1,
         "Advanced ARC Powercell": 3
       },
-      "salvage": {
-        "Advanced ARC Powercell": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -655,9 +611,6 @@
       "recycle": {
         "Advanced Mechanical Components": 1,
         "ARC Alloy": 3
-      },
-      "salvage": {
-        "Advanced Mechanical Components": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -680,7 +633,6 @@
       "locations": [],
       "image": "/icons/blue-gate-confiscation-room-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -700,9 +652,6 @@
       "recycle": {
         "Advanced Mechanical Components": 1,
         "ARC Alloy": 3
-      },
-      "salvage": {
-        "Advanced Mechanical Components": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -734,7 +683,6 @@
       ],
       "image": "/icons/breathtaking-snow-globe.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -752,7 +700,6 @@
       ],
       "image": "/icons/bully-fragmenter.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -774,7 +721,6 @@
       "locations": [],
       "image": "/icons/buried-city-town-hall-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -790,7 +736,6 @@
       "locations": [],
       "image": "/icons/colorful-shoes-epic.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -808,9 +753,6 @@
       "recycle": {
         "Advanced Electrical Components": 1,
         "Processor": 1
-      },
-      "salvage": {
-        "Electrical Components": 2
       },
       "craftedFrom": [
         {
@@ -846,9 +788,6 @@
         "Advanced Electrical Components": 1,
         "Processor": 1
       },
-      "salvage": {
-        "Electrical Components": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -883,9 +822,6 @@
       "image": "/icons/complex-gun-parts.webp",
       "recycle": {
         "Simple Gun Parts": 3
-      },
-      "salvage": {
-        "Simple Gun Parts": 2
       },
       "craftedFrom": [
         {
@@ -953,7 +889,6 @@
       "locations": [],
       "image": "/icons/dam-control-tower-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -971,9 +906,6 @@
       "recycle": {
         "Explosive Compound": 1,
         "ARC Circuitry": 1
-      },
-      "salvage": {
-        "Explosive Compound": 1
       },
       "craftedFrom": [
         {
@@ -1010,7 +942,6 @@
       "locations": [],
       "image": "/icons/emperor-beacon.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1029,9 +960,6 @@
       "image": "/icons/exodus-modules.webp",
       "recycle": {
         "Magnet": 2,
-        "Processor": 2
-      },
-      "salvage": {
         "Processor": 2
       },
       "craftedFrom": [],
@@ -1078,9 +1006,6 @@
         "Mod Components": 1,
         "Wires": 1
       },
-      "salvage": {
-        "Mechanical Components": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -1112,7 +1037,6 @@
       "locations": [],
       "image": "/icons/familiar-duck.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1128,7 +1052,6 @@
       "locations": [],
       "image": "/icons/fluted-rotor-core.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1147,9 +1070,6 @@
       "image": "/icons/fossilized-lightning.webp",
       "recycle": {
         "Explosive Compound": 3
-      },
-      "salvage": {
-        "Explosive Compound": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -1177,9 +1097,6 @@
         "Battery": 3,
         "Exodus Modules": 1
       },
-      "salvage": {
-        "Battery": 3
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1200,7 +1117,6 @@
         "Advanced Electrical Components": 1,
         "ARC Alloy": 3
       },
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1218,9 +1134,6 @@
       "recycle": {
         "ARC Circuitry": 2,
         "Voltage Converter": 1
-      },
-      "salvage": {
-        "ARC Alloy": 4
       },
       "craftedFrom": [
         {
@@ -1256,9 +1169,6 @@
         "Mod Components": 1,
         "Duct Tape": 2
       },
-      "salvage": {
-        "Mechanical Components": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1276,7 +1186,6 @@
       "recycle": {
         "Durable Cloth": 2
       },
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -1309,9 +1218,6 @@
         "Voltage Converter": 4,
         "Exodus Modules": 1
       },
-      "salvage": {
-        "Exodus Modules": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1330,7 +1236,6 @@
       ],
       "image": "/icons/lance-s-mixtape-5th-edition.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1352,9 +1257,6 @@
         "Steel Spring": 2,
         "Mechanical Components": 2
       },
-      "salvage": {
-        "Mechanical Components": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1374,9 +1276,6 @@
       "recycle": {
         "Advanced Mechanical Components": 1,
         "ARC Alloy": 3
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -1401,9 +1300,6 @@
       "recycle": {
         "Mod Components": 1,
         "Duct Tape": 1
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [
         {
@@ -1439,9 +1335,6 @@
         "Advanced Electrical Components": 1,
         "Processor": 1
       },
-      "salvage": {
-        "Electrical Components": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -1476,9 +1369,6 @@
         "Advanced Electrical Components": 1,
         "Processor": 1
       },
-      "salvage": {
-        "Electrical Components": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -1512,9 +1402,6 @@
       "recycle": {
         "Advanced Electrical Components": 1,
         "Processor": 1
-      },
-      "salvage": {
-        "Electrical Components": 2
       },
       "craftedFrom": [
         {
@@ -1551,9 +1438,6 @@
       "recycle": {
         "Advanced Mechanical Components": 1,
         "ARC Motion Core": 1
-      },
-      "salvage": {
-        "Advanced Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -1632,9 +1516,6 @@
         "Magnetic Accelerator": 1,
         "Steel Spring": 1
       },
-      "salvage": {
-        "Advanced Mechanical Components": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1652,9 +1533,6 @@
       "recycle": {
         "Mod Components": 1,
         "Duct Tape": 1
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [
         {
@@ -1687,7 +1565,6 @@
       "locations": [],
       "image": "/icons/pendola-pass-observatory-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1705,9 +1582,6 @@
       "recycle": {
         "Advanced Electrical Components": 1,
         "Speaker Component": 1
-      },
-      "salvage": {
-        "Advanced Electrical Components": 1
       },
       "craftedFrom": [
         {
@@ -1742,7 +1616,6 @@
       ],
       "image": "/icons/pneumatic-actuator.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1762,9 +1635,6 @@
       "recycle": {
         "Advanced Electrical Components": 1,
         "ARC Circuitry": 1
-      },
-      "salvage": {
-        "Advanced Electrical Components": 1
       },
       "craftedFrom": [
         {
@@ -1816,9 +1686,6 @@
         "Advanced Electrical Components": 1,
         "ARC Circuitry": 1
       },
-      "salvage": {
-        "Advanced Electrical Components": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -1850,7 +1717,6 @@
       "locations": [],
       "image": "/icons/pressure-regulator.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1871,9 +1737,6 @@
       "recycle": {
         "Advanced Mechanical Components": 1
       },
-      "salvage": {
-        "Mechanical Components": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1889,7 +1752,6 @@
       "locations": [],
       "image": "/icons/riven-tides-crane-secure-storage-keycard.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -1909,9 +1771,6 @@
       "recycle": {
         "ARC Alloy": 3,
         "Advanced Electrical Components": 2
-      },
-      "salvage": {
-        "ARC Circuitry": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -1947,9 +1806,6 @@
         "Mod Components": 1,
         "Wires": 1
       },
-      "salvage": {
-        "Mechanical Components": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -1984,9 +1840,6 @@
         "Mod Components": 1,
         "Wires": 3
       },
-      "salvage": {
-        "Mod Components": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -2007,9 +1860,6 @@
         "Sensors": 1,
         "Exodus Modules": 1
       },
-      "salvage": {
-        "Processor": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -2025,7 +1875,6 @@
       "locations": [],
       "image": "/icons/stella-montis-archives-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -2045,7 +1894,6 @@
       ],
       "image": "/icons/stencil-parts.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -2063,9 +1911,6 @@
       "recycle": {
         "Advanced Electrical Components": 1,
         "Processor": 1
-      },
-      "salvage": {
-        "Electrical Components": 2
       },
       "craftedFrom": [
         {
@@ -2101,9 +1946,6 @@
         "Advanced Electrical Components": 1,
         "Processor": 1
       },
-      "salvage": {
-        "Electrical Components": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -2137,9 +1979,6 @@
       "recycle": {
         "Advanced Electrical Components": 1,
         "Processor": 1
-      },
-      "salvage": {
-        "Electrical Components": 2
       },
       "craftedFrom": [
         {
@@ -2175,9 +2014,6 @@
         "Advanced Electrical Components": 1,
         "Processor": 1
       },
-      "salvage": {
-        "Advanced Electrical Components": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -2209,7 +2045,6 @@
       "locations": [],
       "image": "/icons/tellurion.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -2231,9 +2066,6 @@
         "Calculator": 2,
         "Electrical Components": 2
       },
-      "salvage": {
-        "Electrical Components": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -2252,9 +2084,6 @@
       "image": "/icons/turbine-compressor.webp",
       "recycle": {
         "ARC Motion Core": 1,
-        "ARC Circuitry": 1
-      },
-      "salvage": {
         "ARC Circuitry": 1
       },
       "craftedFrom": [],
@@ -2288,9 +2117,6 @@
         "Advanced Electrical Components": 1,
         "ARC Circuitry": 2
       },
-      "salvage": {
-        "ARC Circuitry": 2
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -2314,9 +2140,6 @@
       "recycle": {
         "Antiseptic": 1,
         "Canister": 1
-      },
-      "salvage": {
-        "Antiseptic": 1
       },
       "craftedFrom": [
         {
@@ -2356,9 +2179,6 @@
         "ARC Motion Core": 1,
         "Explosive Compound": 1
       },
-      "salvage": {
-        "Explosive Compound": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -2394,7 +2214,6 @@
       "locations": [],
       "image": "/icons/velocity-ship-model.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -2413,9 +2232,6 @@
       "image": "/icons/advanced-arc-powercell.webp",
       "recycle": {
         "ARC Powercell": 2
-      },
-      "salvage": {
-        "ARC Powercell": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -2455,9 +2271,6 @@
       "recycle": {
         "Calculator": 1
       },
-      "salvage": {
-        "Plastic Parts": 5
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -2496,9 +2309,6 @@
       "image": "/icons/advanced-electrical-components.webp",
       "recycle": {
         "Wires": 1,
-        "Electrical Components": 1
-      },
-      "salvage": {
         "Electrical Components": 1
       },
       "craftedFrom": [
@@ -2606,9 +2416,6 @@
       "image": "/icons/advanced-mechanical-components.webp",
       "recycle": {
         "Steel Spring": 1,
-        "Mechanical Components": 1
-      },
-      "salvage": {
         "Mechanical Components": 1
       },
       "craftedFrom": [
@@ -2868,9 +2675,6 @@
         "Plastic Parts": 6,
         "Processor": 1
       },
-      "salvage": {
-        "Processor": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -2888,9 +2692,6 @@
       "recycle": {
         "Mod Components": 1,
         "Duct Tape": 2
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [
         {
@@ -2926,9 +2727,6 @@
       "image": "/icons/antiseptic.webp",
       "recycle": {
         "Chemicals": 10
-      },
-      "salvage": {
-        "Chemicals": 5
       },
       "craftedFrom": [
         {
@@ -2990,9 +2788,6 @@
       "image": "/icons/arc-circuitry.webp",
       "recycle": {
         "ARC Alloy": 2
-      },
-      "salvage": {
-        "ARC Alloy": 1
       },
       "craftedFrom": [
         {
@@ -3066,9 +2861,6 @@
       "recycle": {
         "Chemicals": 16
       },
-      "salvage": {
-        "Chemicals": 9
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3087,9 +2879,6 @@
       "image": "/icons/arc-flex-rubber.webp",
       "recycle": {
         "Rubber Parts": 16
-      },
-      "salvage": {
-        "Rubber Parts": 9
       },
       "craftedFrom": [],
       "usedIn": [
@@ -3125,9 +2914,6 @@
       "image": "/icons/arc-motion-core.webp",
       "recycle": {
         "ARC Alloy": 2
-      },
-      "salvage": {
-        "ARC Alloy": 1
       },
       "craftedFrom": [
         {
@@ -3181,9 +2967,6 @@
       "recycle": {
         "Metal Parts": 12
       },
-      "salvage": {
-        "Metal Parts": 7
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -3209,9 +2992,6 @@
       "recycle": {
         "Plastic Parts": 14
       },
-      "salvage": {
-        "Plastic Parts": 9
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3231,9 +3011,6 @@
       "recycle": {
         "Fabric": 16
       },
-      "salvage": {
-        "Fabric": 9
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3249,7 +3026,6 @@
       "locations": [],
       "image": "/icons/banjo.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3270,9 +3046,6 @@
         "Canister": 4,
         "Metal Parts": 10
       },
-      "salvage": {
-        "Canister": 3
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3290,9 +3063,6 @@
       "recycle": {
         "Metal Parts": 4,
         "Oil": 2
-      },
-      "salvage": {
-        "Oil": 1
       },
       "craftedFrom": [
         {
@@ -3331,7 +3101,6 @@
       "locations": [],
       "image": "/icons/blaze-grenade-trap.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -3363,7 +3132,6 @@
       "locations": [],
       "image": "/icons/blue-gate-cellar-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3379,7 +3147,6 @@
       "locations": [],
       "image": "/icons/blue-gate-communication-tower-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3400,9 +3167,6 @@
         "Battery": 2,
         "Metal Parts": 6
       },
-      "salvage": {
-        "Metal Parts": 7
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3421,9 +3185,6 @@
       "image": "/icons/broken-guidance-system.webp",
       "recycle": {
         "Processor": 4
-      },
-      "salvage": {
-        "Processor": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -3451,9 +3212,6 @@
         "Sensors": 3,
         "Wires": 2
       },
-      "salvage": {
-        "Sensors": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3474,9 +3232,6 @@
         "Battery": 2,
         "Wires": 2
       },
-      "salvage": {
-        "Battery": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3492,7 +3247,6 @@
       "locations": [],
       "image": "/icons/buried-city-hospital-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3513,9 +3267,6 @@
       "recycle": {
         "Wires": 1,
         "Plastic Parts": 2
-      },
-      "salvage": {
-        "Rubber Parts": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -3547,7 +3298,6 @@
       "recycle": {
         "Assorted Seeds": 2
       },
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3563,7 +3313,6 @@
       "locations": [],
       "image": "/icons/colorful-shoes.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3581,9 +3330,6 @@
       "recycle": {
         "Electrical Components": 1,
         "Magnet": 1
-      },
-      "salvage": {
-        "Electrical Components": 1
       },
       "craftedFrom": [
         {
@@ -3621,9 +3367,6 @@
         "ARC Alloy": 2,
         "Crude Explosives": 2
       },
-      "salvage": {
-        "Crude Explosives": 2
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -3657,9 +3400,6 @@
       "recycle": {
         "Mod Components": 1,
         "Wires": 2
-      },
-      "salvage": {
-        "Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -3697,9 +3437,6 @@
         "Chemicals": 5,
         "Oil": 2
       },
-      "salvage": {
-        "Oil": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3718,9 +3455,6 @@
       "image": "/icons/cooling-coil.webp",
       "recycle": {
         "Chemicals": 6,
-        "Steel Spring": 2
-      },
-      "salvage": {
         "Steel Spring": 2
       },
       "craftedFrom": [],
@@ -3754,9 +3488,6 @@
         "Plastic Parts": 14,
         "Wires": 4
       },
-      "salvage": {
-        "Wires": 4
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -3788,9 +3519,6 @@
         "Rubber Parts": 3,
         "Battery": 3
       },
-      "salvage": {
-        "Battery": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3806,7 +3534,6 @@
       "locations": [],
       "image": "/icons/dam-controlled-access-zone-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3822,7 +3549,6 @@
       "locations": [],
       "image": "/icons/dam-testing-annex-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3843,9 +3569,6 @@
         "Metal Parts": 6,
         "Wires": 2
       },
-      "salvage": {
-        "Wires": 3
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3863,9 +3586,6 @@
       "recycle": {
         "Plastic Parts": 1,
         "Moss": 1
-      },
-      "salvage": {
-        "Chemicals": 2
       },
       "craftedFrom": [
         {
@@ -3901,7 +3621,6 @@
       ],
       "image": "/icons/desk-lamp.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3923,9 +3642,6 @@
         "Speaker Component": 1,
         "Wires": 2
       },
-      "salvage": {
-        "Wires": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3944,9 +3660,6 @@
       "image": "/icons/diving-goggles.webp",
       "recycle": {
         "Rubber Parts": 12
-      },
-      "salvage": {
-        "Rubber Parts": 5
       },
       "craftedFrom": [],
       "usedIn": []
@@ -3968,9 +3681,6 @@
         "Fabric": 8,
         "Metal Parts": 1
       },
-      "salvage": {
-        "Fabric": 5
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -3986,7 +3696,6 @@
       "locations": [],
       "image": "/icons/doodly-duck.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4002,7 +3711,6 @@
       "locations": [],
       "image": "/icons/energy-clip.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 5,
@@ -4036,9 +3744,6 @@
       "recycle": {
         "Chemicals": 8
       },
-      "salvage": {
-        "Chemicals": 4
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4054,7 +3759,6 @@
       "locations": [],
       "image": "/icons/equatorial-sundial.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4072,7 +3776,6 @@
       ],
       "image": "/icons/exodus-technical-handbook.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4093,9 +3796,6 @@
         "Rubber Parts": 8,
         "Fabric": 4
       },
-      "salvage": {
-        "Rubber Parts": 5
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4115,9 +3815,6 @@
       "image": "/icons/explosive-compound.webp",
       "recycle": {
         "Crude Explosives": 2
-      },
-      "salvage": {
-        "Crude Explosives": 1
       },
       "craftedFrom": [
         {
@@ -4184,9 +3881,6 @@
         "Oil": 2,
         "Sensors": 1
       },
-      "salvage": {
-        "Oil": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -4220,9 +3914,6 @@
       "recycle": {
         "Mechanical Components": 1,
         "Wires": 1
-      },
-      "salvage": {
-        "Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -4258,9 +3949,6 @@
         "Mod Components": 1,
         "Steel Spring": 2
       },
-      "salvage": {
-        "Mechanical Components": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -4294,9 +3982,6 @@
       "recycle": {
         "Mod Components": 1,
         "Steel Spring": 2
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [
         {
@@ -4332,9 +4017,6 @@
         "Mod Components": 1,
         "Steel Spring": 2
       },
-      "salvage": {
-        "Mechanical Components": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -4369,7 +4051,6 @@
       ],
       "image": "/icons/film-reel.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4388,7 +4069,6 @@
       ],
       "image": "/icons/fine-wristwatch.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4407,9 +4087,6 @@
       "image": "/icons/firefly-burner.webp",
       "recycle": {
         "ARC Alloy": 2,
-        "Crude Explosives": 2
-      },
-      "salvage": {
         "Crude Explosives": 2
       },
       "craftedFrom": [],
@@ -4433,9 +4110,6 @@
       "locations": [],
       "image": "/icons/fireworks-box.webp",
       "recycle": {
-        "Explosive Compound": 1
-      },
-      "salvage": {
         "Explosive Compound": 1
       },
       "craftedFrom": [
@@ -4469,7 +4143,6 @@
       "locations": [],
       "image": "/icons/flashy-duck.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4489,9 +4162,6 @@
       "recycle": {
         "Advanced Mechanical Components": 1,
         "Sensors": 1
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [],
       "usedIn": []
@@ -4513,9 +4183,6 @@
         "Advanced Electrical Components": 1,
         "Speaker Component": 1
       },
-      "salvage": {
-        "Electrical Components": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4536,9 +4203,6 @@
         "Plastic Parts": 5,
         "Electrical Components": 2
       },
-      "salvage": {
-        "Wires": 5
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4554,7 +4218,6 @@
       "locations": [],
       "image": "/icons/frosty-duck.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4573,9 +4236,6 @@
       "image": "/icons/frying-pan.webp",
       "recycle": {
         "Metal Parts": 8
-      },
-      "salvage": {
-        "Metal Parts": 4
       },
       "craftedFrom": [],
       "usedIn": []
@@ -4597,7 +4257,6 @@
         "Sensors": 2,
         "ARC Alloy": 3
       },
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4617,9 +4276,6 @@
       "image": "/icons/hand-drill.webp",
       "recycle": {
         "Mechanical Components": 1
-      },
-      "salvage": {
-        "Metal Parts": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -4648,9 +4304,6 @@
         "Rubber Parts": 7,
         "Speaker Component": 1
       },
-      "salvage": {
-        "Speaker Component": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4668,9 +4321,6 @@
       "recycle": {
         "Oil": 1,
         "Rubber Parts": 2
-      },
-      "salvage": {
-        "Crude Explosives": 1
       },
       "craftedFrom": [
         {
@@ -4707,9 +4357,6 @@
       "image": "/icons/heavy-gun-parts.webp",
       "recycle": {
         "Simple Gun Parts": 2
-      },
-      "salvage": {
-        "Simple Gun Parts": 1
       },
       "craftedFrom": [
         {
@@ -4864,9 +4511,6 @@
         "Electrical Components": 1,
         "ARC Alloy": 1
       },
-      "salvage": {
-        "Electrical Components": 1
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -4913,9 +4557,6 @@
         "Canister": 2,
         "Wires": 2
       },
-      "salvage": {
-        "Canister": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4934,9 +4575,6 @@
       "image": "/icons/industrial-battery.webp",
       "recycle": {
         "Chemicals": 7,
-        "Battery": 2
-      },
-      "salvage": {
         "Battery": 2
       },
       "craftedFrom": [],
@@ -4975,9 +4613,6 @@
         "Metal Parts": 5,
         "Voltage Converter": 1
       },
-      "salvage": {
-        "Voltage Converter": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -4998,9 +4633,6 @@
         "Metal Parts": 4,
         "Magnet": 2
       },
-      "salvage": {
-        "Magnet": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5016,7 +4648,6 @@
       "locations": [],
       "image": "/icons/integrated-defibrillator.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5034,9 +4665,6 @@
       "recycle": {
         "Battery": 1,
         "Plastic Parts": 2
-      },
-      "salvage": {
-        "Battery": 1
       },
       "craftedFrom": [
         {
@@ -5074,9 +4702,6 @@
         "Chemicals": 16,
         "Crude Explosives": 3
       },
-      "salvage": {
-        "Crude Explosives": 3
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5092,7 +4717,6 @@
       "locations": [],
       "image": "/icons/launcher-ammo.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 6,
@@ -5128,9 +4752,6 @@
       "image": "/icons/light-gun-parts.webp",
       "recycle": {
         "Simple Gun Parts": 2
-      },
-      "salvage": {
-        "Simple Gun Parts": 1
       },
       "craftedFrom": [
         {
@@ -5198,9 +4819,6 @@
         "Magnet": 1,
         "Electrical Components": 1
       },
-      "salvage": {
-        "Electrical Components": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -5236,9 +4854,6 @@
       "image": "/icons/medium-gun-parts.webp",
       "recycle": {
         "Simple Gun Parts": 2
-      },
-      "salvage": {
-        "Simple Gun Parts": 1
       },
       "craftedFrom": [
         {
@@ -5405,9 +5020,6 @@
       "recycle": {
         "ARC Circuitry": 1
       },
-      "salvage": {
-        "ARC Alloy": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -5444,9 +5056,6 @@
         "Advanced Mechanical Components": 1,
         "Magnet": 3
       },
-      "salvage": {
-        "Mechanical Components": 2
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -5473,9 +5082,6 @@
         "Advanced Mechanical Components": 1,
         "Canister": 2
       },
-      "salvage": {
-        "Mechanical Components": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5495,9 +5101,6 @@
       "recycle": {
         "Mechanical Components": 1,
         "Steel Spring": 1
-      },
-      "salvage": {
-        "Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -5605,9 +5208,6 @@
       "recycle": {
         "Assorted Seeds": 3
       },
-      "salvage": {
-        "Assorted Seeds": 2
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -5634,9 +5234,6 @@
         "Oil": 2,
         "Mechanical Components": 2
       },
-      "salvage": {
-        "Oil": 3
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5652,7 +5249,6 @@
       "locations": [],
       "image": "/icons/mountaineer-s-detector.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5671,7 +5267,6 @@
       ],
       "image": "/icons/music-album.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5691,7 +5286,6 @@
       ],
       "image": "/icons/music-box.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5709,9 +5303,6 @@
       "recycle": {
         "Mod Components": 1,
         "Wires": 2
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [
         {
@@ -5747,7 +5338,6 @@
       ],
       "image": "/icons/playing-cards.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5766,9 +5356,6 @@
       "image": "/icons/polluted-air-filter.webp",
       "recycle": {
         "Fabric": 6,
-        "Oil": 2
-      },
-      "salvage": {
         "Oil": 2
       },
       "craftedFrom": [],
@@ -5790,9 +5377,6 @@
       "recycle": {
         "Battery": 2,
         "Wires": 6
-      },
-      "salvage": {
-        "Wires": 4
       },
       "craftedFrom": [],
       "usedIn": []
@@ -5816,9 +5400,6 @@
         "Battery": 2,
         "Wires": 2
       },
-      "salvage": {
-        "Battery": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5840,9 +5421,6 @@
       "recycle": {
         "Wires": 4
       },
-      "salvage": {
-        "Wires": 3
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5862,9 +5440,6 @@
       "recycle": {
         "Wires": 1,
         "Plastic Parts": 1
-      },
-      "salvage": {
-        "Plastic Parts": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -5937,9 +5512,6 @@
         "Wires": 2,
         "Processor": 1
       },
-      "salvage": {
-        "Processor": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -5960,9 +5532,6 @@
       "recycle": {
         "Speaker Component": 1,
         "Sensors": 1
-      },
-      "salvage": {
-        "Speaker Component": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -5990,9 +5559,6 @@
         "Speaker Component": 2,
         "Sensors": 2
       },
-      "salvage": {
-        "Sensors": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6008,7 +5574,6 @@
       "locations": [],
       "image": "/icons/raider-hatch-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -6044,7 +5609,6 @@
       ],
       "image": "/icons/red-coral-jewelry.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6063,9 +5627,6 @@
       "image": "/icons/remote-control.webp",
       "recycle": {
         "Plastic Parts": 7,
-        "Sensors": 1
-      },
-      "salvage": {
         "Sensors": 1
       },
       "craftedFrom": [],
@@ -6088,9 +5649,6 @@
         "Synthesized Fuel": 2,
         "Metal Parts": 6
       },
-      "salvage": {
-        "Synthesized Fuel": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6109,7 +5667,6 @@
       ],
       "image": "/icons/rosary.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6130,9 +5687,6 @@
         "Electrical Components": 2,
         "Processor": 2
       },
-      "salvage": {
-        "Processor": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6151,9 +5705,6 @@
       "image": "/icons/rubber-pad.webp",
       "recycle": {
         "Rubber Parts": 18
-      },
-      "salvage": {
-        "Rubber Parts": 12
       },
       "craftedFrom": [],
       "usedIn": [
@@ -6181,9 +5732,6 @@
         "Rubber Parts": 18,
         "Steel Spring": 3
       },
-      "salvage": {
-        "Rubber Parts": 13
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6203,9 +5751,6 @@
       "recycle": {
         "Plastic Parts": 10,
         "Rubber Parts": 6
-      },
-      "salvage": {
-        "Plastic Parts": 10
       },
       "craftedFrom": [],
       "usedIn": []
@@ -6227,9 +5772,6 @@
         "Metal Parts": 4,
         "Mechanical Components": 2
       },
-      "salvage": {
-        "Metal Parts": 12
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6249,9 +5791,6 @@
       "recycle": {
         "Syringe": 2,
         "Antiseptic": 1
-      },
-      "salvage": {
-        "Syringe": 2
       },
       "craftedFrom": [],
       "usedIn": []
@@ -6273,9 +5812,6 @@
       "recycle": {
         "Metal Parts": 8,
         "Steel Spring": 1
-      },
-      "salvage": {
-        "Metal Parts": 7
       },
       "craftedFrom": [],
       "usedIn": [
@@ -6303,9 +5839,6 @@
         "Electrical Components": 2,
         "Assorted Seeds": 14
       },
-      "salvage": {
-        "Assorted Seeds": 12
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6326,9 +5859,6 @@
       "recycle": {
         "Wires": 1,
         "Metal Parts": 1
-      },
-      "salvage": {
-        "Wires": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -6381,9 +5911,6 @@
         "ARC Alloy": 2,
         "Mechanical Components": 2
       },
-      "salvage": {
-        "Mechanical Components": 2
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -6407,9 +5934,6 @@
       "recycle": {
         "Mod Components": 1,
         "Wires": 2
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [
         {
@@ -6444,9 +5968,6 @@
       "recycle": {
         "Electrical Components": 1,
         "Voltage Converter": 1
-      },
-      "salvage": {
-        "Electrical Components": 1
       },
       "craftedFrom": [
         {
@@ -6488,9 +6009,6 @@
         "ARC Alloy": 2,
         "Mechanical Components": 2
       },
-      "salvage": {
-        "Mechanical Components": 2
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -6522,9 +6040,6 @@
         "Electrical Components": 2,
         "Voltage Converter": 2
       },
-      "salvage": {
-        "Voltage Converter": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6542,9 +6057,6 @@
       "recycle": {
         "Mod Components": 1,
         "Wires": 2
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [
         {
@@ -6581,7 +6093,6 @@
       ],
       "image": "/icons/silver-teaspoon-set.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6599,9 +6110,6 @@
       "recycle": {
         "Chemicals": 2,
         "Canister": 1
-      },
-      "salvage": {
-        "Chemicals": 3
       },
       "craftedFrom": [
         {
@@ -6640,7 +6148,6 @@
       "locations": [],
       "image": "/icons/smoke-grenade-trap.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -6672,7 +6179,6 @@
       "locations": [],
       "image": "/icons/spaceport-container-storage-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6688,7 +6194,6 @@
       "locations": [],
       "image": "/icons/spaceport-control-tower-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6708,9 +6213,6 @@
       "recycle": {
         "Plastic Parts": 2,
         "Rubber Parts": 3
-      },
-      "salvage": {
-        "Plastic Parts": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -6748,9 +6250,6 @@
         "Advanced Electrical Components": 1,
         "Sensors": 1
       },
-      "salvage": {
-        "Electrical Components": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6772,9 +6271,6 @@
         "Durable Cloth": 2,
         "Steel Spring": 2
       },
-      "salvage": {
-        "Steel Spring": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6792,9 +6288,6 @@
       "recycle": {
         "Mod Components": 1,
         "Duct Tape": 2
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [
         {
@@ -6830,7 +6323,6 @@
       ],
       "image": "/icons/statuette.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6847,9 +6339,6 @@
       "image": "/icons/steel-cable.webp",
       "recycle": {
         "Wires": 1
-      },
-      "salvage": {
-        "Rubber Parts": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -6902,7 +6391,6 @@
       "locations": [],
       "image": "/icons/stella-montis-security-checkpoint-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -6920,9 +6408,6 @@
       "recycle": {
         "Fabric": 1,
         "Antiseptic": 1
-      },
-      "salvage": {
-        "Durable Cloth": 1
       },
       "craftedFrom": [
         {
@@ -6957,9 +6442,6 @@
       "recycle": {
         "Electrical Components": 1,
         "Sensors": 1
-      },
-      "salvage": {
-        "Electrical Components": 1
       },
       "craftedFrom": [
         {
@@ -6998,9 +6480,6 @@
       "recycle": {
         "Electrical Components": 1
       },
-      "salvage": {
-        "Plastic Parts": 5
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -7037,9 +6516,6 @@
         "ARC Alloy": 1,
         "Mechanical Components": 1
       },
-      "salvage": {
-        "Mechanical Components": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -7059,9 +6535,6 @@
       "recycle": {
         "Oil": 1,
         "Plastic Parts": 1
-      },
-      "salvage": {
-        "Oil": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -7088,9 +6561,6 @@
       "recycle": {
         "Plastic Parts": 3,
         "Chemicals": 2
-      },
-      "salvage": {
-        "Plastic Parts": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -7126,9 +6596,6 @@
         "Electrical Components": 1,
         "Magnet": 1
       },
-      "salvage": {
-        "Electrical Components": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -7161,9 +6628,6 @@
       "image": "/icons/tagging-grenade.webp",
       "recycle": {
         "Plastic Parts": 1,
-        "Sensors": 1
-      },
-      "salvage": {
         "Sensors": 1
       },
       "craftedFrom": [
@@ -7202,9 +6666,6 @@
         "Advanced Electrical Components": 1,
         "Processor": 1
       },
-      "salvage": {
-        "Electrical Components": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -7222,9 +6683,6 @@
       "recycle": {
         "Rope": 1,
         "Cable Stripper": 1
-      },
-      "salvage": {
-        "Rope": 1
       },
       "craftedFrom": [
         {
@@ -7266,9 +6724,6 @@
         "Rubber Parts": 7,
         "Sensors": 1
       },
-      "salvage": {
-        "Sensors": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -7287,9 +6742,6 @@
       "image": "/icons/toaster.webp",
       "recycle": {
         "Plastic Parts": 5,
-        "Wires": 3
-      },
-      "salvage": {
         "Wires": 3
       },
       "craftedFrom": [],
@@ -7312,9 +6764,6 @@
       "recycle": {
         "Fabric": 12
       },
-      "salvage": {
-        "Fabric": 5
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -7330,9 +6779,6 @@
       "locations": [],
       "image": "/icons/trailblazer.webp",
       "recycle": {
-        "Crude Explosives": 2
-      },
-      "salvage": {
         "Crude Explosives": 2
       },
       "craftedFrom": [
@@ -7373,9 +6819,6 @@
         "Chemicals": 1,
         "Processor": 1
       },
-      "salvage": {
-        "Processor": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -7412,9 +6855,6 @@
         "Mechanical Components": 1,
         "Oil": 3
       },
-      "salvage": {
-        "Steel Spring": 3
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -7434,9 +6874,6 @@
       "recycle": {
         "Metal Parts": 4,
         "Simple Gun Parts": 5
-      },
-      "salvage": {
-        "Simple Gun Parts": 3
       },
       "craftedFrom": [],
       "usedIn": [
@@ -7478,7 +6915,6 @@
       ],
       "image": "/icons/vase.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -7496,9 +6932,6 @@
       "recycle": {
         "Mechanical Components": 2,
         "Duct Tape": 2
-      },
-      "salvage": {
-        "Mechanical Components": 2
       },
       "craftedFrom": [
         {
@@ -7532,9 +6965,6 @@
       "image": "/icons/vita-shot.webp",
       "recycle": {
         "Chemicals": 4,
-        "Syringe": 1
-      },
-      "salvage": {
         "Syringe": 1
       },
       "craftedFrom": [
@@ -7573,9 +7003,6 @@
         "Wires": 1,
         "Rubber Parts": 1
       },
-      "salvage": {
-        "Rubber Parts": 2
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -7607,9 +7034,6 @@
         "Electrical Components": 1,
         "ARC Alloy": 1
       },
-      "salvage": {
-        "ARC Alloy": 2
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -7636,9 +7060,6 @@
         "Rubber Parts": 2,
         "Canister": 3
       },
-      "salvage": {
-        "Canister": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -7660,9 +7081,6 @@
         "Metal Parts": 4,
         "Oil": 2
       },
-      "salvage": {
-        "Oil": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -7679,9 +7097,6 @@
       "image": "/icons/zipline.webp",
       "recycle": {
         "Steel Cable": 1
-      },
-      "salvage": {
-        "Metal Parts": 4
       },
       "craftedFrom": [
         {
@@ -7714,7 +7129,6 @@
       "locations": [],
       "image": "/icons/twilight-compass-ship-model.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -7733,9 +7147,6 @@
       "image": "/icons/agave.webp",
       "recycle": {
         "Assorted Seeds": 3
-      },
-      "salvage": {
-        "Assorted Seeds": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -7760,7 +7171,6 @@
       ],
       "image": "/icons/air-freshener.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -7782,7 +7192,6 @@
       "locations": [],
       "image": "/icons/alien-duck.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -7800,9 +7209,6 @@
       "recycle": {
         "Mechanical Components": 1,
         "Duct Tape": 1
-      },
-      "salvage": {
-        "Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -7839,9 +7245,6 @@
       "recycle": {
         "Assorted Seeds": 3
       },
-      "salvage": {
-        "Assorted Seeds": 2
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -7866,9 +7269,6 @@
       "image": "/icons/arc-alloy.webp",
       "recycle": {
         "Metal Parts": 2
-      },
-      "salvage": {
-        "Metal Parts": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -7913,9 +7313,6 @@
       "recycle": {
         "Metal Parts": 4
       },
-      "salvage": {
-        "Metal Parts": 3
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -7945,7 +7342,6 @@
       "recycle": {
         "Plastic Parts": 5
       },
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -7981,9 +7377,6 @@
       "image": "/icons/battery.webp",
       "recycle": {
         "Metal Parts": 2
-      },
-      "salvage": {
-        "Metal Parts": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -8021,7 +7414,6 @@
       "locations": [],
       "image": "/icons/blue-gate-village-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8041,7 +7433,6 @@
       ],
       "image": "/icons/bureau-desk-lamp.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8057,7 +7448,6 @@
       "locations": [],
       "image": "/icons/buried-city-jkv-employee-access-card.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8073,7 +7463,6 @@
       "locations": [],
       "image": "/icons/buried-city-residential-master-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8092,9 +7481,6 @@
       "image": "/icons/burned-arc-circuitry.webp",
       "recycle": {
         "ARC Alloy": 2
-      },
-      "salvage": {
-        "ARC Alloy": 1
       },
       "craftedFrom": [],
       "usedIn": []
@@ -8115,9 +7501,6 @@
       "image": "/icons/cable-stripper.webp",
       "recycle": {
         "Metal Parts": 2
-      },
-      "salvage": {
-        "Metal Parts": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -8143,9 +7526,6 @@
       "image": "/icons/camera-lens.webp",
       "recycle": {
         "Plastic Parts": 8
-      },
-      "salvage": {
-        "Plastic Parts": 4
       },
       "craftedFrom": [],
       "usedIn": [
@@ -8177,9 +7557,6 @@
       "recycle": {
         "Metal Parts": 8
       },
-      "salvage": {
-        "Metal Parts": 4
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8198,9 +7575,6 @@
       "image": "/icons/canister.webp",
       "recycle": {
         "Plastic Parts": 3
-      },
-      "salvage": {
-        "Plastic Parts": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -8261,7 +7635,6 @@
       ],
       "image": "/icons/cat-bed.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8279,9 +7652,6 @@
       "recycle": {
         "Plastic Parts": 3,
         "Rubber Parts": 3
-      },
-      "salvage": {
-        "Plastic Parts": 3
       },
       "craftedFrom": [
         {
@@ -8317,9 +7687,6 @@
         "Mechanical Components": 1,
         "Wires": 1
       },
-      "salvage": {
-        "Mechanical Components": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -8353,9 +7720,6 @@
       "recycle": {
         "Fabric": 6,
         "Plastic Parts": 3
-      },
-      "salvage": {
-        "Fabric": 4
       },
       "craftedFrom": [
         {
@@ -8392,9 +7756,6 @@
       "image": "/icons/crude-explosives.webp",
       "recycle": {
         "Chemicals": 3
-      },
-      "salvage": {
-        "Chemicals": 2
       },
       "craftedFrom": [
         {
@@ -8478,9 +7839,6 @@
       "recycle": {
         "Plastic Parts": 4
       },
-      "salvage": {
-        "Plastic Parts": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8496,7 +7854,6 @@
       "locations": [],
       "image": "/icons/dam-staff-room-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8512,7 +7869,6 @@
       "locations": [],
       "image": "/icons/dam-surveillance-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8532,9 +7888,6 @@
       "recycle": {
         "ARC Alloy": 2
       },
-      "salvage": {
-        "ARC Alloy": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8553,7 +7906,6 @@
       ],
       "image": "/icons/dart-board.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8574,9 +7926,6 @@
         "Rubber Parts": 9,
         "Fabric": 9
       },
-      "salvage": {
-        "Rubber Parts": 9
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8596,9 +7945,6 @@
       "recycle": {
         "Rubber Parts": 11
       },
-      "salvage": {
-        "Rubber Parts": 5
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8614,7 +7960,6 @@
       "locations": [],
       "image": "/icons/dockmaster-s-detector.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -8633,9 +7978,6 @@
       "image": "/icons/dried-out-arc-resin.webp",
       "recycle": {
         "Plastic Parts": 9
-      },
-      "salvage": {
-        "Plastic Parts": 4
       },
       "craftedFrom": [],
       "usedIn": [
@@ -8672,9 +8014,6 @@
       "image": "/icons/duct-tape.webp",
       "recycle": {
         "Fabric": 3
-      },
-      "salvage": {
-        "Fabric": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -8752,9 +8091,6 @@
       "recycle": {
         "Fabric": 6
       },
-      "salvage": {
-        "Fabric": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -8807,9 +8143,6 @@
       "recycle": {
         "Plastic Parts": 3,
         "Rubber Parts": 3
-      },
-      "salvage": {
-        "Plastic Parts": 3
       },
       "craftedFrom": [
         {
@@ -8905,9 +8238,6 @@
       "recycle": {
         "Metal Parts": 5
       },
-      "salvage": {
-        "Metal Parts": 3
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -8941,9 +8271,6 @@
       "recycle": {
         "Mechanical Components": 1,
         "Steel Spring": 1
-      },
-      "salvage": {
-        "Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -8979,9 +8306,6 @@
         "Mechanical Components": 1,
         "Steel Spring": 1
       },
-      "salvage": {
-        "Mechanical Components": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -9015,9 +8339,6 @@
       "recycle": {
         "Mechanical Components": 1,
         "Steel Spring": 1
-      },
-      "salvage": {
-        "Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -9054,9 +8375,6 @@
       "recycle": {
         "Assorted Seeds": 2
       },
-      "salvage": {
-        "Assorted Seeds": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -9076,9 +8394,6 @@
       "recycle": {
         "ARC Alloy": 1,
         "Crude Explosives": 1
-      },
-      "salvage": {
-        "ARC Alloy": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -9102,9 +8417,6 @@
       "image": "/icons/flame-spray.webp",
       "recycle": {
         "Canister": 1,
-        "Fireball Burner": 1
-      },
-      "salvage": {
         "Fireball Burner": 1
       },
       "craftedFrom": [
@@ -9138,7 +8450,6 @@
       "locations": [],
       "image": "/icons/fruit-mix.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -9179,9 +8490,6 @@
       "recycle": {
         "Metal Parts": 12
       },
-      "salvage": {
-        "Metal Parts": 7
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -9197,7 +8505,6 @@
       "locations": [],
       "image": "/icons/gentle-duck.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -9218,7 +8525,6 @@
         "Electrical Components": 1,
         "ARC Alloy": 1
       },
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -9235,9 +8541,6 @@
       "image": "/icons/grappling-hook.webp",
       "recycle": {
         "Cable Stripper": 1,
-        "Rope": 1
-      },
-      "salvage": {
         "Rope": 1
       },
       "craftedFrom": [
@@ -9279,9 +8582,6 @@
       "recycle": {
         "Assorted Seeds": 2
       },
-      "salvage": {
-        "Assorted Seeds": 1
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -9315,7 +8615,6 @@
       ],
       "image": "/icons/harmonica.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -9333,9 +8632,6 @@
       "recycle": {
         "Assorted Seeds": 2,
         "Fabric": 5
-      },
-      "salvage": {
-        "Fabric": 8
       },
       "craftedFrom": [
         {
@@ -9387,9 +8683,6 @@
       "recycle": {
         "Chemicals": 11
       },
-      "salvage": {
-        "Chemicals": 5
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -9420,9 +8713,6 @@
       "recycle": {
         "Metal Parts": 7
       },
-      "salvage": {
-        "Metal Parts": 3
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -9442,9 +8732,6 @@
       "recycle": {
         "Chemicals": 12
       },
-      "salvage": {
-        "Chemicals": 5
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -9463,9 +8750,6 @@
       "image": "/icons/lemon.webp",
       "recycle": {
         "Assorted Seeds": 3
-      },
-      "salvage": {
-        "Assorted Seeds": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -9490,7 +8774,6 @@
       ],
       "image": "/icons/light-bulb.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -9507,9 +8790,6 @@
       "image": "/icons/light-shield.webp",
       "recycle": {
         "Plastic Parts": 4
-      },
-      "salvage": {
-        "ARC Alloy": 1
       },
       "craftedFrom": [
         {
@@ -9545,9 +8825,6 @@
         "Plastic Parts": 3,
         "Rubber Parts": 3
       },
-      "salvage": {
-        "Plastic Parts": 3
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -9579,9 +8856,6 @@
       "locations": [],
       "image": "/icons/lure-grenade.webp",
       "recycle": {
-        "Speaker Component": 1
-      },
-      "salvage": {
         "Speaker Component": 1
       },
       "craftedFrom": [
@@ -9621,7 +8895,6 @@
       "locations": [],
       "image": "/icons/lure-grenade-trap.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -9656,9 +8929,6 @@
       "image": "/icons/magnet.webp",
       "recycle": {
         "Metal Parts": 2
-      },
-      "salvage": {
-        "Metal Parts": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -9709,9 +8979,6 @@
       "image": "/icons/mechanical-components.webp",
       "recycle": {
         "Rubber Parts": 2,
-        "Metal Parts": 3
-      },
-      "salvage": {
         "Metal Parts": 3
       },
       "craftedFrom": [
@@ -10011,9 +9278,6 @@
       "recycle": {
         "Metal Parts": 8
       },
-      "salvage": {
-        "Metal Parts": 4
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10035,9 +9299,6 @@
         "Sensors": 1,
         "Plastic Parts": 2
       },
-      "salvage": {
-        "Plastic Parts": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10055,7 +9316,6 @@
       ],
       "image": "/icons/mushroom.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10073,9 +9333,6 @@
       "recycle": {
         "Mechanical Components": 1,
         "Wires": 1
-      },
-      "salvage": {
-        "Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -10112,9 +9369,6 @@
       "recycle": {
         "Metal Parts": 3
       },
-      "salvage": {
-        "Metal Parts": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10133,9 +9387,6 @@
       "image": "/icons/oil.webp",
       "recycle": {
         "Chemicals": 3
-      },
-      "salvage": {
-        "Chemicals": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -10172,9 +9423,6 @@
       "recycle": {
         "Assorted Seeds": 2
       },
-      "salvage": {
-        "Assorted Seeds": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10192,7 +9440,6 @@
       ],
       "image": "/icons/painted-box.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10208,7 +9455,6 @@
       "locations": [],
       "image": "/icons/patrol-car-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10224,7 +9470,6 @@
       "locations": [],
       "image": null,
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10243,9 +9488,6 @@
       "image": "/icons/pop-trigger.webp",
       "recycle": {
         "ARC Alloy": 1,
-        "Crude Explosives": 1
-      },
-      "salvage": {
         "Crude Explosives": 1
       },
       "craftedFrom": [],
@@ -10277,7 +9519,6 @@
       ],
       "image": "/icons/poster-of-natural-wonders.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10296,7 +9537,6 @@
       ],
       "image": "/icons/pottery.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10315,9 +9555,6 @@
       "image": "/icons/prickly-pear.webp",
       "recycle": {
         "Assorted Seeds": 3
-      },
-      "salvage": {
-        "Assorted Seeds": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -10341,9 +9578,6 @@
       "image": "/icons/pulse-mine.webp",
       "recycle": {
         "Chemicals": 6
-      },
-      "salvage": {
-        "Chemicals": 3
       },
       "craftedFrom": [
         {
@@ -10378,7 +9612,6 @@
       ],
       "image": "/icons/raider-logbook.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10397,9 +9630,6 @@
       "image": "/icons/recorder.webp",
       "recycle": {
         "Plastic Parts": 10
-      },
-      "salvage": {
-        "Plastic Parts": 4
       },
       "craftedFrom": [],
       "usedIn": []
@@ -10421,9 +9651,6 @@
         "Durable Cloth": 1,
         "Magnet": 1
       },
-      "salvage": {
-        "Fabric": 8
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10439,7 +9666,6 @@
       "locations": [],
       "image": "/icons/riven-tides-classified-records-keycard.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10455,7 +9681,6 @@
       "locations": [],
       "image": "/icons/riven-tides-crane-house-keycard.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10473,9 +9698,6 @@
       ],
       "image": "/icons/roots.webp",
       "recycle": {
-        "Assorted Seeds": 1
-      },
-      "salvage": {
         "Assorted Seeds": 1
       },
       "craftedFrom": [],
@@ -10497,9 +9719,6 @@
       "image": "/icons/rope.webp",
       "recycle": {
         "Fabric": 3
-      },
-      "salvage": {
-        "Fabric": 2
       },
       "craftedFrom": [],
       "usedIn": [
@@ -10537,9 +9756,6 @@
         "Metal Parts": 6,
         "Rubber Parts": 3
       },
-      "salvage": {
-        "Metal Parts": 4
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10559,9 +9775,6 @@
       "recycle": {
         "Metal Parts": 8
       },
-      "salvage": {
-        "Metal Parts": 4
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10580,9 +9793,6 @@
       "image": "/icons/ruined-parachute.webp",
       "recycle": {
         "Fabric": 10
-      },
-      "salvage": {
-        "Fabric": 5
       },
       "craftedFrom": [],
       "usedIn": []
@@ -10604,9 +9814,6 @@
         "Fabric": 5,
         "Magnet": 1
       },
-      "salvage": {
-        "Fabric": 5
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10627,9 +9834,6 @@
       "recycle": {
         "Metal Parts": 8
       },
-      "salvage": {
-        "Metal Parts": 4
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10648,9 +9852,6 @@
       "image": "/icons/rusty-arc-steel.webp",
       "recycle": {
         "Metal Parts": 8
-      },
-      "salvage": {
-        "Metal Parts": 3
       },
       "craftedFrom": [],
       "usedIn": [
@@ -10700,9 +9901,6 @@
       "recycle": {
         "Crude Explosives": 1
       },
-      "salvage": {
-        "Chemicals": 3
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -10734,7 +9932,6 @@
       "locations": [],
       "image": "/icons/sextant.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -10753,9 +9950,6 @@
       "image": "/icons/shaker.webp",
       "recycle": {
         "Plastic Parts": 10
-      },
-      "salvage": {
-        "Plastic Parts": 4
       },
       "craftedFrom": [
         {
@@ -10789,9 +9983,6 @@
       "image": "/icons/shield-recharger.webp",
       "recycle": {
         "Rubber Parts": 4
-      },
-      "salvage": {
-        "Rubber Parts": 3
       },
       "craftedFrom": [
         {
@@ -10842,9 +10033,6 @@
         "Mechanical Components": 1,
         "Wires": 1
       },
-      "salvage": {
-        "Mechanical Components": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -10879,9 +10067,6 @@
         "Crude Explosives": 1,
         "Metal Parts": 1
       },
-      "salvage": {
-        "Crude Explosives": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -10915,9 +10100,6 @@
       "recycle": {
         "Mechanical Components": 1,
         "Wires": 1
-      },
-      "salvage": {
-        "Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -10954,9 +10136,6 @@
       "image": "/icons/simple-gun-parts.webp",
       "recycle": {
         "Metal Parts": 2
-      },
-      "salvage": {
-        "Metal Parts": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -11144,9 +10323,6 @@
         "Simple Gun Parts": 1,
         "ARC Alloy": 1
       },
-      "salvage": {
-        "ARC Alloy": 1
-      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -11170,9 +10346,6 @@
       "recycle": {
         "Chemicals": 1,
         "Magnet": 1
-      },
-      "salvage": {
-        "Chemicals": 2
       },
       "craftedFrom": [
         {
@@ -11210,9 +10383,6 @@
         "Electrical Components": 1,
         "ARC Alloy": 1
       },
-      "salvage": {
-        "Electrical Components": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11228,7 +10398,6 @@
       "locations": [],
       "image": "/icons/spaceport-trench-tower-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11244,7 +10413,6 @@
       "locations": [],
       "image": "/icons/spaceport-warehouse-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11265,9 +10433,6 @@
         "Electrical Components": 1,
         "ARC Alloy": 1
       },
-      "salvage": {
-        "Electrical Components": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11285,9 +10450,6 @@
       "recycle": {
         "Mechanical Components": 1,
         "Duct Tape": 1
-      },
-      "salvage": {
-        "Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -11323,9 +10485,6 @@
       "image": "/icons/steel-spring.webp",
       "recycle": {
         "Metal Parts": 2
-      },
-      "salvage": {
-        "Metal Parts": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -11413,7 +10572,6 @@
       "locations": [],
       "image": "/icons/stella-montis-assembly-admin-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11429,7 +10587,6 @@
       "locations": [],
       "image": "/icons/stella-montis-medical-storage-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11447,9 +10604,6 @@
       "recycle": {
         "Plastic Parts": 3,
         "Rubber Parts": 3
-      },
-      "salvage": {
-        "Plastic Parts": 3
       },
       "craftedFrom": [
         {
@@ -11486,9 +10640,6 @@
       "recycle": {
         "Fabric": 12
       },
-      "salvage": {
-        "Fabric": 5
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11507,9 +10658,6 @@
       "image": "/icons/tattered-clothes.webp",
       "recycle": {
         "Fabric": 11
-      },
-      "salvage": {
-        "Fabric": 5
       },
       "craftedFrom": [],
       "usedIn": []
@@ -11530,9 +10678,6 @@
       "recycle": {
         "Chemicals": 2,
         "ARC Alloy": 2
-      },
-      "salvage": {
-        "ARC Alloy": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -11555,7 +10700,6 @@
       "locations": [],
       "image": "/icons/tropical-duck.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11573,9 +10717,6 @@
       "recycle": {
         "Mechanical Components": 1,
         "Duct Tape": 1
-      },
-      "salvage": {
-        "Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -11611,7 +10752,6 @@
       ],
       "image": "/icons/very-comfortable-pillow.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11627,7 +10767,6 @@
       "locations": [],
       "image": "/icons/vintage-steering-wheel.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11647,9 +10786,6 @@
       "image": "/icons/wires.webp",
       "recycle": {
         "Rubber Parts": 2
-      },
-      "salvage": {
-        "Rubber Parts": 1
       },
       "craftedFrom": [],
       "usedIn": [
@@ -11789,9 +10925,6 @@
       "recycle": {
         "Rope": 1
       },
-      "salvage": {
-        "Fabric": 3
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -11823,7 +10956,6 @@
       "locations": [],
       "image": "/icons/wind-sprite-ship-model.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11841,9 +10973,6 @@
       "recycle": {
         "Chemicals": 1,
         "Plastic Parts": 1
-      },
-      "salvage": {
-        "Chemicals": 1
       },
       "craftedFrom": [
         {
@@ -11897,7 +11026,6 @@
       "locations": [],
       "image": "/icons/advanced-camera-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11913,9 +11041,6 @@
       "locations": [],
       "image": "/icons/agave-juice.webp",
       "recycle": {},
-      "salvage": {
-        "Empty Wine Bottle": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -11947,7 +11072,6 @@
       "locations": [],
       "image": "/icons/ancient-fort-security-code.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -11964,9 +11088,6 @@
       "image": "/icons/angled-grip-i.webp",
       "recycle": {
         "Plastic Parts": 6
-      },
-      "salvage": {
-        "Plastic Parts": 3
       },
       "craftedFrom": [
         {
@@ -11999,7 +11120,6 @@
       "locations": [],
       "image": "/icons/angled-grip-ii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12035,7 +11155,6 @@
       "locations": [],
       "image": "/icons/angled-grip-iii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12051,7 +11170,6 @@
       "locations": [],
       "image": "/icons/anvil-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12087,7 +11205,6 @@
       "locations": [],
       "image": "/icons/aphelion-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12105,7 +11222,6 @@
       ],
       "image": "/icons/arc-powercell.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -12134,7 +11250,6 @@
       ],
       "image": "/icons/assorted-seeds.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -12157,9 +11272,6 @@
       "image": "/icons/bandage.webp",
       "recycle": {
         "Fabric": 2
-      },
-      "salvage": {
-        "Fabric": 1
       },
       "craftedFrom": [
         {
@@ -12199,7 +11311,6 @@
       "locations": [],
       "image": "/icons/bantam-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12231,7 +11342,6 @@
       "locations": [],
       "image": "/icons/barricade-kit-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12263,7 +11373,6 @@
       "locations": [],
       "image": "/icons/battered-paperback.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12279,7 +11388,6 @@
       "locations": [],
       "image": "/icons/bettina-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12318,9 +11426,6 @@
         "Rubber Parts": 2,
         "Plastic Parts": 4
       },
-      "salvage": {
-        "Plastic Parts": 4
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12352,7 +11457,6 @@
       "locations": [],
       "image": "/icons/blaze-grenade-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12371,7 +11475,6 @@
       ],
       "image": "/icons/bloated-tuna-can.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12387,9 +11490,6 @@
       "locations": [],
       "image": "/icons/blue-light-stick.webp",
       "recycle": {
-        "Chemicals": 1
-      },
-      "salvage": {
         "Chemicals": 1
       },
       "craftedFrom": [
@@ -12419,7 +11519,6 @@
       "locations": [],
       "image": "/icons/blue-light-stick-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12435,7 +11534,6 @@
       "locations": [],
       "image": "/icons/bobcat-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12451,7 +11549,6 @@
       "locations": [],
       "image": "/icons/broken-compass.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12467,7 +11564,6 @@
       "locations": [],
       "image": "/icons/burletta-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12502,7 +11598,6 @@
       ],
       "image": "/icons/burnt-out-candles.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12518,7 +11613,6 @@
       "locations": [],
       "image": "/icons/canto-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12554,7 +11648,6 @@
       "locations": [],
       "image": "/icons/celeste-s-journal.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12574,7 +11667,6 @@
       ],
       "image": "/icons/chemicals.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -12708,7 +11800,6 @@
       ],
       "image": "/icons/coffee-pot.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12724,7 +11815,6 @@
       "locations": [],
       "image": "/icons/combat-mk-3-aggressive-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12740,7 +11830,6 @@
       "locations": [],
       "image": "/icons/combat-mk-3-flanking-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12778,9 +11867,6 @@
       "recycle": {
         "Metal Parts": 5
       },
-      "salvage": {
-        "Metal Parts": 3
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12812,7 +11898,6 @@
       "locations": [],
       "image": "/icons/compensator-ii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12848,7 +11933,6 @@
       "locations": [],
       "image": "/icons/compensator-iii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12864,7 +11948,6 @@
       "locations": [],
       "image": "/icons/complex-gun-parts-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12900,7 +11983,6 @@
       "locations": [],
       "image": "/icons/crash-mat-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -12936,9 +12018,6 @@
       "recycle": {
         "ARC Alloy": 1
       },
-      "salvage": {
-        "Metal Parts": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -12957,9 +12036,6 @@
       "image": "/icons/damaged-fireball-burner.webp",
       "recycle": {
         "ARC Alloy": 1
-      },
-      "salvage": {
-        "Metal Parts": 1
       },
       "craftedFrom": [],
       "usedIn": []
@@ -12980,9 +12056,6 @@
       "recycle": {
         "ARC Alloy": 2
       },
-      "salvage": {
-        "ARC Alloy": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13001,9 +12074,6 @@
       "image": "/icons/damaged-leaper-pulse-unit.webp",
       "recycle": {
         "ARC Alloy": 3
-      },
-      "salvage": {
-        "ARC Alloy": 2
       },
       "craftedFrom": [],
       "usedIn": []
@@ -13024,9 +12094,6 @@
       "recycle": {
         "ARC Alloy": 3
       },
-      "salvage": {
-        "ARC Alloy": 2
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13044,7 +12111,6 @@
       ],
       "image": "/icons/damaged-snitch-scanner.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13063,9 +12129,6 @@
       "image": "/icons/damaged-tick-pod.webp",
       "recycle": {
         "ARC Alloy": 1
-      },
-      "salvage": {
-        "Metal Parts": 1
       },
       "craftedFrom": [],
       "usedIn": []
@@ -13086,9 +12149,6 @@
       "recycle": {
         "ARC Alloy": 1
       },
-      "salvage": {
-        "Metal Parts": 1
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13104,7 +12164,6 @@
       "locations": [],
       "image": "/icons/deadline-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -13140,7 +12199,6 @@
       "locations": [],
       "image": "/icons/defibrillator-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -13176,7 +12234,6 @@
       "locations": [],
       "image": "/icons/dodger-s-note.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13192,7 +12249,6 @@
       "locations": [],
       "image": "/icons/dolabra-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13209,9 +12265,6 @@
       "image": "/icons/door-blocker.webp",
       "recycle": {
         "Metal Parts": 2
-      },
-      "salvage": {
-        "Metal Parts": 1
       },
       "craftedFrom": [
         {
@@ -13244,7 +12297,6 @@
       "locations": [],
       "image": "/icons/dusty-film-reel.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13260,7 +12312,6 @@
       "locations": [],
       "image": "/icons/emperor-gateway-conduit-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13279,7 +12330,6 @@
       ],
       "image": "/icons/empty-wine-bottle.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -13301,7 +12351,6 @@
       "locations": [],
       "image": "/icons/equalizer-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13317,7 +12366,6 @@
       "locations": [],
       "image": "/icons/espresso-machine-parts.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13333,7 +12381,6 @@
       "locations": [],
       "image": "/icons/esr-analyzer.png",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13349,7 +12396,6 @@
       "locations": [],
       "image": "/icons/experimental-seed-sample.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13368,7 +12414,6 @@
       ],
       "image": "/icons/expired-pasta.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13384,7 +12429,6 @@
       "locations": [],
       "image": "/icons/expired-security-code.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13400,7 +12444,6 @@
       "locations": [],
       "image": "/icons/explosive-mine-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -13436,7 +12479,6 @@
       "locations": [],
       "image": "/icons/extended-barrel-ii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -13472,7 +12514,6 @@
       "locations": [],
       "image": "/icons/extended-barrel-iii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13489,9 +12530,6 @@
       "image": "/icons/extended-light-mag-i.webp",
       "recycle": {
         "Plastic Parts": 6
-      },
-      "salvage": {
-        "Plastic Parts": 3
       },
       "craftedFrom": [
         {
@@ -13524,7 +12562,6 @@
       "locations": [],
       "image": "/icons/extended-light-mag-ii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -13560,7 +12597,6 @@
       "locations": [],
       "image": "/icons/extended-light-mag-iii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13577,9 +12613,6 @@
       "image": "/icons/extended-medium-mag-i.webp",
       "recycle": {
         "Plastic Parts": 6
-      },
-      "salvage": {
-        "Plastic Parts": 3
       },
       "craftedFrom": [
         {
@@ -13612,7 +12645,6 @@
       "locations": [],
       "image": "/icons/extended-medium-mag-ii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -13648,7 +12680,6 @@
       "locations": [],
       "image": "/icons/extended-medium-mag-iii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13665,9 +12696,6 @@
       "image": "/icons/extended-shotgun-mag-i.webp",
       "recycle": {
         "Plastic Parts": 6
-      },
-      "salvage": {
-        "Plastic Parts": 3
       },
       "craftedFrom": [
         {
@@ -13700,7 +12728,6 @@
       "locations": [],
       "image": "/icons/extended-shotgun-mag-ii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -13736,7 +12763,6 @@
       "locations": [],
       "image": "/icons/extended-shotgun-mag-iii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13756,7 +12782,6 @@
       ],
       "image": "/icons/fabric.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -13805,7 +12830,6 @@
       ],
       "image": "/icons/faded-photograph.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13822,9 +12846,6 @@
       "image": "/icons/firecracker.webp",
       "recycle": {
         "Plastic Parts": 3
-      },
-      "salvage": {
-        "Plastic Parts": 1
       },
       "craftedFrom": [
         {
@@ -13857,7 +12878,6 @@
       "locations": [],
       "image": "/icons/fireworks-box-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13873,7 +12893,6 @@
       "locations": [],
       "image": "/icons/first-wave-compass.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13889,7 +12908,6 @@
       "locations": [],
       "image": "/icons/first-wave-rations.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13905,7 +12923,6 @@
       "locations": [],
       "image": "/icons/first-wave-tape.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13921,7 +12938,6 @@
       "locations": [],
       "image": "/icons/flushing-terminal-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13940,7 +12956,6 @@
         "Rubber Parts": 6,
         "Plastic Parts": 6
       },
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -13958,9 +12973,6 @@
       "recycle": {
         "Chemicals": 1,
         "Rubber Parts": 1
-      },
-      "salvage": {
-        "Chemicals": 1
       },
       "craftedFrom": [
         {
@@ -14004,7 +13016,6 @@
       "locations": [],
       "image": "/icons/gas-grenade-trap.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14039,9 +13050,6 @@
         "Chemicals": 1,
         "Rubber Parts": 1
       },
-      "salvage": {
-        "Chemicals": 2
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14073,7 +13081,6 @@
       "locations": [],
       "image": "/icons/gas-mine-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14109,7 +13116,6 @@
       "recycle": {
         "ARC Alloy": 3
       },
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14125,7 +13131,6 @@
       "locations": [],
       "image": "/icons/grappling-hook-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14159,9 +13164,6 @@
       "recycle": {
         "Chemicals": 1
       },
-      "salvage": {
-        "Chemicals": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14189,7 +13191,6 @@
       "locations": [],
       "image": "/icons/green-light-stick-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14205,7 +13206,6 @@
       "locations": [],
       "image": "/icons/heavy-ammo.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 10,
@@ -14237,7 +13237,6 @@
       "locations": [],
       "image": "/icons/heavy-gun-parts-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14273,7 +13272,6 @@
       "locations": [],
       "image": "/icons/hullcracker-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14309,7 +13307,6 @@
       "locations": [],
       "image": "/icons/il-toro-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14341,7 +13338,6 @@
       "locations": [],
       "image": "/icons/integrated-binoculars.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14357,7 +13353,6 @@
       "locations": [],
       "image": "/icons/integrated-shield-recharger.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14373,7 +13368,6 @@
       "locations": [],
       "image": "/icons/jolt-mine-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14409,7 +13403,6 @@
       "locations": [],
       "image": "/icons/jupiter-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14427,9 +13420,6 @@
       "recycle": {
         "Chemicals": 1,
         "Plastic Parts": 1
-      },
-      "salvage": {
-        "Chemicals": 2
       },
       "craftedFrom": [
         {
@@ -14477,7 +13467,6 @@
       "locations": [],
       "image": "/icons/lidar-scanner.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14493,7 +13482,6 @@
       "locations": [],
       "image": "/icons/light-ammo.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 25,
@@ -14525,7 +13513,6 @@
       "locations": [],
       "image": "/icons/light-gun-parts-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14563,9 +13550,6 @@
       "recycle": {
         "Chemicals": 1,
         "Plastic Parts": 1
-      },
-      "salvage": {
-        "Chemicals": 1
       },
       "craftedFrom": [
         {
@@ -14613,7 +13597,6 @@
       "locations": [],
       "image": "/icons/lightweight-stock-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14629,7 +13612,6 @@
       "locations": [],
       "image": "/icons/looting-mk-3-safekeeper-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14665,7 +13647,6 @@
       "locations": [],
       "image": "/icons/looting-mk-3-survivor-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14681,7 +13662,6 @@
       "locations": [],
       "image": "/icons/lure-grenade-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14713,7 +13693,6 @@
       "locations": [],
       "image": "/icons/major-aiva-s-mementos.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14729,7 +13708,6 @@
       "locations": [],
       "image": "/icons/major-aiva-s-patch.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14745,7 +13723,6 @@
       "locations": [],
       "image": "/icons/marano-market-business-card.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14761,7 +13738,6 @@
       "locations": [],
       "image": "/icons/medium-ammo.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 20,
@@ -14793,7 +13769,6 @@
       "locations": [],
       "image": "/icons/medium-gun-parts-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -14834,7 +13809,6 @@
       ],
       "image": "/icons/metal-parts.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -14981,7 +13955,6 @@
       "locations": [],
       "image": "/icons/moisture-meter.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -14998,9 +13971,6 @@
       "image": "/icons/muzzle-brake-i.webp",
       "recycle": {
         "Metal Parts": 5
-      },
-      "salvage": {
-        "Metal Parts": 3
       },
       "craftedFrom": [
         {
@@ -15033,7 +14003,6 @@
       "locations": [],
       "image": "/icons/muzzle-brake-ii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -15069,7 +14038,6 @@
       "locations": [],
       "image": "/icons/muzzle-brake-iii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15085,9 +14053,6 @@
       "locations": [],
       "image": "/icons/noisemaker.webp",
       "recycle": {
-        "Speaker Component": 1
-      },
-      "salvage": {
         "Speaker Component": 1
       },
       "craftedFrom": [
@@ -15121,7 +14086,6 @@
       "locations": [],
       "image": "/icons/nutrient-meter.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15137,7 +14101,6 @@
       "locations": [],
       "image": "/icons/official-shutdown-documentation.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15153,7 +14116,6 @@
       "locations": [],
       "image": "/icons/old-world-books.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15169,7 +14131,6 @@
       "locations": [],
       "image": "/icons/osprey-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -15205,7 +14166,6 @@
       "locations": [],
       "image": "/icons/padded-stock-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15224,7 +14184,6 @@
       ],
       "image": "/icons/piano.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15240,7 +14199,6 @@
       "locations": [],
       "image": "/icons/pilgrim-s-peak-security-code.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15256,7 +14214,6 @@
       "locations": [],
       "image": "/icons/planks.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -15282,7 +14239,6 @@
       ],
       "image": "/icons/plastic-parts.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -15424,7 +14380,6 @@
       "locations": [],
       "image": "/icons/possibly-toxic-plant.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15440,7 +14395,6 @@
       "locations": [],
       "image": "/icons/powered-descender-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -15476,7 +14430,6 @@
       "locations": [],
       "image": "/icons/precision-gimbal.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15492,7 +14445,6 @@
       "locations": [],
       "image": "/icons/project-heartwood-blueprints.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15508,7 +14460,6 @@
       "locations": [],
       "image": "/icons/pulse-mine-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -15540,7 +14491,6 @@
       "locations": [],
       "image": "/icons/raider-flag.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15556,7 +14506,6 @@
       "locations": [],
       "image": "/icons/raider-s-refuge-security-code.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15572,7 +14521,6 @@
       "locations": [],
       "image": "/icons/rascal-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -15610,9 +14558,6 @@
       "recycle": {
         "Chemicals": 1
       },
-      "salvage": {
-        "Chemicals": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -15640,7 +14585,6 @@
       "locations": [],
       "image": "/icons/red-light-stick-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15656,7 +14600,6 @@
       "locations": [],
       "image": "/icons/reinforced-reception-security-code.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15674,9 +14617,6 @@
       "recycle": {
         "Chemicals": 1,
         "Rubber Parts": 1
-      },
-      "salvage": {
-        "Chemicals": 1
       },
       "craftedFrom": [
         {
@@ -15709,7 +14649,6 @@
       "locations": [],
       "image": "/icons/remote-raider-flare-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -15743,7 +14682,6 @@
       ],
       "image": "/icons/resin.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15759,7 +14697,6 @@
       "locations": [],
       "image": "/icons/riven-tides-hotel-keycard-no-102.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15775,7 +14712,6 @@
       "locations": [],
       "image": "/icons/riven-tides-hotel-keycard-no-107.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15791,7 +14727,6 @@
       "locations": [],
       "image": "/icons/riven-tides-hotel-keycard-no-113.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15807,7 +14742,6 @@
       "locations": [],
       "image": "/icons/riven-tides-hotel-keycard-no-205.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15823,7 +14757,6 @@
       "locations": [],
       "image": "/icons/riven-tides-hotel-keycard-no-208.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15839,7 +14772,6 @@
       "locations": [],
       "image": "/icons/riven-tides-hotel-keycard-no-311.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15855,7 +14787,6 @@
       "locations": [],
       "image": "/icons/riven-tides-hotel-keycard-no-404.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15871,7 +14802,6 @@
       "locations": [],
       "image": "/icons/rubber-duck.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -15891,7 +14821,6 @@
       ],
       "image": "/icons/rubber-parts.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": [
         {
@@ -16006,9 +14935,6 @@
         "Plastic Parts": 2,
         "Rubber Parts": 2
       },
-      "salvage": {
-        "Plastic Parts": 3
-      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16024,7 +14950,6 @@
       "locations": [],
       "image": "/icons/ruined-emperor-beacon.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16040,7 +14965,6 @@
       "locations": [],
       "image": "/icons/scout-patrol-note.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16056,7 +14980,6 @@
       "locations": [],
       "image": "/icons/secret-meeting-info.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16072,7 +14995,6 @@
       "locations": [],
       "image": "/icons/seed-vault-box-key.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16088,7 +15010,6 @@
       "locations": [],
       "image": "/icons/seeker-grenade-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16120,7 +15041,6 @@
       "locations": [],
       "image": "/icons/sheet-metal.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16136,7 +15056,6 @@
       "locations": [],
       "image": "/icons/shotgun-ammo.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 5,
@@ -16170,9 +15089,6 @@
       "recycle": {
         "Metal Parts": 5
       },
-      "salvage": {
-        "Metal Parts": 3
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16204,7 +15120,6 @@
       "locations": [],
       "image": "/icons/shotgun-choke-ii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16240,7 +15155,6 @@
       "locations": [],
       "image": "/icons/shotgun-choke-iii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16256,7 +15170,6 @@
       "locations": [],
       "image": "/icons/shotgun-silencer-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16272,7 +15185,6 @@
       "locations": [],
       "image": "/icons/showstopper-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16308,7 +15220,6 @@
       "locations": [],
       "image": "/icons/silencer-i-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16344,7 +15255,6 @@
       "locations": [],
       "image": "/icons/silencer-ii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16380,7 +15290,6 @@
       "locations": [],
       "image": "/icons/smoke-grenade-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16416,7 +15325,6 @@
       "locations": [],
       "image": "/icons/snap-hook-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16432,7 +15340,6 @@
       "locations": [],
       "image": "/icons/snowball.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16449,9 +15356,6 @@
       "image": "/icons/stable-stock-i.webp",
       "recycle": {
         "Rubber Parts": 6
-      },
-      "salvage": {
-        "Rubber Parts": 3
       },
       "craftedFrom": [
         {
@@ -16484,7 +15388,6 @@
       "locations": [],
       "image": "/icons/stable-stock-ii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16520,7 +15423,6 @@
       "locations": [],
       "image": "/icons/stable-stock-iii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16536,7 +15438,6 @@
       "locations": [],
       "image": "/icons/stack-of-movie-tapes.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16552,7 +15453,6 @@
       "locations": [],
       "image": "/icons/stiletto-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16584,7 +15484,6 @@
       "locations": [],
       "image": "/icons/surge-coil-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16620,7 +15519,6 @@
       "locations": [],
       "image": "/icons/tactical-mk-3-defensive-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16656,7 +15554,6 @@
       "locations": [],
       "image": "/icons/tactical-mk-3-healing-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16672,7 +15569,6 @@
       "locations": [],
       "image": "/icons/tactical-mk-3-revival-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16708,7 +15604,6 @@
       "locations": [],
       "image": "/icons/tactical-mk-3-smoke-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16724,7 +15619,6 @@
       "locations": [],
       "image": "/icons/tagging-grenade-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16760,7 +15654,6 @@
       "locations": [],
       "image": "/icons/tempest-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16776,7 +15669,6 @@
       "locations": [],
       "image": "/icons/tether-launcher-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16815,7 +15707,6 @@
       ],
       "image": "/icons/torn-book.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16831,7 +15722,6 @@
       "locations": [],
       "image": "/icons/torrente-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16867,7 +15757,6 @@
       "locations": [],
       "image": "/icons/trailblazer-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16903,7 +15792,6 @@
       "locations": [],
       "image": "/icons/train-model.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16919,7 +15807,6 @@
       "locations": [],
       "image": "/icons/trigger-39-nade-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -16935,7 +15822,6 @@
       "locations": [],
       "image": "/icons/venator-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -16973,9 +15859,6 @@
       "recycle": {
         "Plastic Parts": 6
       },
-      "salvage": {
-        "Plastic Parts": 3
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -17007,7 +15890,6 @@
       "locations": [],
       "image": "/icons/vertical-grip-ii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -17043,7 +15925,6 @@
       "locations": [],
       "image": "/icons/vertical-grip-iii-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -17079,7 +15960,6 @@
       "locations": [],
       "image": "/icons/vita-shot-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -17115,7 +15995,6 @@
       "locations": [],
       "image": "/icons/vita-spray-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -17153,7 +16032,6 @@
       ],
       "image": "/icons/volcanic-rock.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -17169,7 +16047,6 @@
       "locations": [],
       "image": "/icons/vulcano-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -17187,9 +16064,6 @@
       "recycle": {
         "Fabric": 5,
         "Plastic Parts": 1
-      },
-      "salvage": {
-        "Fabric": 3
       },
       "craftedFrom": [
         {
@@ -17222,7 +16096,6 @@
       "locations": [],
       "image": "/icons/white-flag-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -17254,7 +16127,6 @@
       "locations": [],
       "image": "/icons/wolfpack-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     },
@@ -17270,7 +16142,6 @@
       "locations": [],
       "image": "/icons/yank-grenade-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -17304,9 +16175,6 @@
       "recycle": {
         "Chemicals": 1
       },
-      "salvage": {
-        "Chemicals": 1
-      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -17334,7 +16202,6 @@
       "locations": [],
       "image": "/icons/yellow-light-stick-blueprint.webp",
       "recycle": {},
-      "salvage": {},
       "craftedFrom": [],
       "usedIn": []
     }

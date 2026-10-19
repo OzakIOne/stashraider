@@ -36,6 +36,10 @@ describe("space and value math", () => {
       ]),
     ).toBe(5);
   });
+
+  it("does not carry salvage data", () => {
+    expect("salvage" in item("rocketeer-driver")).toBe(false);
+  });
 });
 
 describe("recommendations", () => {
@@ -56,14 +60,14 @@ describe("recommendations", () => {
 
 describe("reverse lookup", () => {
   it("finds sources that recycle into Advanced Electrical Components", () => {
-    const sources = reverseSources("advanced-electrical-components", "recycle");
+    const sources = reverseSources("advanced-electrical-components");
     const rocketeer = sources.find((source) => source.item.id === "rocketeer-driver");
     expect(rocketeer?.outputQty).toBe(2);
     expect(rocketeer?.yieldPerSlot).toBe(6);
   });
 
   it("plans enough source items for a target quantity", () => {
-    const plans = planTarget("advanced-electrical-components", "recycle", 10);
+    const plans = planTarget("advanced-electrical-components", 10);
     const rocketeer = plans.find((plan) => plan.item.id === "rocketeer-driver");
     expect(rocketeer?.unitsNeeded).toBe(5);
     expect(rocketeer?.slotsNeeded).toBe(2);

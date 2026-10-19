@@ -70,7 +70,7 @@ const App = () => {
     [inventory],
   );
   const totalRecycle = useMemo(
-    () => statsForLines(inventory).reduce((total, stats) => total + stats.bestYieldValue, 0),
+    () => statsForLines(inventory).reduce((total, stats) => total + stats.recycleValue, 0),
     [inventory],
   );
 

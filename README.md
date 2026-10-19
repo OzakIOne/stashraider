@@ -22,7 +22,7 @@ Optimiseur de stash pour **Arc Raiders**. Il répond à trois questions :
   rares utilisés en craft, vendre sinon.
 - Recherche inversée : `items = ⌈besoin ÷ rendement⌉` puis `slots = ⌈items ÷ stack⌉`.
 
-Les prix, stacks, rendements de recyclage/salvage et recettes viennent des tables Cargo
+Les prix, stacks, rendements de recyclage et recettes viennent des tables Cargo
 de la [wiki ARC Raiders](https://arcraiders.wiki). Les icônes sont copiées en local pour
 que l'interface reste rapide.
 
@@ -79,7 +79,7 @@ Le workflow `Deploy to GitHub Pages` construit et publie `dist/` à chaque push 
 
 - La wiki est communautaire, pas une API officielle Embark.
 - Le craft est signalé mais pas valorisé en crédits.
-- Le salvage en raid et le recyclage au hideout ont des rendements différents.
+- Le salvage n'est pas pris en compte : seuls les rendements de recyclage comptent.
 - Les armes ne sont pas encore dans la table Cargo `items` ; le catalogue couvre les
   objets, matériaux, mods et augments référencés.
 - Les noms d'objets en double côté wiki (trois variantes de « Colorful Shoes ») sont

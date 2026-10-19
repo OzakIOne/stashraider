@@ -25,7 +25,6 @@ export type CatalogItem = {
   locations: string[];
   image: string | null;
   recycle: Record<string, number>;
-  salvage: Record<string, number>;
   craftedFrom: Recipe[];
   usedIn: UsedIn[];
 };
@@ -100,9 +99,6 @@ export const typeLabel = (type: string): string => typeLabels[type] ?? type;
 
 export const recycleEntries = (item: CatalogItem): [string, number][] =>
   Object.entries(item.recycle).sort(([, left], [, right]) => right - left);
-
-export const salvageEntries = (item: CatalogItem): [string, number][] =>
-  Object.entries(item.salvage).sort(([, left], [, right]) => right - left);
 
 export const recipeTargets = new Map<string, CatalogItem[]>();
 for (const item of catalog.items) {

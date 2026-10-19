@@ -1020,8 +1020,7 @@ main {
   line-height: 1.35;
 }
 
-.verdict--recycle > span,
-.verdict--salvage > span {
+.verdict--recycle > span {
   background: rgba(177, 140, 255, 0.14);
   color: #cbb2ff;
 }
@@ -1767,7 +1766,7 @@ main {
 
 .modal__stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   padding: 16px 24px;
 }
@@ -1793,14 +1792,6 @@ main {
   font-variant-numeric: tabular-nums;
 }
 
-.modal__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  padding: 6px 24px 12px;
-}
-
-.modal__grid h3,
 .modal__section h3 {
   margin-bottom: 8px;
   color: var(--muted);
@@ -2128,10 +2119,6 @@ main {
   .target-card__stats,
   .modal__stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .modal__grid {
-    grid-template-columns: 1fr;
   }
 
   .target-picker {

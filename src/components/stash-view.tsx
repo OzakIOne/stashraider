@@ -69,7 +69,7 @@ export const StashView = ({
       accumulator[plan.recommendation.kind] += 1;
       return accumulator;
     },
-    { recycle: 0, salvage: 0, sell: 0, keep: 0 },
+    { recycle: 0, sell: 0, keep: 0 },
   );
 
   const addItem = (item: CatalogItem) => {
@@ -157,14 +157,13 @@ export const StashView = ({
           ) : (
             <>
               <div className="plan-bar">
-                <span className="plan plan--recycle">
-                  {counts.recycle + counts.salvage} à recycler
-                </span>
+                <span className="plan plan--recycle">{counts.recycle} à recycler</span>
                 <span className="plan plan--sell">{counts.sell} à vendre</span>
                 <span className="plan plan--keep">{counts.keep} à garder</span>
                 <label className="sort">
                   Trier
                   <select
+                    name="stash-sort"
                     value={sort}
                     onChange={(event) => setSort(event.target.value as SortMode)}
                   >

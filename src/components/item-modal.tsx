@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { itemsByName, rarityLabel, typeLabel, type CatalogItem } from "../lib/catalog";
-import { formatCredits, outputValue, type YieldKind } from "../lib/optimizer";
+import { formatCredits, outputValue } from "../lib/optimizer";
 import { ItemIcon } from "./ui";
 
-const YieldList = ({ item, kind }: { item: CatalogItem; kind: YieldKind }) => {
-  const outputs = kind === "recycle" ? item.recycle : item.salvage;
-  const entries = Object.entries(outputs).sort(([, left], [, right]) => right - left);
+const YieldList = ({ item }: { item: CatalogItem }) => {
+  const entries = Object.entries(item.recycle).sort(([, left], [, right]) => right - left);
   if (entries.length === 0) {
     return <p className="muted">Aucun rendement connu.</p>;
   }
@@ -26,7 +25,7 @@ const YieldList = ({ item, kind }: { item: CatalogItem; kind: YieldKind }) => {
         );
       })}
       <div className="yield__total">
-        Total matière <strong>{formatCredits(outputValue(outputs))} CR</strong>
+        Total matière <strong>{formatCredits(outputValue(item.recycle))} CR</strong>
       </div>
     </div>
   );
@@ -86,25 +85,15 @@ export const ItemModal = ({
             <strong>{formatCredits(outputValue(item.recycle))} CR</strong>
           </div>
           <div>
-            <span>Salvage</span>
-            <strong>{formatCredits(outputValue(item.salvage))} CR</strong>
-          </div>
-          <div>
             <span>Recettes</span>
             <strong>{item.usedIn.length}</strong>
           </div>
         </div>
 
-        <div className="modal__grid">
-          <section>
-            <h3>Recyclage</h3>
-            <YieldList item={item} kind="recycle" />
-          </section>
-          <section>
-            <h3>Salvage</h3>
-            <YieldList item={item} kind="salvage" />
-          </section>
-        </div>
+        <section className="modal__section">
+          <h3>Recyclage</h3>
+          <YieldList item={item} />
+        </section>
 
         {item.craftedFrom.length > 0 ? (
           <section className="modal__section">

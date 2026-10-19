@@ -25,7 +25,6 @@ type CatalogItem = {
   locations: string[];
   image: string | null;
   recycle: Record<string, number>;
-  salvage: Record<string, number>;
   craftedFrom: Recipe[];
   usedIn: UsedIn[];
 };
@@ -191,9 +190,11 @@ const main = async () => {
   );
   console.info(`  ${itemRows.length} items`);
 
-  console.info("Fetching recycling and salvaging yields…");
-  const recyclingRows = await cargoQuery("recycling", "recipeType,inputItem,outputItem,outputQty");
-  console.info(`  ${recyclingRows.length} yield rows`);
+  console.info("Fetching recycling yields…");
+  const recyclingRows = (
+    await cargoQuery("recycling", "recipeType,inputItem,outputItem,outputQty")
+  ).filter((row) => row.recipeType === "recycling");
+  console.info(`  ${recyclingRows.length} recycling yield rows`);
 
   console.info("Fetching crafting recipes…");
   const craftingRows = await cargoQuery(
@@ -260,14 +261,12 @@ const main = async () => {
   }
 
   const recycleByItem = new Map<string, Record<string, number>>();
-  const salvageByItem = new Map<string, Record<string, number>>();
   for (const row of recyclingRows) {
     const qty = toNumber(row.outputQty);
     if (!row.inputItem || !row.outputItem || qty <= 0) continue;
-    const target = row.recipeType === "salvaging" ? salvageByItem : recycleByItem;
-    const outputs = target.get(row.inputItem) ?? {};
+    const outputs = recycleByItem.get(row.inputItem) ?? {};
     outputs[row.outputItem] = (outputs[row.outputItem] ?? 0) + qty;
-    target.set(row.inputItem, outputs);
+    recycleByItem.set(row.inputItem, outputs);
   }
 
   console.info(`Downloading ${itemRows.length} icons (cached files are skipped)…`);
@@ -292,7 +291,6 @@ const main = async () => {
         .filter(Boolean),
       image,
       recycle: recycleByItem.get(row.name) ?? {},
-      salvage: salvageByItem.get(row.name) ?? {},
       craftedFrom: recipesByResult.get(row.name) ?? [],
       usedIn: usedInByItem.get(row.name) ?? [],
     };
@@ -306,7 +304,7 @@ const main = async () => {
   );
 
   const unknownOutputs = new Set<string>();
-  for (const outputs of [...recycleByItem.values(), ...salvageByItem.values()]) {
+  for (const outputs of recycleByItem.values()) {
     for (const output of Object.keys(outputs)) {
       if (!names.has(output)) unknownOutputs.add(output);
     }
@@ -348,9 +346,7 @@ const main = async () => {
   const rocketeer = items.find((item) => item.name === "Rocketeer Driver");
   console.info(`Wrote ${items.length} items to ${DATA_FILE}`);
   if (rocketeer) {
-    console.info(
-      `Rocketeer Driver check → recycle ${JSON.stringify(rocketeer.recycle)} / salvage ${JSON.stringify(rocketeer.salvage)}`,
-    );
+    console.info(`Rocketeer Driver check → recycle ${JSON.stringify(rocketeer.recycle)}`);
   }
   if (unknownOutputs.size > 0) {
     console.info(`Unknown recycling outputs: ${[...unknownOutputs].join(", ")}`);

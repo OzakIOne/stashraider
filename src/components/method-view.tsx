@@ -96,7 +96,9 @@ export const MethodView = () => {
           <ul>
             <li>Les prix sont ceux de la wiki communautaire, pas une API officielle Embark.</li>
             <li>Le craft n'est pas valorisé en crédits : il est signalé, pas monétisé.</li>
-            <li>Le salvage en raid et le recyclage au hideout ont des rendements différents.</li>
+            <li>
+              Le salvage n'est pas pris en compte : seuls les rendements de recyclage comptent.
+            </li>
             <li>
               Les armes ne sont pas encore dans la base Cargo : le site couvre les 563 objets
               référencés.

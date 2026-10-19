@@ -7,7 +7,6 @@ import {
   reverseSources,
   reverseTargets,
   type TargetPlan,
-  type YieldKind,
 } from "../lib/optimizer";
 import { ItemIcon, Panel, RarityBadge, Stat } from "./ui";
 
@@ -37,7 +36,6 @@ type Sort = "place" | "yield";
 export const ReverseView = ({ onInspect }: { onInspect: (item: CatalogItem) => void }) => {
   const targets = useMemo(() => reverseTargets(), []);
   const [targetId, setTargetId] = useState("advanced-electrical-components");
-  const [kind, setKind] = useState<YieldKind>("recycle");
   const [needed, setNeeded] = useState(10);
   const [rarity, setRarity] = useState("all");
   const [sort, setSort] = useState<Sort>("place");
@@ -45,8 +43,8 @@ export const ReverseView = ({ onInspect }: { onInspect: (item: CatalogItem) => v
   const target = itemsById.get(targetId) ?? targets[0];
   if (!target) throw new Error("No recycling target available");
 
-  const sources = reverseSources(target.id, kind);
-  const plans = planTarget(target.id, kind, Math.max(1, needed));
+  const sources = reverseSources(target.id);
+  const plans = planTarget(target.id, Math.max(1, needed));
   const filtered = plans.filter((plan) => rarity === "all" || plan.item.rarity === rarity);
   const sorted = [...filtered].sort((left, right) => {
     if (sort === "yield") {
@@ -62,28 +60,7 @@ export const ReverseView = ({ onInspect }: { onInspect: (item: CatalogItem) => v
 
   return (
     <div className="reverse">
-      <Panel
-        title="Trouver la source"
-        eyebrow="J'ai besoin de…"
-        actions={
-          <div className="segmented">
-            <button
-              type="button"
-              className={kind === "recycle" ? "is-active" : ""}
-              onClick={() => setKind("recycle")}
-            >
-              Recyclage
-            </button>
-            <button
-              type="button"
-              className={kind === "salvage" ? "is-active" : ""}
-              onClick={() => setKind("salvage")}
-            >
-              Salvage
-            </button>
-          </div>
-        }
-      >
+      <Panel title="Trouver la source" eyebrow="J'ai besoin de…">
         <div className="target-picker">
           <label>
             <span>Matériau cible</span>
@@ -140,10 +117,7 @@ export const ReverseView = ({ onInspect }: { onInspect: (item: CatalogItem) => v
             </div>
             <div className="target-card__stats">
               <Stat label="Valeur" value={`${formatCredits(target.sell)} CR`} />
-              <Stat
-                label={kind === "recycle" ? "Recyclage" : "Salvage"}
-                value={`${formatCredits(outputValue(kind === "recycle" ? target.recycle : target.salvage))} CR`}
-              />
+              <Stat label="Recyclage" value={`${formatCredits(outputValue(target.recycle))} CR`} />
               <Stat label="Recettes" value={`${target.usedIn.length}`} />
             </div>
             {craft ? (
@@ -223,8 +197,7 @@ export const ReverseView = ({ onInspect }: { onInspect: (item: CatalogItem) => v
         </div>
 
         <p className="reverse-note">
-          {sources.length} source{sources.length > 1 ? "s" : ""} en{" "}
-          {kind === "recycle" ? "recyclage" : "salvage"}.
+          {sources.length} source{sources.length > 1 ? "s" : ""} en recyclage.
           {bestPerSlot ? (
             <>
               {" "}
