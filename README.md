@@ -59,6 +59,10 @@ nub run test
 nub run build
 ```
 
+L'interface utilise Tailwind CSS v4 et les composants shadcn/ui (`button`, `combobox`,
+`dialog`, `select`, `tabs`…). Les composants sont versionnés dans `src/components/ui/`
+et se modifient directement sur place.
+
 ## Mettre les données à jour
 
 ```bash
