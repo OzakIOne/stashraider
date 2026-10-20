@@ -14,6 +14,9 @@
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "noEmit": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "types": ["vite/client", "bun"]
   },
   "include": ["src", "scripts", "vite.config.ts"]
