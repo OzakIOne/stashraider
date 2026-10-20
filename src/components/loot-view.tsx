@@ -1,5 +1,6 @@
 import { useMemo, type Dispatch, type SetStateAction } from "react";
-import { typeLabel, type CatalogItem } from "../lib/catalog";
+import { Button } from "@/components/ui/button";
+import { typeLabel, type CatalogItem } from "@/lib/catalog";
 import {
   bestValue,
   formatCredits,
@@ -7,7 +8,8 @@ import {
   totalSlots,
   type InventoryLine,
   type ValueMode,
-} from "../lib/optimizer";
+} from "@/lib/optimizer";
+import { cn } from "@/lib/utils";
 import { ItemSearch } from "./item-search";
 import {
   CapacityBar,
@@ -17,6 +19,7 @@ import {
   QtyStepper,
   RarityBadge,
   Stat,
+  ToneBadge,
   ValueModeToggle,
 } from "./ui";
 
@@ -89,11 +92,11 @@ export const LootView = ({
   };
 
   return (
-    <div className="workspace">
+    <div className="grid items-start gap-3 lg:grid-cols-[320px_minmax(0,1fr)]">
       <Panel
         title="Butin candidat"
-        eyebrow="Ce que tu hésites à ramener"
-        className="workspace__side"
+        description="Ce que tu hésites à ramener"
+        className="lg:sticky lg:top-[4.5rem]"
       >
         <ItemSearch
           onPick={addItem}
@@ -102,15 +105,18 @@ export const LootView = ({
         />
       </Panel>
 
-      <div className="workspace__main">
+      <div className="flex min-w-0 flex-col gap-3">
         <Panel
           title="Optimiseur de raid"
-          eyebrow={`${freeSlots} slot${freeSlots > 1 ? "s" : ""} libre${freeSlots > 1 ? "s" : ""} dans le stash`}
+          description={`${freeSlots} slot${freeSlots > 1 ? "s" : ""} libre${freeSlots > 1 ? "s" : ""} dans le stash`}
+          className="gap-0"
           actions={<ValueModeToggle mode={mode} onChange={setMode} />}
         >
-          <CapacityBar used={stashSlots} capacity={capacity} />
+          <div className="border-b border-border px-4 py-3">
+            <CapacityBar used={stashSlots} capacity={capacity} />
+          </div>
 
-          <div className="stats stats--three">
+          <div className="grid grid-cols-3 gap-2 px-4 pt-3">
             <Stat
               label="Place libre"
               value={`${freeSlots}`}
@@ -137,85 +143,119 @@ export const LootView = ({
             />
           ) : (
             <>
-              <div className="plan-bar">
-                <span className="plan plan--keep">{retained.length} à prendre</span>
-                <span className="plan plan--sell">{ranked.length - retained.length} à laisser</span>
-                <span className="muted">
+              <div className="flex flex-wrap items-center gap-2 px-4 pt-3 text-xs">
+                <ToneBadge tone="keep">{retained.length} à prendre</ToneBadge>
+                <ToneBadge tone="sell">{ranked.length - retained.length} à laisser</ToneBadge>
+                <span className="text-[10.5px] text-muted-foreground">
                   Classement par {mode === "sell" ? "revente" : "recyclage"} / slot
                 </span>
-                <button type="button" className="link-button" onClick={() => setLoot([])}>
+                <Button variant="ghost" size="xs" className="ml-auto" onClick={() => setLoot([])}>
                   Vider
-                </button>
+                </Button>
               </div>
 
               {freeSlots === 0 && ranked.length > 0 ? (
-                <div className="alert alert--danger">
-                  <strong>Stash plein.</strong>
-                  <span>
+                <div className="mx-4 mt-2 grid gap-1 rounded-lg border border-destructive/30 bg-destructive/[0.06] p-3 text-xs">
+                  <strong className="text-destructive">Stash plein.</strong>
+                  <span className="text-muted-foreground">
                     Libère de la place dans l'onglet Stash, ou remplace une ligne par un item plus
                     rentable.
                   </span>
                 </div>
               ) : null}
 
-              <div className="loot-list">
+              <div className="mt-2 grid gap-1.5 px-4 pb-2">
                 {ranked.map(({ stats, take, rank }) => {
                   const value = bestValue(stats, mode);
                   return (
-                    <div className={`loot-row${take ? " is-kept" : ""}`} key={stats.item.id}>
-                      <span className={`rank${rank <= 3 ? " rank--top" : ""}`}>{rank}</span>
+                    <div
+                      key={stats.item.id}
+                      className={cn(
+                        "grid grid-cols-[26px_minmax(0,1fr)_auto] items-center gap-x-2.5 gap-y-1.5 rounded-lg border border-border bg-black/20 px-2.5 py-2 md:grid-cols-[26px_minmax(0,2fr)_104px_52px_118px_72px] md:gap-3",
+                        take && "border-success/25 bg-success/[0.035]",
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          "grid size-6 place-items-center rounded-md border border-border text-[11px] font-bold tabular-nums text-muted-foreground",
+                          rank <= 3 && "border-primary/45 bg-primary/10 text-primary",
+                        )}
+                      >
+                        {rank}
+                      </span>
                       <button
                         type="button"
-                        className="line__item"
                         onClick={() => onInspect(stats.item)}
+                        className="flex min-w-0 items-center gap-2.5 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
                       >
                         <ItemIcon item={stats.item} />
-                        <span>
-                          <strong>{stats.item.name}</strong>
-                          <small>
+                        <span className="grid min-w-0 gap-0.5">
+                          <strong className="line-clamp-2 text-[13px] leading-tight font-semibold">
+                            {stats.item.name}
+                          </strong>
+                          <small className="flex flex-wrap items-center gap-1.5 text-[10px] text-muted-foreground">
                             <RarityBadge item={stats.item} />
                             {typeLabel(stats.item.type)} · stack {stats.item.stack}
                           </small>
                         </span>
                       </button>
-                      <QtyStepper
-                        qty={stats.qty}
-                        onChange={(qty) => setQty(stats.item.id, qty)}
-                        compact
-                      />
-                      <div className="metric metric--slots">
-                        <strong>{stats.slots}</strong>
-                        <small>slot{stats.slots > 1 ? "s" : ""}</small>
+
+                      <div className="justify-self-end md:justify-self-start">
+                        <QtyStepper
+                          qty={stats.qty}
+                          onChange={(qty) => setQty(stats.item.id, qty)}
+                          compact
+                        />
                       </div>
-                      <div className="metric metric--value">
-                        <strong>{formatCredits(value)} CR</strong>
-                        <small>{formatCredits(value / Math.max(1, stats.slots))} / slot</small>
-                        <small className="mobile-slot">
+
+                      <div className="hidden md:grid">
+                        <strong className="text-[13px] tabular-nums">{stats.slots}</strong>
+                        <small className="text-[10px] text-muted-foreground">
+                          slot{stats.slots > 1 ? "s" : ""}
+                        </small>
+                      </div>
+
+                      <div className="col-start-2 row-start-2 grid justify-self-end text-right md:col-start-auto md:row-start-auto md:justify-self-start md:text-left">
+                        <strong className="text-[13px] tabular-nums">
+                          {formatCredits(value)} CR
+                        </strong>
+                        <small className="text-[10px] text-muted-foreground tabular-nums">
+                          {formatCredits(value / Math.max(1, stats.slots))} / slot
+                        </small>
+                        <small className="text-[10px] text-primary tabular-nums md:hidden">
                           {stats.slots} slot{stats.slots > 1 ? "s" : ""}
                         </small>
                       </div>
-                      <div className={`take${take ? " take--yes" : " take--no"}`}>
+
+                      <span
+                        className={cn(
+                          "col-start-3 row-start-2 w-fit justify-self-end rounded px-1.5 py-0.5 text-[10px] font-extrabold tracking-wider uppercase md:col-start-auto md:row-start-auto md:justify-self-start",
+                          take
+                            ? "bg-success/15 text-success"
+                            : "bg-destructive/10 text-destructive",
+                        )}
+                      >
                         {take ? "Prendre" : "Laisser"}
-                      </div>
+                      </span>
                     </div>
                   );
                 })}
               </div>
 
               {retained.length > 0 ? (
-                <div className="loot-transfer">
-                  <div>
-                    <strong>{formatCredits(retainedValue)} CR</strong>
-                    <span>
+                <div className="mx-4 mb-4 flex flex-col items-start justify-between gap-3 rounded-lg border border-primary/30 bg-primary/10 p-3 sm:flex-row sm:items-center">
+                  <div className="grid gap-0.5">
+                    <strong className="text-lg tabular-nums">
+                      {formatCredits(retainedValue)} CR
+                    </strong>
+                    <span className="text-xs text-muted-foreground">
                       dans {retainedSlots} slot{retainedSlots > 1 ? "s" : ""}, il restera{" "}
                       {Math.max(0, freeSlots - retainedSlots)} slot
                       {freeSlots - retainedSlots > 1 ? "s" : ""} libre
                       {freeSlots - retainedSlots > 1 ? "s" : ""}.
                     </span>
                   </div>
-                  <button
-                    type="button"
-                    className="button button--primary"
+                  <Button
                     onClick={() =>
                       onSendToStash(
                         retained.map((entry) => ({
@@ -226,7 +266,7 @@ export const LootView = ({
                     }
                   >
                     Transférer au stash
-                  </button>
+                  </Button>
                 </div>
               ) : null}
             </>
