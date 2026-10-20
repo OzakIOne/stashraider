@@ -7,7 +7,8 @@ import { NumberInput } from "@/components/ui/number-input";
 import { Progress } from "@/components/ui/progress";
 import { itemsById, typeLabel, type CatalogItem } from "@/lib/catalog";
 import { toItemId, type ItemId } from "@/lib/catalog-types";
-import { objectiveReasonText } from "@/lib/copy";
+import { objectiveReasonText, plural } from "@/lib/copy";
+import { missingSourcePlans } from "@/lib/reverse";
 import type { Goal, RetentionPlan } from "@/lib/retention";
 import { cn } from "@/lib/utils";
 import { ItemIcon, QtyStepper, RarityBadge } from "./ui";
@@ -107,7 +108,7 @@ export const GoalsPanel = ({
           plus denses avant de désigner le surplus à vendre.
         </p>
       ) : (
-        <div className="mt-2 grid gap-1.5 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-2 grid items-start gap-1.5 sm:grid-cols-2 xl:grid-cols-3">
           {plans.map((goal) => {
             const coveredPercent =
               goal.needed > 0 ? Math.min(100, (goal.covered / goal.needed) * 100) : 0;
@@ -192,10 +193,38 @@ export const GoalsPanel = ({
                 ) : null}
 
                 {goal.missing.length > 0 ? (
-                  <p className="mt-1.5 text-[10px] text-muted-foreground">
-                    Manque :{" "}
-                    {goal.missing.map((entry) => `${entry.qty}× ${entry.name}`).join(" · ")}
-                  </p>
+                  <div className="mt-1.5 grid gap-1">
+                    <p className="text-[10px] text-muted-foreground">
+                      Manque :{" "}
+                      {goal.missing.map((entry) => `${entry.qty}× ${entry.name}`).join(" · ")}
+                    </p>
+                    {goal.missing.map((entry) => {
+                      const sources = missingSourcePlans(entry.name, entry.qty);
+                      if (sources.length === 0) return null;
+                      return (
+                        <div
+                          key={entry.name}
+                          className="grid gap-0.5 rounded border border-border/60 bg-black/20 px-1.5 py-1"
+                        >
+                          <span className="text-[8.5px] font-semibold tracking-wider text-muted-foreground uppercase">
+                            Recycler pour {entry.qty}× {entry.name}
+                          </span>
+                          {sources.map((source) => (
+                            <span
+                              key={source.item.id}
+                              className="flex min-w-0 items-center gap-1 text-[9.5px]"
+                            >
+                              <ItemIcon item={source.item} size="xs" />
+                              <span className="truncate font-medium">{source.item.name}</span>
+                              <span className="ml-auto shrink-0 text-muted-foreground tabular-nums">
+                                ×{source.unitsNeeded} · {plural(source.slotsNeeded, "slot")}
+                              </span>
+                            </span>
+                          ))}
+                        </div>
+                      );
+                    })}
+                  </div>
                 ) : null}
               </article>
             );

@@ -70,3 +70,9 @@ export const planTarget = (targetId: ItemId, needed: number): TargetPlan[] =>
         left.sellPerOutput - right.sellPerOutput ||
         left.unitsNeeded - right.unitsNeeded,
     );
+
+export const missingSourcePlans = (name: string, qty: number, limit = 3): TargetPlan[] => {
+  const target = itemByRecipeName(name);
+  if (!target || qty <= 0) return [];
+  return planTarget(target.id, qty).slice(0, limit);
+};
