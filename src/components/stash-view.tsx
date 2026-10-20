@@ -1,5 +1,4 @@
 import { useMemo, useState, type Dispatch, type SetStateAction } from "react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { NumberInput } from "@/components/ui/number-input";
 import {
@@ -10,34 +9,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { catalog, hiddenFromLoot, typeLabel, type CatalogItem } from "@/lib/catalog";
+import type { ItemId } from "@/lib/catalog-types";
 import { MAX_CAPACITY } from "@/lib/constants";
+import { plural } from "@/lib/copy";
 import {
   bestValue,
   capacityAdvice,
   formatCredits,
-  planRetention,
-  recommend,
-  retentionRecommendation,
-  statsForLines,
-  type Goal,
+  summarizeLines,
   type InventoryLine,
   type ValueMode,
-} from "@/lib/optimizer";
-import { cn } from "@/lib/utils";
+} from "@/lib/line-stats";
+import { objectiveAdvice, recommend } from "@/lib/recommend";
+import { planRetention, type Goal } from "@/lib/retention";
 import { GoalsPanel } from "./goals-panel";
 import { InventoryImport } from "./inventory-import";
 import { ItemSearch } from "./item-search";
-import {
-  CapacityBar,
-  EmptyState,
-  ItemIcon,
-  Panel,
-  QtyStepper,
-  RarityBadge,
-  Stat,
-  ToneBadge,
-  ValueModeToggle,
-} from "./ui";
+import { StashRow } from "./stash-row";
+import { CapacityBar, EmptyState, ItemIcon, Panel, Stat, ToneBadge, ValueModeToggle } from "./ui";
 
 type SortMode = "density" | "name" | "slots";
 
@@ -82,19 +71,7 @@ export const StashView = ({
   );
   const retention = useMemo(() => planRetention(inventory, goals), [inventory, goals]);
 
-  const summary = useMemo(() => {
-    const stats = statsForLines(inventory);
-    const slots = stats.reduce((total, line) => total + line.slots, 0);
-    const sellValue = stats.reduce((total, line) => total + line.sellValue, 0);
-    const recycleValue = stats.reduce((total, line) => total + line.recycleValue, 0);
-    return {
-      stats,
-      slots,
-      sellValue,
-      recycleValue,
-      density: slots > 0 ? Math.max(sellValue, recycleValue) / slots : 0,
-    };
-  }, [inventory]);
+  const summary = useMemo(() => summarizeLines(inventory), [inventory]);
 
   const plans = useMemo(
     () =>
@@ -104,7 +81,7 @@ export const StashView = ({
           return {
             stats,
             keepQty: keep?.qty ?? 0,
-            recommendation: keep ? retentionRecommendation(stats, keep) : recommend(stats),
+            recommendation: keep ? objectiveAdvice(stats, keep.qty) : recommend(stats),
           };
         })
         .sort((left, right) => {
@@ -142,7 +119,7 @@ export const StashView = ({
     });
   };
 
-  const setQty = (id: string, qty: number) => {
+  const setQty = (id: ItemId, qty: number) => {
     setInventory((lines) =>
       qty <= 0
         ? lines.filter((line) => line.id !== id)
@@ -166,7 +143,7 @@ export const StashView = ({
     );
   };
 
-  const updateGoal = (id: string, qty: number) => {
+  const updateGoal = (id: ItemId, qty: number) => {
     setGoals((current) =>
       qty <= 0
         ? current.filter((entry) => entry.id !== id)
@@ -313,7 +290,7 @@ export const StashView = ({
               {used > capacity ? (
                 <div className="mx-4 mt-2 grid gap-2 rounded-lg border border-destructive/30 bg-destructive/[0.06] p-3 text-xs">
                   <strong className="text-destructive">
-                    Il manque {used - capacity} slot{used - capacity > 1 ? "s" : ""}.
+                    Il manque {plural(used - capacity, "slot")}.
                   </strong>
                   <span className="text-muted-foreground">
                     Les lignes les moins rentables à sortir en premier :
@@ -330,7 +307,7 @@ export const StashView = ({
                         <span className="grid flex-1 gap-px">
                           {stats.item.name}
                           <small className="text-[11px] text-muted-foreground">
-                            {stats.slots} slot{stats.slots > 1 ? "s" : ""} ·{" "}
+                            {plural(stats.slots, "slot")} ·{" "}
                             {formatCredits(bestValue(stats, mode) / Math.max(1, stats.slots))}{" "}
                             CR/slot
                           </small>
@@ -352,92 +329,17 @@ export const StashView = ({
                   <span>Valeur</span>
                   <span>Verdict</span>
                 </div>
-                {plans.map(({ stats, recommendation, keepQty }) => {
-                  const lineValue = bestValue(stats, mode);
-                  return (
-                    <div
-                      key={stats.item.id}
-                      className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1.5 border-t border-border px-2 py-2.5 transition-colors hover:bg-white/[0.03] md:grid-cols-[minmax(0,2fr)_132px_52px_118px_minmax(0,1.5fr)] md:gap-3"
-                    >
-                      <button
-                        type="button"
-                        onClick={() => onInspect(stats.item)}
-                        className="flex min-w-0 items-center gap-2.5 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
-                      >
-                        <ItemIcon item={stats.item} />
-                        <span className="grid min-w-0 gap-0.5">
-                          <strong className="line-clamp-2 text-[13px] leading-tight font-semibold">
-                            {stats.item.name}
-                          </strong>
-                          <small className="flex flex-wrap items-center gap-1.5 text-[10px] text-muted-foreground">
-                            <RarityBadge item={stats.item} />
-                            {typeLabel(stats.item.type)} · stack {stats.item.stack}
-                            {keepQty > 0 ? (
-                              <Badge variant="default" className="text-[8px]">
-                                Objectif
-                              </Badge>
-                            ) : null}
-                          </small>
-                        </span>
-                      </button>
-
-                      <div className="flex items-center justify-end gap-1 md:justify-start">
-                        <QtyStepper
-                          qty={stats.qty}
-                          onChange={(qty) => setQty(stats.item.id, qty)}
-                          compact
-                        />
-                        {stats.item.stack > 1 ? (
-                          <button
-                            type="button"
-                            onClick={() => setQty(stats.item.id, stats.qty + stats.item.stack)}
-                            title={`Ajouter un stack complet (${stats.item.stack})`}
-                            aria-label={`Ajouter un stack complet de ${stats.item.name} (${stats.item.stack})`}
-                            className="h-7 rounded-md border border-primary/40 bg-primary/10 px-1.5 text-[9.5px] font-extrabold tabular-nums text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-                          >
-                            +{stats.item.stack}
-                          </button>
-                        ) : null}
-                      </div>
-
-                      <div className="hidden md:grid">
-                        <strong className="text-[13px] tabular-nums">{stats.slots}</strong>
-                        <small className="text-[10px] text-muted-foreground">
-                          slot{stats.slots > 1 ? "s" : ""}
-                        </small>
-                      </div>
-
-                      <div className="col-start-2 row-start-2 grid justify-self-end text-right md:col-start-auto md:row-start-auto md:justify-self-start md:text-left">
-                        <strong className="text-[13px] tabular-nums">
-                          {formatCredits(lineValue)} CR
-                        </strong>
-                        <small className="text-[10px] text-muted-foreground tabular-nums">
-                          {formatCredits(lineValue / Math.max(1, stats.slots))} / slot
-                        </small>
-                        <small className="text-[10px] text-primary tabular-nums md:hidden">
-                          {stats.slots} slot{stats.slots > 1 ? "s" : ""}
-                        </small>
-                      </div>
-
-                      <div className="col-span-2 grid gap-0.5 border-t border-dashed border-border pt-1.5 md:col-span-1 md:border-0 md:pt-0">
-                        <span
-                          className={cn(
-                            "w-fit rounded px-1.5 py-0.5 text-[10px] font-extrabold tracking-wider uppercase",
-                            recommendation.kind === "recycle" &&
-                              "bg-rarity-epic/15 text-rarity-epic",
-                            recommendation.kind === "sell" && "bg-rarity-rare/15 text-rarity-rare",
-                            recommendation.kind === "keep" && "bg-success/15 text-success",
-                          )}
-                        >
-                          {recommendation.label}
-                        </span>
-                        <small className="text-[10.5px] leading-snug text-muted-foreground">
-                          {recommendation.detail}
-                        </small>
-                      </div>
-                    </div>
-                  );
-                })}
+                {plans.map(({ stats, recommendation, keepQty }) => (
+                  <StashRow
+                    key={stats.item.id}
+                    stats={stats}
+                    recommendation={recommendation}
+                    keepQty={keepQty}
+                    mode={mode}
+                    onInspect={onInspect}
+                    onChangeQty={(qty) => setQty(stats.item.id, qty)}
+                  />
+                ))}
               </div>
             </>
           )}

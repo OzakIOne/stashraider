@@ -7,7 +7,8 @@ import { NumberInput } from "@/components/ui/number-input";
 import { Progress } from "@/components/ui/progress";
 import { itemsById, typeLabel, type CatalogItem } from "@/lib/catalog";
 import { toItemId, type ItemId } from "@/lib/catalog-types";
-import type { Goal, RetentionPlan } from "@/lib/optimizer";
+import { objectiveReasonText } from "@/lib/copy";
+import type { Goal, RetentionPlan } from "@/lib/retention";
 import { cn } from "@/lib/utils";
 import { ItemIcon, QtyStepper, RarityBadge } from "./ui";
 
@@ -25,8 +26,8 @@ export const GoalsPanel = ({
   plan: RetentionPlan;
   targets: CatalogItem[];
   onAdd: (goal: Goal) => void;
-  onUpdate: (id: string, qty: number) => void;
-  onRemove: (id: string) => void;
+  onUpdate: (id: ItemId, qty: number) => void;
+  onRemove: (id: ItemId) => void;
 }) => {
   const [targetId, setTargetId] = useState<ItemId | null>(null);
   const [qty, setQty] = useState(10);
@@ -178,11 +179,13 @@ export const GoalsPanel = ({
                   <div className="mt-1.5 flex flex-wrap gap-1">
                     {goal.reservations.map((entry) => (
                       <span
-                        key={`${entry.item.id}-${entry.reason}`}
+                        key={entry.item.id}
                         className="grid gap-px rounded border border-border px-1.5 py-0.5 text-[9.5px]"
                       >
                         {entry.keepQty}× {entry.item.name}
-                        <small className="text-[8.5px] text-muted-foreground">{entry.reason}</small>
+                        <small className="text-[8.5px] text-muted-foreground">
+                          {entry.reasons.map(objectiveReasonText).join(" · ")}
+                        </small>
                       </span>
                     ))}
                   </div>

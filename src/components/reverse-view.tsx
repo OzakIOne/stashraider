@@ -4,14 +4,8 @@ import { Combobox, type ComboboxOption } from "@/components/ui/combobox";
 import { NumberInput } from "@/components/ui/number-input";
 import { itemsById, rarityLabel, typeLabel, type CatalogItem } from "@/lib/catalog";
 import { toItemId, type ItemId } from "@/lib/catalog-types";
-import {
-  formatCredits,
-  outputValue,
-  planTarget,
-  reverseSources,
-  reverseTargets,
-  type TargetPlan,
-} from "@/lib/optimizer";
+import { formatCredits, outputValue } from "@/lib/line-stats";
+import { planTarget, reverseSources, reverseTargets, type TargetPlan } from "@/lib/reverse";
 import { cn } from "@/lib/utils";
 import { EmptyState, ItemIcon, Panel, RarityBadge, Stat } from "./ui";
 

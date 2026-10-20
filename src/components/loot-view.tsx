@@ -8,7 +8,7 @@ import {
   totalSlots,
   type InventoryLine,
   type ValueMode,
-} from "@/lib/optimizer";
+} from "@/lib/line-stats";
 import { cn } from "@/lib/utils";
 import { ItemSearch } from "./item-search";
 import {

@@ -1,23 +1,17 @@
 import { catalog, type CatalogItem } from "./catalog";
 import type { ItemId } from "./catalog-types";
-import type { InventoryLine } from "./optimizer";
+import { MAX_QTY } from "./constants";
+import type { InventoryLine } from "./line-stats";
+import { searchKey } from "./text";
 
 export type ImportResult = {
   lines: InventoryLine[];
   unknown: string[];
 };
 
-const normalize = (value: string): string =>
-  value
-    .normalize("NFD")
-    .replaceAll(/\p{Diacritic}/gu, "")
-    .toLowerCase()
-    .replaceAll(/[^a-z0-9]+/g, " ")
-    .trim();
-
 const lookup = new Map<string, CatalogItem>();
 for (const item of catalog.items) {
-  const key = normalize(item.name);
+  const key = searchKey(item.name);
   if (!lookup.has(key)) lookup.set(key, item);
 }
 
@@ -48,12 +42,12 @@ export const parseInventoryText = (text: string): ImportResult => {
   for (const raw of text.split(/\r?\n/)) {
     const parsed = parseLine(raw);
     if (!parsed) continue;
-    const item = lookup.get(normalize(parsed.name));
+    const item = lookup.get(searchKey(parsed.name));
     if (!item) {
       unknown.push(parsed.name);
       continue;
     }
-    const qty = Math.max(1, Math.min(9999, Math.floor(parsed.qty)));
+    const qty = Math.max(1, Math.min(MAX_QTY, Math.floor(parsed.qty)));
     quantities.set(item.id, (quantities.get(item.id) ?? 0) + qty);
   }
 

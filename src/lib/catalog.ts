@@ -11,6 +11,7 @@ import {
   type RecycleYields,
   type UsedIn,
 } from "./catalog-types";
+import { foldText } from "./text";
 
 export type {
   Catalog,
@@ -189,12 +190,6 @@ export const typeLabels: Record<string, string> = {
 };
 
 export const hiddenFromLoot = new Set(["Blueprint", "Key", "Quest Item", "Research Item"]);
-
-const foldText = (value: string): string =>
-  value
-    .normalize("NFD")
-    .replaceAll(/\p{Diacritic}/gu, "")
-    .toLowerCase();
 
 export const searchItems = (query: string, includeHidden: boolean): CatalogItem[] => {
   const needle = foldText(query.trim());

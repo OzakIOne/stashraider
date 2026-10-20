@@ -10,13 +10,8 @@ import { Tabs, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./components/ui/tooltip";
 import { catalog, itemByRecipeName, type CatalogItem } from "./lib/catalog";
 import { TOAST_MS } from "./lib/constants";
-import {
-  formatCredits,
-  statsForLines,
-  type Goal,
-  type InventoryLine,
-  type ValueMode,
-} from "./lib/optimizer";
+import { formatCredits, statsForLines, type InventoryLine, type ValueMode } from "./lib/line-stats";
+import type { Goal } from "./lib/retention";
 import { useLocalStorage } from "./lib/use-local-storage";
 
 type Tab = "stash" | "loot" | "reverse" | "method";
@@ -287,7 +282,11 @@ const App = () => {
         ) : null}
 
         {toast ? (
-          <div className="fixed right-3 bottom-3 left-3 z-80 rounded-lg border border-success/35 bg-[#101a15] px-3.5 py-2.5 text-xs font-semibold text-[#a8f0c4] shadow-xl animate-in fade-in-0 slide-in-from-bottom-2 sm:left-auto">
+          <div
+            role="status"
+            aria-live="polite"
+            className="fixed right-3 bottom-3 left-3 z-80 rounded-lg border border-success/35 bg-[#101a15] px-3.5 py-2.5 text-xs font-semibold text-[#a8f0c4] shadow-xl animate-in fade-in-0 slide-in-from-bottom-2 sm:left-auto"
+          >
             {toast}
           </div>
         ) : null}

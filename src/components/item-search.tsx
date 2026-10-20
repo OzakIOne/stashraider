@@ -1,39 +1,43 @@
 import { SearchIcon } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
-import { catalog, searchItems, type CatalogItem } from "@/lib/catalog";
-import { formatCredits } from "@/lib/optimizer";
+import { catalog, rarityLabels, searchItems, type CatalogItem } from "@/lib/catalog";
+import type { ItemId, Rarity } from "@/lib/catalog-types";
+import { SEARCH_RESULT_LIMIT } from "@/lib/constants";
+import { formatCredits } from "@/lib/line-stats";
 import { cn } from "@/lib/utils";
 import { ItemIcon, RarityBadge } from "./ui";
 
-const rarities = ["Tous", "Rare", "Épique", "Légendaire", "Peu commun", "Commun"];
-const rarityByName: Record<string, string> = {
-  Rare: "Rare",
-  Épique: "Epic",
-  Légendaire: "Legendary",
-  "Peu commun": "Uncommon",
-  Commun: "Common",
-};
+type RarityFilter = "all" | Rarity;
+
+const rarityFilters: { value: RarityFilter; label: string }[] = [
+  { value: "all", label: "Tous" },
+  { value: "Rare", label: rarityLabels.Rare },
+  { value: "Epic", label: rarityLabels.Epic },
+  { value: "Legendary", label: rarityLabels.Legendary },
+  { value: "Uncommon", label: rarityLabels.Uncommon },
+  { value: "Common", label: rarityLabels.Common },
+];
 
 export const ItemSearch = ({
   onPick,
   onPickStack,
-  exclude = new Set<string>(),
+  exclude = new Set<ItemId>(),
 }: {
   onPick: (item: CatalogItem) => void;
   onPickStack: (item: CatalogItem) => void;
-  exclude?: Set<string>;
+  exclude?: ReadonlySet<ItemId>;
 }) => {
   const [query, setQuery] = useState("");
-  const [rarity, setRarity] = useState("Tous");
+  const [rarity, setRarity] = useState<RarityFilter>("all");
   const [includeHidden, setIncludeHidden] = useState(false);
   const deferredQuery = useDeferredValue(query);
 
   const results = useMemo(
     () =>
       searchItems(deferredQuery, includeHidden)
-        .filter((item) => rarity === "Tous" || item.rarity === rarityByName[rarity])
-        .slice(0, 60),
+        .filter((item) => rarity === "all" || item.rarity === rarity)
+        .slice(0, SEARCH_RESULT_LIMIT),
     [deferredQuery, includeHidden, rarity],
   );
 
@@ -56,19 +60,20 @@ export const ItemSearch = ({
       </div>
 
       <div className="flex flex-wrap gap-1">
-        {rarities.map((label) => (
+        {rarityFilters.map((filter) => (
           <button
-            key={label}
+            key={filter.value}
             type="button"
-            onClick={() => setRarity(label)}
+            onClick={() => setRarity(filter.value)}
+            aria-pressed={rarity === filter.value}
             className={cn(
               "rounded-full border px-2 py-0.5 text-[10.5px] font-semibold transition-colors",
-              rarity === label
+              rarity === filter.value
                 ? "border-primary/45 bg-primary/10 text-primary"
                 : "border-border text-muted-foreground hover:border-input hover:text-foreground",
             )}
           >
-            {label}
+            {filter.label}
           </button>
         ))}
       </div>

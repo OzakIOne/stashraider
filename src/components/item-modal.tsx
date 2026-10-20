@@ -7,7 +7,7 @@ import {
   typeLabel,
   type CatalogItem,
 } from "@/lib/catalog";
-import { formatCredits, outputValue } from "@/lib/optimizer";
+import { formatCredits, outputValue } from "@/lib/line-stats";
 import { ItemIcon } from "./ui";
 
 const YieldList = ({ item }: { item: CatalogItem }) => {

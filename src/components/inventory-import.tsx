@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { parseInventoryText } from "@/lib/inventory-import";
-import type { InventoryLine } from "@/lib/optimizer";
+import type { InventoryLine } from "@/lib/line-stats";
 
 export const InventoryImport = ({ onImport }: { onImport: (lines: InventoryLine[]) => void }) => {
   const [text, setText] = useState("");

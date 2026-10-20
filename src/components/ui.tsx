@@ -4,26 +4,34 @@ import { NumberInput } from "@/components/ui/number-input";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { rarityLabel, type CatalogItem } from "@/lib/catalog";
-import type { ValueMode } from "@/lib/optimizer";
+import { isRarity, type Rarity } from "@/lib/catalog-types";
+import { CAPACITY_WARNING_RATIO } from "@/lib/constants";
+import type { ValueMode } from "@/lib/line-stats";
 import { cn } from "@/lib/utils";
 
-const rarityFrame: Record<string, string> = {
-  common: "border-rarity-common/35",
-  uncommon: "border-rarity-uncommon/45",
-  rare: "border-rarity-rare/50",
-  epic: "border-rarity-epic/55 shadow-[inset_0_0_18px_rgba(177,140,255,0.12)]",
-  legendary: "border-rarity-legendary/60 shadow-[inset_0_0_18px_rgba(255,194,71,0.14)]",
-  amplified: "border-rarity-amplified/60",
+const rarityFrame: Record<Rarity, string> = {
+  Common: "border-rarity-common/35",
+  Uncommon: "border-rarity-uncommon/45",
+  Rare: "border-rarity-rare/50",
+  Epic: "border-rarity-epic/55 shadow-[inset_0_0_18px_rgba(177,140,255,0.12)]",
+  Legendary: "border-rarity-legendary/60 shadow-[inset_0_0_18px_rgba(255,194,71,0.14)]",
+  Amplified: "border-rarity-amplified/60",
 };
 
-const rarityText: Record<string, string> = {
-  common: "bg-rarity-common/15 text-rarity-common",
-  uncommon: "bg-rarity-uncommon/15 text-rarity-uncommon",
-  rare: "bg-rarity-rare/15 text-rarity-rare",
-  epic: "bg-rarity-epic/15 text-rarity-epic",
-  legendary: "bg-rarity-legendary/15 text-rarity-legendary",
-  amplified: "bg-rarity-amplified/15 text-rarity-amplified",
+const rarityText: Record<Rarity, string> = {
+  Common: "bg-rarity-common/15 text-rarity-common",
+  Uncommon: "bg-rarity-uncommon/15 text-rarity-uncommon",
+  Rare: "bg-rarity-rare/15 text-rarity-rare",
+  Epic: "bg-rarity-epic/15 text-rarity-epic",
+  Legendary: "bg-rarity-legendary/15 text-rarity-legendary",
+  Amplified: "bg-rarity-amplified/15 text-rarity-amplified",
 };
+
+const rarityClasses = (
+  rarity: string,
+  classes: Record<Rarity, string>,
+  fallback: string,
+): string => (isRarity(rarity) ? classes[rarity] : fallback);
 
 const iconSizes = {
   xs: "size-6 rounded-md text-[9px]",
@@ -48,14 +56,12 @@ export const ItemIcon = ({
     .slice(0, 2)
     .map((word) => word[0])
     .join("");
-  const rarity = item.rarity.toLowerCase();
-
   return (
     <div
       className={cn(
         "grid shrink-0 place-items-center overflow-hidden border bg-[radial-gradient(circle_at_50%_35%,rgba(148,163,184,0.12),transparent_65%)] bg-black/50 font-extrabold text-muted-foreground",
         iconSizes[size],
-        rarityFrame[rarity] ?? "border-border",
+        rarityClasses(item.rarity, rarityFrame, "border-border"),
         className,
       )}
     >
@@ -78,7 +84,7 @@ export const RarityBadge = ({ item, className }: { item: CatalogItem; className?
   <span
     className={cn(
       "inline-flex items-center rounded px-1.5 py-px text-[9px] font-bold tracking-wider uppercase",
-      rarityText[item.rarity.toLowerCase()] ?? "bg-muted text-muted-foreground",
+      rarityClasses(item.rarity, rarityText, "bg-muted text-muted-foreground"),
       className,
     )}
   >
@@ -148,12 +154,16 @@ export const CapacityBar = ({
       <div className="flex items-center justify-between text-xs text-muted-foreground">
         <span>
           <strong className="font-bold tabular-nums text-foreground">{used}</strong> / {capacity}{" "}
-          slots
+          {capacity > 1 ? "slots" : "slot"}
         </span>
         <span
           className={cn(
             "tabular-nums",
-            over ? "text-destructive" : ratio > 0.85 ? "text-warning" : "text-muted-foreground",
+            over
+              ? "text-destructive"
+              : ratio > CAPACITY_WARNING_RATIO
+                ? "text-warning"
+                : "text-muted-foreground",
           )}
         >
           {over ? `${used - capacity} de trop` : `${Math.max(0, capacity - used)} libres`}
@@ -192,6 +202,7 @@ export const ValueModeToggle = ({
         key={value}
         type="button"
         onClick={() => onChange(value)}
+        aria-pressed={mode === value}
         className={cn(
           "rounded-[6px] px-2.5 py-1 text-xs font-semibold transition-colors",
           mode === value

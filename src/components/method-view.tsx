@@ -1,5 +1,5 @@
 import { catalog, itemByRecipeName } from "@/lib/catalog";
-import { formatCredits, outputValue } from "@/lib/optimizer";
+import { formatCredits, outputValue } from "@/lib/line-stats";
 import { ItemIcon, Panel } from "./ui";
 
 const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
