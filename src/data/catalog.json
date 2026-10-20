@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-19T22:53:25.420Z",
+  "generatedAt": "2026-10-20T00:38:36.690Z",
   "source": "ARC Raiders Wiki",
   "sourceUrl": "https://arcraiders.wiki",
   "counts": {
-    "items": 563,
+    "items": 655,
     "recycling": 654,
-    "crafting": 298,
+    "crafting": 299,
     "unknownOutputs": 1
   },
   "unknownOutputs": [
@@ -148,6 +148,44 @@
       "usedIn": []
     },
     {
+      "id": "aphelion",
+      "name": "Aphelion",
+      "rarity": "Legendary",
+      "rarityRank": 4,
+      "type": "Weapon",
+      "weight": 10,
+      "stack": 1,
+      "sell": 27500,
+      "locations": [],
+      "image": "/icons/aphelion.webp",
+      "recycle": {
+        "Magnetic Accelerator": 2,
+        "Complex Gun Parts": 1
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 3",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Magnetic Accelerator",
+              "qty": 3
+            },
+            {
+              "item": "Complex Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Matriarch Reactor",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "bronze-statuette",
       "name": "Bronze Statuette",
       "rarity": "Legendary",
@@ -175,6 +213,43 @@
       "image": "/icons/colorful-shoes-legendary.webp",
       "recycle": {},
       "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "dolabra",
+      "name": "Dolabra",
+      "rarity": "Legendary",
+      "rarityRank": 4,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 27500,
+      "locations": [],
+      "image": "/icons/dolabra.webp",
+      "recycle": {
+        "Magnetic Accelerator": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 3",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Shredder Gyro",
+              "qty": 3
+            },
+            {
+              "item": "Magnetic Accelerator",
+              "qty": 3
+            },
+            {
+              "item": "Vaporizer Regulator",
+              "qty": 2
+            }
+          ]
+        }
+      ],
       "usedIn": []
     },
     {
@@ -245,6 +320,44 @@
       "usedIn": []
     },
     {
+      "id": "equalizer",
+      "name": "Equalizer",
+      "rarity": "Legendary",
+      "rarityRank": 4,
+      "type": "Weapon",
+      "weight": 14,
+      "stack": 1,
+      "sell": 27500,
+      "locations": [],
+      "image": "/icons/equalizer.webp",
+      "recycle": {
+        "Magnetic Accelerator": 2,
+        "Complex Gun Parts": 1
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 3",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Magnetic Accelerator",
+              "qty": 3
+            },
+            {
+              "item": "Complex Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Queen Reactor",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "frigate-diagnostic-node",
       "name": "Frigate Diagnostic Node",
       "rarity": "Legendary",
@@ -298,6 +411,44 @@
       "usedIn": []
     },
     {
+      "id": "jupiter",
+      "name": "Jupiter",
+      "rarity": "Legendary",
+      "rarityRank": 4,
+      "type": "Weapon",
+      "weight": 9,
+      "stack": 1,
+      "sell": 27500,
+      "locations": [],
+      "image": "/icons/jupiter.webp",
+      "recycle": {
+        "Magnetic Accelerator": 2,
+        "Complex Gun Parts": 1
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 3",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Magnetic Accelerator",
+              "qty": 3
+            },
+            {
+              "item": "Complex Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Queen Reactor",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "kinetic-converter",
       "name": "Kinetic Converter",
       "rarity": "Legendary",
@@ -336,6 +487,11 @@
       "usedIn": [
         {
           "result": "Aphelion I",
+          "qty": 1,
+          "station": "Gunsmith 3"
+        },
+        {
+          "result": "Aphelion",
           "qty": 1,
           "station": "Gunsmith 3"
         }
@@ -622,6 +778,176 @@
       ]
     },
     {
+      "id": "bettina-i",
+      "name": "Bettina I",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 11,
+      "stack": 1,
+      "sell": 8000,
+      "locations": [],
+      "image": "/icons/bettina-i.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 1,
+        "Heavy Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 3",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Canister",
+              "qty": 3
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Bettina II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "bettina-ii",
+      "name": "Bettina II",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 11,
+      "stack": 1,
+      "sell": 11000,
+      "locations": [],
+      "image": "/icons/bettina-ii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Heavy Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Bettina I",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Bettina III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "bettina-iii",
+      "name": "Bettina III",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 11,
+      "stack": 1,
+      "sell": 14000,
+      "locations": [],
+      "image": "/icons/bettina-iii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Heavy Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Bettina II",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Bettina IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "bettina-iv",
+      "name": "Bettina IV",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 11,
+      "stack": 1,
+      "sell": 18000,
+      "locations": [],
+      "image": "/icons/bettina-iv.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 3,
+        "Heavy Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Bettina III",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "blue-gate-confiscation-room-key",
       "name": "Blue Gate Confiscation Room Key",
       "rarity": "Epic",
@@ -634,6 +960,176 @@
       "image": "/icons/blue-gate-confiscation-room-key.webp",
       "recycle": {},
       "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "bobcat-i",
+      "name": "Bobcat I",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 13000,
+      "locations": [],
+      "image": "/icons/bobcat-i.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Light Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 3",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Magnetic Accelerator",
+              "qty": 1
+            },
+            {
+              "item": "Light Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Exodus Modules",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Bobcat II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "bobcat-ii",
+      "name": "Bobcat II",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 17000,
+      "locations": [],
+      "image": "/icons/bobcat-ii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 3,
+        "Light Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Bobcat I",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Light Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Bobcat III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "bobcat-iii",
+      "name": "Bobcat III",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 22000,
+      "locations": [],
+      "image": "/icons/bobcat-iii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 4,
+        "Light Gun Parts": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Bobcat II",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Light Gun Parts",
+              "qty": 3
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Bobcat IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "bobcat-iv",
+      "name": "Bobcat IV",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 27000,
+      "locations": [],
+      "image": "/icons/bobcat-iv.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 5,
+        "Light Gun Parts": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Bobcat III",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Light Gun Parts",
+              "qty": 3
+            }
+          ]
+        }
+      ],
       "usedIn": []
     },
     {
@@ -872,6 +1368,11 @@
         },
         {
           "result": "Jupiter",
+          "qty": 3,
+          "station": "Gunsmith 3"
+        },
+        {
+          "result": "Aphelion",
           "qty": 3,
           "station": "Gunsmith 3"
         }
@@ -1170,6 +1671,176 @@
         "Duct Tape": 2
       },
       "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "hullcracker-i",
+      "name": "Hullcracker I",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 10000,
+      "locations": [],
+      "image": "/icons/hullcracker-i.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Heavy Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 3",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Magnetic Accelerator",
+              "qty": 1
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Exodus Modules",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Hullcracker II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "hullcracker-ii",
+      "name": "Hullcracker II",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 13000,
+      "locations": [],
+      "image": "/icons/hullcracker-ii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Heavy Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Hullcracker I",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Hullcracker III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "hullcracker-iii",
+      "name": "Hullcracker III",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 17000,
+      "locations": [],
+      "image": "/icons/hullcracker-iii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 3,
+        "Heavy Gun Parts": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Hullcracker II",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Hullcracker IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "hullcracker-iv",
+      "name": "Hullcracker IV",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 22000,
+      "locations": [],
+      "image": "/icons/hullcracker-iv.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 4,
+        "Heavy Gun Parts": 5
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Hullcracker III",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 3
+            }
+          ]
+        }
+      ],
       "usedIn": []
     },
     {
@@ -1495,6 +2166,11 @@
         {
           "result": "Vulcano I",
           "qty": 1,
+          "station": "Gunsmith 3"
+        },
+        {
+          "result": "Aphelion",
+          "qty": 3,
           "station": "Gunsmith 3"
         }
       ]
@@ -2049,6 +2725,176 @@
       "usedIn": []
     },
     {
+      "id": "tempest-i",
+      "name": "Tempest I",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 11,
+      "stack": 1,
+      "sell": 13000,
+      "locations": [],
+      "image": "/icons/tempest-i.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Medium Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 3",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Magnetic Accelerator",
+              "qty": 1
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Exodus Modules",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Tempest II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "tempest-ii",
+      "name": "Tempest II",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 11,
+      "stack": 1,
+      "sell": 17000,
+      "locations": [],
+      "image": "/icons/tempest-ii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 3,
+        "Medium Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Tempest I",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Tempest III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "tempest-iii",
+      "name": "Tempest III",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 11,
+      "stack": 1,
+      "sell": 22000,
+      "locations": [],
+      "image": "/icons/tempest-iii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 4,
+        "Medium Gun Parts": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Tempest II",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 3
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Tempest IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "tempest-iv",
+      "name": "Tempest IV",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 11,
+      "stack": 1,
+      "sell": 27000,
+      "locations": [],
+      "image": "/icons/tempest-iv.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 5,
+        "Medium Gun Parts": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Tempest III",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 3
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "thermal-shaker",
       "name": "Thermal Shaker",
       "rarity": "Epic",
@@ -2158,6 +3004,176 @@
             {
               "item": "Tick Pod",
               "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
+      "id": "vulcano-i",
+      "name": "Vulcano I",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 10000,
+      "locations": [],
+      "image": "/icons/vulcano-i.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Heavy Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 3",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Magnetic Accelerator",
+              "qty": 1
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Exodus Modules",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Vulcano II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "vulcano-ii",
+      "name": "Vulcano II",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 13000,
+      "locations": [],
+      "image": "/icons/vulcano-ii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Heavy Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Vulcano I",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Vulcano III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "vulcano-iii",
+      "name": "Vulcano III",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 17000,
+      "locations": [],
+      "image": "/icons/vulcano-iii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 3,
+        "Heavy Gun Parts": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Vulcano II",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Vulcano IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "vulcano-iv",
+      "name": "Vulcano IV",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 22000,
+      "locations": [],
+      "image": "/icons/vulcano-iv.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 4,
+        "Heavy Gun Parts": 5
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Vulcano III",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 3
             }
           ]
         }
@@ -2774,6 +3790,170 @@
       ]
     },
     {
+      "id": "anvil-i",
+      "name": "Anvil I",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 5000,
+      "locations": [],
+      "image": "/icons/anvil-i.webp",
+      "recycle": {},
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 2",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Hand Drill",
+              "qty": 3
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Anvil II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "anvil-ii",
+      "name": "Anvil II",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 7000,
+      "locations": [],
+      "image": "/icons/anvil-ii.webp",
+      "recycle": {
+        "Heavy Gun Parts": 2,
+        "Advanced Mechanical Components": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Anvil I",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Anvil III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "anvil-iii",
+      "name": "Anvil III",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 10000,
+      "locations": [],
+      "image": "/icons/anvil-iii.webp",
+      "recycle": {
+        "Heavy Gun Parts": 3,
+        "Advanced Mechanical Components": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Anvil II",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Anvil IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "anvil-iv",
+      "name": "Anvil IV",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 13000,
+      "locations": [],
+      "image": "/icons/anvil-iv.webp",
+      "recycle": {},
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Anvil III",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "arc-circuitry",
       "name": "ARC Circuitry",
       "rarity": "Rare",
@@ -3299,6 +4479,167 @@
         "Assorted Seeds": 2
       },
       "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "canto-i",
+      "name": "Canto I",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 7000,
+      "locations": [],
+      "image": "/icons/canto-i.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 1,
+        "Medium Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 3",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Magnet",
+              "qty": 5
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 3
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Canto II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "canto-ii",
+      "name": "Canto II",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 0,
+      "locations": [],
+      "image": "/icons/canto-ii.webp",
+      "recycle": {},
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Canto I",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Canto III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "canto-iii",
+      "name": "Canto III",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 0,
+      "locations": [],
+      "image": "/icons/canto-iii.webp",
+      "recycle": {},
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Canto II",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Canto IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "canto-iv",
+      "name": "Canto IV",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 0,
+      "locations": [],
+      "image": "/icons/canto-iv.webp",
+      "recycle": {},
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Canto III",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
       "usedIn": []
     },
     {
@@ -5324,6 +6665,176 @@
       "usedIn": []
     },
     {
+      "id": "osprey-i",
+      "name": "Osprey I",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 7000,
+      "locations": [],
+      "image": "/icons/osprey-i.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 1,
+        "Medium Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 2",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Wires",
+              "qty": 7
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Osprey II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "osprey-ii",
+      "name": "Osprey II",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 10000,
+      "locations": [],
+      "image": "/icons/osprey-ii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Medium Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Osprey I",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Osprey III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "osprey-iii",
+      "name": "Osprey III",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 13000,
+      "locations": [],
+      "image": "/icons/osprey-iii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Medium Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Osprey II",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Osprey IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "osprey-iv",
+      "name": "Osprey IV",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 17000,
+      "locations": [],
+      "image": "/icons/osprey-iv.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 3,
+        "Medium Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Osprey III",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "playing-cards",
       "name": "Playing Cards",
       "rarity": "Rare",
@@ -5594,6 +7105,176 @@
       "usedIn": []
     },
     {
+      "id": "rascal-i",
+      "name": "Rascal I",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 7000,
+      "locations": [],
+      "image": "/icons/rascal-i.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 1,
+        "Heavy Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 2",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Canister",
+              "qty": 5
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Rascal II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "rascal-ii",
+      "name": "Rascal II",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 10000,
+      "locations": [],
+      "image": "/icons/rascal-ii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Heavy Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Rascal I",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Rascal III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "rascal-iii",
+      "name": "Rascal III",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 13000,
+      "locations": [],
+      "image": "/icons/rascal-iii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Heavy Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Rascal II",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Rascal IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "rascal-iv",
+      "name": "Rascal IV",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 17000,
+      "locations": [],
+      "image": "/icons/rascal-iv.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 3,
+        "Heavy Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Rascal III",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "red-coral-jewelry",
       "name": "Red Coral Jewelry",
       "rarity": "Rare",
@@ -5630,6 +7311,176 @@
         "Sensors": 1
       },
       "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "renegade-i",
+      "name": "Renegade I",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 10,
+      "stack": 1,
+      "sell": 7000,
+      "locations": [],
+      "image": "/icons/renegade-i.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 1,
+        "Medium Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 3",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Oil",
+              "qty": 5
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Renegade II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "renegade-ii",
+      "name": "Renegade II",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 10,
+      "stack": 1,
+      "sell": 10000,
+      "locations": [],
+      "image": "/icons/renegade-ii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Medium Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Renegade I",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Renegade III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "renegade-iii",
+      "name": "Renegade III",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 10,
+      "stack": 1,
+      "sell": 13000,
+      "locations": [],
+      "image": "/icons/renegade-iii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Medium Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Renegade II",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Renegade IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "renegade-iv",
+      "name": "Renegade IV",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 10,
+      "stack": 1,
+      "sell": 17000,
+      "locations": [],
+      "image": "/icons/renegade-iv.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 3,
+        "Medium Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Renegade III",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
       "usedIn": []
     },
     {
@@ -6768,6 +8619,176 @@
       "usedIn": []
     },
     {
+      "id": "torrente-i",
+      "name": "Torrente I",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 12,
+      "stack": 1,
+      "sell": 7000,
+      "locations": [],
+      "image": "/icons/torrente-i.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 1,
+        "Medium Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 2",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Steel Spring",
+              "qty": 6
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Torrente II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "torrente-ii",
+      "name": "Torrente II",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 12,
+      "stack": 1,
+      "sell": 10000,
+      "locations": [],
+      "image": "/icons/torrente-ii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Medium Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Torrente I",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Torrente III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "torrente-iii",
+      "name": "Torrente III",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 12,
+      "stack": 1,
+      "sell": 13000,
+      "locations": [],
+      "image": "/icons/torrente-iii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Medium Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Torrente II",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Torrente IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "torrente-iv",
+      "name": "Torrente IV",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 12,
+      "stack": 1,
+      "sell": 17000,
+      "locations": [],
+      "image": "/icons/torrente-iv.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 3,
+        "Medium Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Torrente III",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "trailblazer",
       "name": "Trailblazer",
       "rarity": "Rare",
@@ -6916,6 +8937,176 @@
       "image": "/icons/vase.webp",
       "recycle": {},
       "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "venator-i",
+      "name": "Venator I",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 7000,
+      "locations": [],
+      "image": "/icons/venator-i.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 1,
+        "Medium Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 2",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 3
+            },
+            {
+              "item": "Magnet",
+              "qty": 5
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Venator II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "venator-ii",
+      "name": "Venator II",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 10000,
+      "locations": [],
+      "image": "/icons/venator-ii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Medium Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Venator I",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Venator III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "venator-iii",
+      "name": "Venator III",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 13000,
+      "locations": [],
+      "image": "/icons/venator-iii.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 2,
+        "Medium Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Venator II",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Venator IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "venator-iv",
+      "name": "Venator IV",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 17000,
+      "locations": [],
+      "image": "/icons/venator-iv.webp",
+      "recycle": {
+        "Advanced Mechanical Components": 3,
+        "Medium Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Venator III",
+              "qty": 1
+            },
+            {
+              "item": "Advanced Mechanical Components",
+              "qty": 2
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
       "usedIn": []
     },
     {
@@ -7300,6 +9491,335 @@
       ]
     },
     {
+      "id": "arpeggio-i",
+      "name": "Arpeggio I",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 5500,
+      "locations": [],
+      "image": "/icons/arpeggio-i.webp",
+      "recycle": {
+        "Simple Gun Parts": 2,
+        "Mechanical Components": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 2",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Mechanical Components",
+              "qty": 6
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 6
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Arpeggio II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "arpeggio-ii",
+      "name": "Arpeggio II",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 8000,
+      "locations": [],
+      "image": "/icons/arpeggio-ii.webp",
+      "recycle": {
+        "Simple Gun Parts": 3,
+        "Mechanical Components": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Arpeggio I",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 4
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Arpeggio III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "arpeggio-iii",
+      "name": "Arpeggio III",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 11500,
+      "locations": [],
+      "image": "/icons/arpeggio-iii.webp",
+      "recycle": {
+        "Simple Gun Parts": 4,
+        "Mechanical Components": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Arpeggio II",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 5
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Arpeggio IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "arpeggio-iv",
+      "name": "Arpeggio IV",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 15000,
+      "locations": [],
+      "image": "/icons/arpeggio-iv.webp",
+      "recycle": {
+        "Simple Gun Parts": 5,
+        "Mechanical Components": 5
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Arpeggio III",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 5
+            },
+            {
+              "item": "Medium Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
+      "id": "bantam-i",
+      "name": "Bantam I",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 3,
+      "stack": 1,
+      "sell": 3800,
+      "locations": [],
+      "image": "/icons/bantam-i.webp",
+      "recycle": {
+        "Gun Parts": 2,
+        "Mechanical Components": 1
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Simple Gun Parts",
+              "qty": 4
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 4
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Bantam II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "bantam-ii",
+      "name": "Bantam II",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 3,
+      "stack": 1,
+      "sell": 0,
+      "locations": [],
+      "image": "/icons/bantam-ii.webp",
+      "recycle": {},
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Bantam I",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Bantam III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "bantam-iii",
+      "name": "Bantam III",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 3,
+      "stack": 1,
+      "sell": 0,
+      "locations": [],
+      "image": "/icons/bantam-iii.webp",
+      "recycle": {
+        "Gun Parts": 3,
+        "Mechanical Components": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Bantam II",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Bantam IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "bantam-iv",
+      "name": "Bantam IV",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 3,
+      "stack": 1,
+      "sell": 0,
+      "locations": [],
+      "image": "/icons/bantam-iv.webp",
+      "recycle": {
+        "Gun Parts": 4,
+        "Mechanical Components": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Bantam III",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 4
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "barricade-kit",
       "name": "Barricade Kit",
       "rarity": "Uncommon",
@@ -7464,6 +9984,172 @@
       "image": "/icons/buried-city-residential-master-key.webp",
       "recycle": {},
       "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "burletta-i",
+      "name": "Burletta I",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 2900,
+      "locations": [],
+      "image": "/icons/burletta-i.webp",
+      "recycle": {
+        "Mechanical Components": 1,
+        "Simple Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 3
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Burletta II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "burletta-ii",
+      "name": "Burletta II",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 5000,
+      "locations": [],
+      "image": "/icons/burletta-ii.webp",
+      "recycle": {
+        "Mechanical Components": 2,
+        "Simple Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Burletta I",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Burletta III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "burletta-iii",
+      "name": "Burletta III",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 7000,
+      "locations": [],
+      "image": "/icons/burletta-iii.webp",
+      "recycle": {
+        "Mechanical Components": 3,
+        "Simple Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Burletta II",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Burletta IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "burletta-iv",
+      "name": "Burletta IV",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 4,
+      "stack": 1,
+      "sell": 10000,
+      "locations": [],
+      "image": "/icons/burletta-iv.webp",
+      "recycle": {
+        "Mechanical Components": 4,
+        "Simple Gun Parts": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Burletta III",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 4
+            },
+            {
+              "item": "Light Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
       "usedIn": []
     },
     {
@@ -8714,6 +11400,172 @@
         "Metal Parts": 7
       },
       "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "il-toro-i",
+      "name": "Il Toro I",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 5000,
+      "locations": [],
+      "image": "/icons/il-toro-i.webp",
+      "recycle": {
+        "Mechanical Components": 2,
+        "Simple Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Mechanical Components",
+              "qty": 5
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 6
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Il Toro II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "il-toro-ii",
+      "name": "Il Toro II",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 7000,
+      "locations": [],
+      "image": "/icons/il-toro-ii.webp",
+      "recycle": {
+        "Mechanical Components": 3,
+        "Simple Gun Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Il Toro I",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Il Toro III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "il-toro-iii",
+      "name": "Il Toro III",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 10000,
+      "locations": [],
+      "image": "/icons/il-toro-iii.webp",
+      "recycle": {
+        "Mechanical Components": 4,
+        "Simple Gun Parts": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Il Toro II",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 4
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Il Toro IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "il-toro-iv",
+      "name": "Il Toro IV",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 13000,
+      "locations": [],
+      "image": "/icons/il-toro-iv.webp",
+      "recycle": {
+        "Mechanical Components": 5,
+        "Simple Gun Parts": 5
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Il Toro III",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 4
+            },
+            {
+              "item": "Heavy Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
       "usedIn": []
     },
     {
@@ -10588,6 +13440,172 @@
       "image": "/icons/stella-montis-medical-storage-key.webp",
       "recycle": {},
       "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "stiletto-i",
+      "name": "Stiletto I",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 3000,
+      "locations": [],
+      "image": "/icons/stiletto-i.webp",
+      "recycle": {
+        "Simple Gun Parts": 2,
+        "Mechanical Components": 1
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": true,
+          "ingredients": [
+            {
+              "item": "Mechanical Components",
+              "qty": 4
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 4
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Stiletto II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "stiletto-ii",
+      "name": "Stiletto II",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 6000,
+      "locations": [],
+      "image": "/icons/stiletto-ii.webp",
+      "recycle": {
+        "Simple Gun Parts": 2,
+        "Mechanical Components": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Stiletto I",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Stiletto III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "stiletto-iii",
+      "name": "Stiletto III",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 11,
+      "locations": [],
+      "image": "/icons/stiletto-iii.webp",
+      "recycle": {
+        "Simple Gun Parts": 3,
+        "Mechanical Components": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Stiletto II",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Stiletto IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "stiletto-iv",
+      "name": "Stiletto IV",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 0,
+      "locations": [],
+      "image": "/icons/stiletto-iv.webp",
+      "recycle": {
+        "Simple Gun Parts": 4,
+        "Mechanical Components": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Stiletto III",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 4
+            },
+            {
+              "item": "Light Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
       "usedIn": []
     },
     {
@@ -12834,6 +15852,168 @@
       "usedIn": []
     },
     {
+      "id": "ferro-i",
+      "name": "Ferro I",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 475,
+      "locations": [],
+      "image": "/icons/ferro-i.webp",
+      "recycle": {
+        "Metal Parts": 2,
+        "Rubber Parts": 1
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Workbench, Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Metal Parts",
+              "qty": 5
+            },
+            {
+              "item": "Rubber Parts",
+              "qty": 2
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Ferro II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "ferro-ii",
+      "name": "Ferro II",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 1000,
+      "locations": [],
+      "image": "/icons/ferro-ii.webp",
+      "recycle": {
+        "Metal Parts": 4,
+        "Rubber Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Ferro I",
+              "qty": 1
+            },
+            {
+              "item": "Metal Parts",
+              "qty": 7
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Ferro III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "ferro-iii",
+      "name": "Ferro III",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 2000,
+      "locations": [],
+      "image": "/icons/ferro-iii.webp",
+      "recycle": {
+        "Metal Parts": 6,
+        "Simple Gun Parts": 1
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Ferro II",
+              "qty": 1
+            },
+            {
+              "item": "Metal Parts",
+              "qty": 9
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Ferro IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "ferro-iv",
+      "name": "Ferro IV",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 8,
+      "stack": 1,
+      "sell": 2900,
+      "locations": [],
+      "image": "/icons/ferro-iv.webp",
+      "recycle": {
+        "Mechanical Components": 1,
+        "Simple Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Ferro III",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "firecracker",
       "name": "Firecracker",
       "rarity": "Common",
@@ -13195,6 +16375,168 @@
       "usedIn": []
     },
     {
+      "id": "hairpin-i",
+      "name": "Hairpin I",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 3,
+      "stack": 1,
+      "sell": 450,
+      "locations": [],
+      "image": "/icons/hairpin-i.webp",
+      "recycle": {
+        "Metal Parts": 2,
+        "Rubber Parts": 1
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Workbench, Gunsmith I",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Metal Parts",
+              "qty": 2
+            },
+            {
+              "item": "Plastic Parts",
+              "qty": 5
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Hairpin II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "hairpin-ii",
+      "name": "Hairpin II",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 3,
+      "stack": 1,
+      "sell": 1000,
+      "locations": [],
+      "image": "/icons/hairpin-ii.webp",
+      "recycle": {
+        "Metal Parts": 4,
+        "Rubber Parts": 3
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Hairpin I",
+              "qty": 1
+            },
+            {
+              "item": "Metal Parts",
+              "qty": 8
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Hairpin III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "hairpin-iii",
+      "name": "Hairpin III",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 3,
+      "stack": 1,
+      "sell": 2000,
+      "locations": [],
+      "image": "/icons/hairpin-iii.webp",
+      "recycle": {
+        "Metal Parts": 6,
+        "Simple Gun Parts": 1
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Hairpin II",
+              "qty": 1
+            },
+            {
+              "item": "Metal Parts",
+              "qty": 9
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Hairpin IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "hairpin-iv",
+      "name": "Hairpin IV",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 3,
+      "stack": 1,
+      "sell": 2900,
+      "locations": [],
+      "image": "/icons/hairpin-iv.webp",
+      "recycle": {
+        "Mechanical Components": 1,
+        "Simple Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Hairpin III",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 1
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "heavy-ammo",
       "name": "Heavy Ammo",
       "rarity": "Common",
@@ -13404,6 +16746,172 @@
       "image": "/icons/jupiter-blueprint.webp",
       "recycle": {},
       "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "kettle-i",
+      "name": "Kettle I",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 840,
+      "locations": [],
+      "image": "/icons/kettle-i.webp",
+      "recycle": {
+        "Metal Parts": 6,
+        "Rubber Parts": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Workbench, Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Metal Parts",
+              "qty": 6
+            },
+            {
+              "item": "Rubber Parts",
+              "qty": 8
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Kettle II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "kettle-ii",
+      "name": "Kettle II",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 2000,
+      "locations": [],
+      "image": "/icons/kettle-ii.webp",
+      "recycle": {
+        "Metal Parts": 12,
+        "Rubber Parts": 12
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Kettle I",
+              "qty": 1
+            },
+            {
+              "item": "Metal Parts",
+              "qty": 8
+            },
+            {
+              "item": "Plastic Parts",
+              "qty": 10
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Kettle III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "kettle-iii",
+      "name": "Kettle III",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 3000,
+      "locations": [],
+      "image": "/icons/kettle-iii.webp",
+      "recycle": {
+        "Metal Parts": 24,
+        "Simple Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Kettle II",
+              "qty": 1
+            },
+            {
+              "item": "Metal Parts",
+              "qty": 10
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Kettle IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "kettle-iv",
+      "name": "Kettle IV",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 7,
+      "stack": 1,
+      "sell": 5000,
+      "locations": [],
+      "image": "/icons/kettle-iv.webp",
+      "recycle": {
+        "Mechanical Components": 4,
+        "Simple Gun Parts": 4
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Kettle III",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
       "usedIn": []
     },
     {
@@ -14545,6 +18053,170 @@
       "usedIn": []
     },
     {
+      "id": "rattler-i",
+      "name": "Rattler I",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 6,
+      "stack": 1,
+      "sell": 1750,
+      "locations": [],
+      "image": "/icons/rattler-i.webp",
+      "recycle": {
+        "Metal Parts": 8
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Metal Parts",
+              "qty": 16
+            },
+            {
+              "item": "Rubber Parts",
+              "qty": 12
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Rattler II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "rattler-ii",
+      "name": "Rattler II",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 6,
+      "stack": 1,
+      "sell": 3000,
+      "locations": [],
+      "image": "/icons/rattler-ii.webp",
+      "recycle": {
+        "Metal Parts": 12
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Rattler I",
+              "qty": 1
+            },
+            {
+              "item": "Metal Parts",
+              "qty": 10
+            },
+            {
+              "item": "Rubber Parts",
+              "qty": 10
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Rattler III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "rattler-iii",
+      "name": "Rattler III",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 6,
+      "stack": 1,
+      "sell": 5000,
+      "locations": [],
+      "image": "/icons/rattler-iii.webp",
+      "recycle": {
+        "Mechanical Components": 3,
+        "Simple Gun Parts": 1
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Rattler II",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Rattler IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "rattler-iv",
+      "name": "Rattler IV",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 6,
+      "stack": 1,
+      "sell": 7000,
+      "locations": [],
+      "image": "/icons/rattler-iv.webp",
+      "recycle": {
+        "Mechanical Components": 4,
+        "Simple Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Rattler III",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
       "id": "red-light-stick",
       "name": "Red Light Stick",
       "rarity": "Common",
@@ -15466,6 +19138,172 @@
             {
               "item": "Wasp Driver",
               "qty": 15
+            }
+          ]
+        }
+      ],
+      "usedIn": []
+    },
+    {
+      "id": "stitcher-i",
+      "name": "Stitcher I",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 800,
+      "locations": [],
+      "image": "/icons/stitcher-i.webp",
+      "recycle": {
+        "Metal Parts": 3,
+        "Rubber Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Workbench, Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Metal Parts",
+              "qty": 8
+            },
+            {
+              "item": "Rubber Parts",
+              "qty": 4
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Stitcher II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "stitcher-ii",
+      "name": "Stitcher II",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 2000,
+      "locations": [],
+      "image": "/icons/stitcher-ii.webp",
+      "recycle": {
+        "Metal Parts": 6,
+        "Rubber Parts": 6
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Stitcher I",
+              "qty": 1
+            },
+            {
+              "item": "Metal Parts",
+              "qty": 8
+            },
+            {
+              "item": "Rubber Parts",
+              "qty": 12
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Stitcher III",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "stitcher-iii",
+      "name": "Stitcher III",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 3000,
+      "locations": [],
+      "image": "/icons/stitcher-iii.webp",
+      "recycle": {
+        "Metal Parts": 12,
+        "Simple Gun Parts": 1
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Stitcher II",
+              "qty": 1
+            },
+            {
+              "item": "Metal Parts",
+              "qty": 10
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
+            }
+          ]
+        }
+      ],
+      "usedIn": [
+        {
+          "result": "Stitcher IV",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        }
+      ]
+    },
+    {
+      "id": "stitcher-iv",
+      "name": "Stitcher IV",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Weapon",
+      "weight": 5,
+      "stack": 1,
+      "sell": 5000,
+      "locations": [],
+      "image": "/icons/stitcher-iv.webp",
+      "recycle": {
+        "Mechanical Components": 2,
+        "Simple Gun Parts": 2
+      },
+      "craftedFrom": [
+        {
+          "resultQty": 1,
+          "station": "Gunsmith 1",
+          "blueprint": false,
+          "ingredients": [
+            {
+              "item": "Stitcher III",
+              "qty": 1
+            },
+            {
+              "item": "Mechanical Components",
+              "qty": 3
+            },
+            {
+              "item": "Simple Gun Parts",
+              "qty": 1
             }
           ]
         }

@@ -103,13 +103,203 @@ const parseIngredients = (value: string | undefined): Ingredient[] => {
     .split(",")
     .map((part) => part.trim())
     .flatMap((part) => {
-      const match = part.match(/^(.+):(\d+)$/);
+      const match = part.match(/^(.+):(\d+)(?::[^:]*)?$/);
       if (!match) return [];
       const [, item, qty] = match;
       if (!item || !qty) return [];
       return [{ item: item.trim(), qty: Number(qty) }];
     })
     .filter((ingredient) => ingredient.qty > 0);
+};
+
+const parseTemplateBody = (text: string, name: string): string | null => {
+  const start = text.indexOf(`{{${name}`);
+  if (start === -1) return null;
+  let depth = 0;
+  for (let index = start; index < text.length - 1; index++) {
+    if (text.startsWith("{{", index)) {
+      depth += 1;
+      index += 1;
+      continue;
+    }
+    if (text.startsWith("}}", index)) {
+      depth -= 1;
+      if (depth === 0) {
+        return text.slice(start + 2 + name.length, index);
+      }
+      index += 1;
+    }
+  }
+  return null;
+};
+
+const parseTemplateParams = (body: string | null): Record<string, string> => {
+  if (!body) return {};
+  const params: Record<string, string> = {};
+  for (const line of body.split("\n")) {
+    const match = line.match(/^\s*\|\s*([\w-]+)\s*=\s*(.*)$/);
+    if (match?.[1]) params[match[1]] = match[2]?.trim() ?? "";
+  }
+  return params;
+};
+
+const parseRecipeIngredients = (value: string | undefined): Ingredient[] => {
+  if (!value) return [];
+  return value
+    .split("+")
+    .map((part) => part.trim())
+    .flatMap((part) => {
+      const match = part.match(/^(\d+)\s+(.+)$/);
+      if (!match) return [];
+      const [, qty, item] = match;
+      if (!qty || !item || item === "?") return [];
+      return [{ item: item.trim(), qty: Number(qty) }];
+    })
+    .filter((ingredient) => ingredient.qty > 0);
+};
+
+const parsePriceList = (value: string | undefined): number[] =>
+  (value ?? "")
+    .split(/<br\s*\/?>/i)
+    .map((price) => toNumber(price))
+    .filter((price) => price > 0);
+
+const roman = ["I", "II", "III", "IV", "V", "VI"];
+
+type RawWeapon = {
+  name: string;
+  rarity: string;
+  weight: number;
+  sell: number;
+  imageFile: string | null;
+  fallbackImageFile: string | null;
+  recycle: Record<string, number>;
+};
+
+const parseWeaponPage = (
+  title: string,
+  text: string,
+): { items: RawWeapon[]; recipes: { result: string; recipe: Recipe }[] } => {
+  const info = parseTemplateParams(parseTemplateBody(text, "Infobox weapon"));
+  const baseName = info.name || title;
+  const prices = parsePriceList(info.sellprice);
+  const upgrade = parseTemplateParams(parseTemplateBody(text, "Weapon upgrades"));
+  const upgrades = [2, 3, 4]
+    .map((level) => ({
+      level,
+      ingredients: parseRecipeIngredients(upgrade[`level${level}-ingredients`]),
+    }))
+    .filter((entry) => entry.ingredients.length > 0);
+  const variantCount = Math.max(1, prices.length, upgrades.length + 1);
+  const variantName = (index: number): string =>
+    variantCount === 1 ? baseName : `${baseName} ${roman[index] ?? String(index + 1)}`;
+  const variantNames = Array.from({ length: variantCount }, (_, index) => variantName(index));
+  const imageFor = (index: number): string | null =>
+    variantCount === 1
+      ? (info.image ?? null)
+      : `${baseName} ${roman[index] ?? String(index + 1)}.png`;
+
+  const items: RawWeapon[] = variantNames.map((name, index) => ({
+    name,
+    rarity: info.rarity || "Common",
+    weight: toNumber(info.weight),
+    sell: prices[index] ?? 0,
+    imageFile: imageFor(index),
+    fallbackImageFile: variantCount === 1 ? null : (info.image ?? null),
+    recycle: {},
+  }));
+
+  const recipes: { result: string; recipe: Recipe }[] = [];
+  const crafting = parseTemplateParams(parseTemplateBody(text, "Crafting"));
+  const craftIngredients = parseRecipeIngredients(crafting.ingredients);
+  if (crafting.result && craftIngredients.length > 0) {
+    recipes.push({
+      result: variantCount === 1 ? baseName : crafting.result,
+      recipe: {
+        resultQty: 1,
+        station: crafting.station ?? "",
+        blueprint: crafting.blueprint === "y",
+        ingredients: craftIngredients,
+      },
+    });
+  }
+
+  for (const [index, level] of upgrades.entries()) {
+    const variantIndex = index + 1;
+    if (variantIndex >= variantCount) continue;
+    recipes.push({
+      result: variantName(variantIndex),
+      recipe: {
+        resultQty: 1,
+        station: upgrade.station ? `${upgrade.station} (upgrade)` : "Upgrade",
+        blueprint: false,
+        ingredients: level.ingredients,
+      },
+    });
+  }
+
+  const recycling = parseTemplateParams(parseTemplateBody(text, "Recycling table"));
+  for (let index = 0; index < variantCount; index++) {
+    const outputs = parseRecipeIngredients(recycling[`recycling${index + 1}`]);
+    if (outputs.length === 0) continue;
+    const canonical = variantName(index);
+    const item = items.find((candidate) => candidate.name === canonical);
+    if (!item) continue;
+    for (const output of outputs) {
+      item.recycle[output.item] = (item.recycle[output.item] ?? 0) + output.qty;
+    }
+  }
+
+  return { items, recipes };
+};
+
+const fetchWeaponPages = async (): Promise<{ title: string; text: string }[]> => {
+  const titles: string[] = [];
+  let cmcontinue: string | undefined;
+  for (;;) {
+    const params = new URLSearchParams({
+      action: "query",
+      list: "categorymembers",
+      cmtitle: "Category:Weapons",
+      cmtype: "page",
+      cmlimit: "500",
+      format: "json",
+    });
+    if (cmcontinue) params.set("cmcontinue", cmcontinue);
+    const payload = (await fetchJson(`${API}?${params}`)) as {
+      query?: { categorymembers?: { title: string }[] };
+      continue?: { cmcontinue?: string };
+    };
+    titles.push(...(payload.query?.categorymembers ?? []).map((member) => member.title));
+    cmcontinue = payload.continue?.cmcontinue;
+    if (!cmcontinue) break;
+  }
+
+  const pages: { title: string; text: string }[] = [];
+  for (let index = 0; index < titles.length; index += 40) {
+    const batch = titles.slice(index, index + 40);
+    const params = new URLSearchParams({
+      action: "query",
+      prop: "revisions",
+      rvslots: "main",
+      rvprop: "content",
+      titles: batch.join("|"),
+      format: "json",
+    });
+    const payload = (await fetchJson(`${API}?${params}`)) as {
+      query?: {
+        pages?: Record<
+          string,
+          { title: string; revisions?: { slots: { main: { "*": string } } }[] }
+        >;
+      };
+    };
+    for (const page of Object.values(payload.query?.pages ?? {})) {
+      const text = page.revisions?.[0]?.slots.main["*"];
+      if (text) pages.push({ title: page.title, text });
+    }
+  }
+  return pages;
 };
 
 const slugify = (name: string): string =>
@@ -203,12 +393,11 @@ const main = async () => {
   );
   console.info(`  ${craftingRows.length} recipes`);
 
-  const names = new Set(itemRows.map((row) => row.name));
   const usedIds = new Set<string>();
 
-  const idFor = (row: ItemRow): string => {
-    const base = slugify(row.name);
-    const variant = row.rarity ? slugify(row.rarity) : "variant";
+  const uniqueId = (name: string, rarity: string): string => {
+    const base = slugify(name);
+    const variant = rarity ? slugify(rarity) : "variant";
     let candidate = base;
     if (usedIds.has(candidate)) candidate = `${base}-${variant}`;
     let suffix = 2;
@@ -217,7 +406,10 @@ const main = async () => {
     return candidate;
   };
 
-  const rowsWithIds = itemRows.map((row) => ({ row, id: idFor(row) }));
+  const rowsWithIds = itemRows.map((row) => ({
+    row,
+    id: uniqueId(row.name, row.rarity || "Common"),
+  }));
 
   const recipesByResult = new Map<string, Recipe[]>();
   const usedInByItem = new Map<string, UsedIn[]>();
@@ -260,6 +452,53 @@ const main = async () => {
     }
   }
 
+  console.info("Fetching weapon pages…");
+  const weaponPages = await fetchWeaponPages();
+  const rawWeapons: RawWeapon[] = [];
+  let weaponRecipeCount = 0;
+
+  for (const page of weaponPages) {
+    const parsed = parseWeaponPage(page.title, page.text);
+    for (const entry of parsed.recipes) {
+      if (recipesByResult.has(entry.result)) continue;
+      const existing = recipesByResult.get(entry.result) ?? [];
+      const duplicate = existing.some(
+        (candidate) =>
+          candidate.station === entry.recipe.station &&
+          candidate.ingredients.length === entry.recipe.ingredients.length &&
+          candidate.ingredients.every((ingredient, index) => {
+            const other = entry.recipe.ingredients[index];
+            return other?.item === ingredient.item && other.qty === ingredient.qty;
+          }),
+      );
+      if (duplicate) continue;
+      existing.push(entry.recipe);
+      recipesByResult.set(entry.result, existing);
+      weaponRecipeCount += 1;
+      for (const ingredient of entry.recipe.ingredients) {
+        const uses = usedInByItem.get(ingredient.item) ?? [];
+        const duplicateUse = uses.some(
+          (use) =>
+            use.result === entry.result &&
+            use.qty === ingredient.qty &&
+            use.station === entry.recipe.station,
+        );
+        if (!duplicateUse) {
+          uses.push({
+            result: entry.result,
+            qty: ingredient.qty,
+            station: entry.recipe.station,
+          });
+          usedInByItem.set(ingredient.item, uses);
+        }
+      }
+    }
+    rawWeapons.push(...parsed.items);
+  }
+  console.info(
+    `  ${weaponPages.length} weapon pages, ${rawWeapons.length} variants, ${weaponRecipeCount} recipes`,
+  );
+
   const recycleByItem = new Map<string, Record<string, number>>();
   for (const row of recyclingRows) {
     const qty = toNumber(row.outputQty);
@@ -269,18 +508,41 @@ const main = async () => {
     recycleByItem.set(row.inputItem, outputs);
   }
 
-  console.info(`Downloading ${itemRows.length} icons (cached files are skipped)…`);
-  let downloaded = 0;
-  let failed = 0;
-  const items: CatalogItem[] = await mapWithConcurrency(rowsWithIds, 5, async ({ row, id }) => {
-    const image = row.image ? await downloadIcon(id, row.image) : null;
-    if (image) downloaded += 1;
-    else failed += 1;
-    return {
+  let weaponYieldCount = 0;
+  for (const weapon of rawWeapons) {
+    if (recycleByItem.has(weapon.name)) continue;
+    const entries = Object.entries(weapon.recycle);
+    if (entries.length === 0) continue;
+    const outputs = recycleByItem.get(weapon.name) ?? {};
+    for (const [name, qty] of entries) outputs[name] = (outputs[name] ?? 0) + qty;
+    recycleByItem.set(weapon.name, outputs);
+    weaponYieldCount += entries.length;
+  }
+
+  const weaponRowsWithIds = rawWeapons.map((item) => ({
+    item,
+    id: uniqueId(item.name, item.rarity),
+  }));
+
+  type Seed = {
+    id: string;
+    name: string;
+    rarity: string;
+    type: string;
+    weight: number;
+    stack: number;
+    sell: number;
+    locations: string[];
+    imageFile: string | null;
+    fallbackImageFile?: string | null;
+    recycle: Record<string, number>;
+  };
+
+  const seeds: Seed[] = [
+    ...rowsWithIds.map(({ row, id }) => ({
       id,
       name: row.name,
       rarity: row.rarity || "Common",
-      rarityRank: rarityRanks[row.rarity || "Common"] ?? 0,
       type: row.type || "Divers",
       weight: toNumber(row.weight),
       stack: Math.max(1, toNumber(row.stacksize)),
@@ -289,10 +551,50 @@ const main = async () => {
         .split(",")
         .map((location) => location.trim())
         .filter(Boolean),
-      image,
+      imageFile: row.image?.replace(/^File:/, "") ?? null,
       recycle: recycleByItem.get(row.name) ?? {},
-      craftedFrom: recipesByResult.get(row.name) ?? [],
-      usedIn: usedInByItem.get(row.name) ?? [],
+    })),
+    ...weaponRowsWithIds.map(({ item, id }) => ({
+      id,
+      name: item.name,
+      rarity: item.rarity,
+      type: "Weapon",
+      weight: item.weight,
+      stack: 1,
+      sell: item.sell,
+      locations: [],
+      imageFile: item.imageFile,
+      fallbackImageFile: item.fallbackImageFile,
+      recycle: recycleByItem.get(item.name) ?? {},
+    })),
+  ];
+
+  const names = new Set(seeds.map((seed) => seed.name));
+
+  console.info(`Downloading ${seeds.length} icons (cached files are skipped)…`);
+  let downloaded = 0;
+  let failed = 0;
+  const items: CatalogItem[] = await mapWithConcurrency(seeds, 5, async (seed) => {
+    let image = seed.imageFile ? await downloadIcon(seed.id, seed.imageFile) : null;
+    if (!image && seed.fallbackImageFile) {
+      image = await downloadIcon(seed.id, seed.fallbackImageFile);
+    }
+    if (image) downloaded += 1;
+    else failed += 1;
+    return {
+      id: seed.id,
+      name: seed.name,
+      rarity: seed.rarity,
+      rarityRank: rarityRanks[seed.rarity] ?? 0,
+      type: seed.type,
+      weight: seed.weight,
+      stack: seed.stack,
+      sell: seed.sell,
+      locations: seed.locations,
+      image,
+      recycle: seed.recycle,
+      craftedFrom: recipesByResult.get(seed.name) ?? [],
+      usedIn: usedInByItem.get(seed.name) ?? [],
     };
   });
   console.info(`  ${downloaded} icons present, ${failed} missing`);
@@ -316,8 +618,8 @@ const main = async () => {
     sourceUrl: "https://arcraiders.wiki",
     counts: {
       items: items.length,
-      recycling: recyclingRows.length,
-      crafting: craftingRows.length,
+      recycling: recyclingRows.length + weaponYieldCount,
+      crafting: craftingRows.length + weaponRecipeCount,
       unknownOutputs: unknownOutputs.size,
     },
     unknownOutputs: [...unknownOutputs].sort(),
