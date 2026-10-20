@@ -30,7 +30,7 @@ Optimiseur de stash pour **Arc Raiders**. Il répond à quatre questions :
 - Import d'inventaire : une ligne par item, quantité avant ou après le nom, par exemple
   `12 Advanced Electrical Components` ou `Rocketeer Driver x4`.
 - Ajout rapide : un clic ajoute 1 unité, le bouton `+5` (ou la taille du stack) ajoute
-  une pile complète. La fiche item propose les deux quantités.
+  une pile complète depuis la recherche, une ligne du stash ou la fiche item.
 - Recherche inversée : `items = ⌈besoin ÷ rendement⌉` puis `slots = ⌈items ÷ stack⌉`.
 
 Les prix, stacks, rendements de recyclage et recettes viennent des tables Cargo

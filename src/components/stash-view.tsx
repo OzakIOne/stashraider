@@ -320,11 +320,24 @@ export const StashView = ({
                           </small>
                         </span>
                       </button>
-                      <QtyStepper
-                        qty={stats.qty}
-                        onChange={(qty) => setQty(stats.item.id, qty)}
-                        compact
-                      />
+                      <div className="line__qty">
+                        <QtyStepper
+                          qty={stats.qty}
+                          onChange={(qty) => setQty(stats.item.id, qty)}
+                          compact
+                        />
+                        {stats.item.stack > 1 ? (
+                          <button
+                            type="button"
+                            className="stack-add"
+                            onClick={() => setQty(stats.item.id, stats.qty + stats.item.stack)}
+                            title={`Ajouter un stack complet (${stats.item.stack})`}
+                            aria-label={`Ajouter un stack complet de ${stats.item.name} (${stats.item.stack})`}
+                          >
+                            +{stats.item.stack}
+                          </button>
+                        ) : null}
+                      </div>
                       <div className="metric metric--slots">
                         <strong>{stats.slots}</strong>
                         <small>slot{stats.slots > 1 ? "s" : ""}</small>
