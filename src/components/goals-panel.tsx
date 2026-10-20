@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Combobox, type ComboboxOption } from "@/components/ui/combobox";
-import { Input } from "@/components/ui/input";
+import { NumberInput } from "@/components/ui/number-input";
 import { Progress } from "@/components/ui/progress";
 import { itemsById, typeLabel, type CatalogItem } from "@/lib/catalog";
 import { toItemId, type ItemId } from "@/lib/catalog-types";
@@ -80,13 +80,11 @@ export const GoalsPanel = ({
             ariaLabel="Objectif à préparer"
             contentClassName="w-[min(22rem,calc(100vw-2rem))]"
           />
-          <Input
-            type="number"
+          <NumberInput
             min={1}
-            max={9999}
             value={qty}
+            onCommit={setQty}
             aria-label="Quantité de l'objectif"
-            onChange={(event) => setQty(Math.max(1, Number(event.target.value) || 1))}
             className="h-8 w-14 px-1.5 text-center tabular-nums"
           />
           <Button

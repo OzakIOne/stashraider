@@ -1,5 +1,5 @@
 import { BoxesIcon } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ItemModal } from "./components/item-modal";
 import { LootView } from "./components/loot-view";
 import { MethodView } from "./components/method-view";
@@ -9,10 +9,10 @@ import { Progress } from "./components/ui/progress";
 import { Tabs, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./components/ui/tooltip";
 import { catalog, itemByRecipeName, type CatalogItem } from "./lib/catalog";
+import { TOAST_MS } from "./lib/constants";
 import {
   formatCredits,
   statsForLines,
-  totalSlots,
   type Goal,
   type InventoryLine,
   type ValueMode,
@@ -68,25 +68,36 @@ const App = () => {
   const [goals, setGoals] = useLocalStorage<Goal[]>("stashraider.goals", []);
   const [inspected, setInspected] = useState<CatalogItem | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const toastTimer = useRef<number | null>(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [tab]);
 
+  useEffect(
+    () => () => {
+      if (toastTimer.current !== null) window.clearTimeout(toastTimer.current);
+    },
+    [],
+  );
+
   const notify = (message: string) => {
+    if (toastTimer.current !== null) window.clearTimeout(toastTimer.current);
     setToast(message);
-    window.setTimeout(() => setToast(null), 2800);
+    toastTimer.current = window.setTimeout(() => {
+      setToast(null);
+      toastTimer.current = null;
+    }, TOAST_MS);
   };
 
-  const used = totalSlots(inventory);
-  const totalSell = useMemo(
-    () => statsForLines(inventory).reduce((total, stats) => total + stats.sellValue, 0),
-    [inventory],
-  );
-  const totalRecycle = useMemo(
-    () => statsForLines(inventory).reduce((total, stats) => total + stats.recycleValue, 0),
-    [inventory],
-  );
+  const { used, totalSell, totalRecycle } = useMemo(() => {
+    const stats = statsForLines(inventory);
+    return {
+      used: stats.reduce((total, line) => total + line.slots, 0),
+      totalSell: stats.reduce((total, line) => total + line.sellValue, 0),
+      totalRecycle: stats.reduce((total, line) => total + line.recycleValue, 0),
+    };
+  }, [inventory]);
 
   const addToStash = (item: CatalogItem, qty = 1) => {
     setInventory((lines) => {

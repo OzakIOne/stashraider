@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Combobox, type ComboboxOption } from "@/components/ui/combobox";
-import { Input } from "@/components/ui/input";
+import { NumberInput } from "@/components/ui/number-input";
 import { itemsById, rarityLabel, typeLabel, type CatalogItem } from "@/lib/catalog";
 import { toItemId, type ItemId } from "@/lib/catalog-types";
 import {
@@ -13,7 +13,7 @@ import {
   type TargetPlan,
 } from "@/lib/optimizer";
 import { cn } from "@/lib/utils";
-import { ItemIcon, Panel, RarityBadge, Stat } from "./ui";
+import { EmptyState, ItemIcon, Panel, RarityBadge, Stat } from "./ui";
 
 const quickTargets: ItemId[] = [
   "advanced-electrical-components",
@@ -46,31 +46,56 @@ export const ReverseView = ({ onInspect }: { onInspect: (item: CatalogItem) => v
   const [sort, setSort] = useState<Sort>("place");
 
   const target = itemsById.get(targetId) ?? targets[0];
-  if (!target) throw new Error("No recycling target available");
 
-  const options: ComboboxOption[] = targets.map((item) => ({
-    value: item.id,
-    label: item.name,
-    group: rarityLabel(item.rarity),
-    keywords: [item.type, typeLabel(item.type), rarityLabel(item.rarity)],
-    leading: <ItemIcon item={item} size="xs" />,
-    meta: <RarityBadge item={item} />,
-  }));
+  const options = useMemo<ComboboxOption[]>(
+    () =>
+      targets.map((item) => ({
+        value: item.id,
+        label: item.name,
+        group: rarityLabel(item.rarity),
+        keywords: [item.type, typeLabel(item.type), rarityLabel(item.rarity)],
+        leading: <ItemIcon item={item} size="xs" />,
+        meta: <RarityBadge item={item} />,
+      })),
+    [targets],
+  );
 
-  const sources = reverseSources(target.id);
-  const plans = planTarget(target.id, Math.max(1, needed));
-  const filtered = plans.filter((plan) => rarity === "all" || plan.item.rarity === rarity);
-  const sorted = [...filtered].sort((left, right) => {
-    if (sort === "yield") {
-      return right.yieldPerSlot - left.yieldPerSlot || left.slotsNeeded - right.slotsNeeded;
-    }
-    return left.slotsNeeded - right.slotsNeeded || right.yieldPerSlot - left.yieldPerSlot;
-  });
+  const sources = useMemo(() => (target ? reverseSources(target.id) : []), [target]);
+  const plans = useMemo(
+    () => (target ? planTarget(target.id, Math.max(1, needed)) : []),
+    [target, needed],
+  );
+  const sorted = useMemo(
+    () =>
+      plans
+        .filter((plan) => rarity === "all" || plan.item.rarity === rarity)
+        .sort((left, right) => {
+          if (sort === "yield") {
+            return right.yieldPerSlot - left.yieldPerSlot || left.slotsNeeded - right.slotsNeeded;
+          }
+          return left.slotsNeeded - right.slotsNeeded || right.yieldPerSlot - left.yieldPerSlot;
+        }),
+    [plans, rarity, sort],
+  );
+  const bestPerSlot = useMemo(
+    () => [...sources].sort((left, right) => right.yieldPerSlot - left.yieldPerSlot)[0],
+    [sources],
+  );
+
+  if (!target) {
+    return (
+      <Panel title="Trouver la source" description="Aucun matériau recyclable dans le catalogue">
+        <EmptyState
+          title="Catalogue incomplet"
+          text="Aucun rendement de recyclage n'est disponible. Relance la synchronisation des données."
+        />
+      </Panel>
+    );
+  }
 
   const bestEpic = plans.find((plan) => plan.item.rarity === "Epic");
   const bestLegendary = plans.find((plan) => plan.item.rarity === "Legendary");
   const craft = target.craftedFrom[0];
-  const bestPerSlot = [...sources].sort((left, right) => right.yieldPerSlot - left.yieldPerSlot)[0];
 
   return (
     <Panel
@@ -98,12 +123,11 @@ export const ReverseView = ({ onInspect }: { onInspect: (item: CatalogItem) => v
           <span className="text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">
             Quantité voulue
           </span>
-          <Input
-            type="number"
+          <NumberInput
             min={1}
-            max={9999}
             value={needed}
-            onChange={(event) => setNeeded(Math.max(1, Number(event.target.value) || 1))}
+            onCommit={setNeeded}
+            aria-label="Quantité voulue"
             className="tabular-nums"
           />
         </label>

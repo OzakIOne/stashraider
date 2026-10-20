@@ -1,7 +1,7 @@
 import { useMemo, useState, type Dispatch, type SetStateAction } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { NumberInput } from "@/components/ui/number-input";
 import {
   Select,
   SelectContent,
@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { catalog, hiddenFromLoot, typeLabel, type CatalogItem } from "@/lib/catalog";
+import { MAX_CAPACITY } from "@/lib/constants";
 import {
   bestValue,
   capacityAdvice,
@@ -18,8 +19,6 @@ import {
   recommend,
   retentionRecommendation,
   statsForLines,
-  totalSlots,
-  totalValue,
   type Goal,
   type InventoryLine,
   type ValueMode,
@@ -83,9 +82,23 @@ export const StashView = ({
   );
   const retention = useMemo(() => planRetention(inventory, goals), [inventory, goals]);
 
+  const summary = useMemo(() => {
+    const stats = statsForLines(inventory);
+    const slots = stats.reduce((total, line) => total + line.slots, 0);
+    const sellValue = stats.reduce((total, line) => total + line.sellValue, 0);
+    const recycleValue = stats.reduce((total, line) => total + line.recycleValue, 0);
+    return {
+      stats,
+      slots,
+      sellValue,
+      recycleValue,
+      density: slots > 0 ? Math.max(sellValue, recycleValue) / slots : 0,
+    };
+  }, [inventory]);
+
   const plans = useMemo(
     () =>
-      statsForLines(inventory)
+      summary.stats
         .map((stats) => {
           const keep = retention.keepById[stats.item.id];
           return {
@@ -100,14 +113,17 @@ export const StashView = ({
           if (sort === "slots") return right.stats.slots - left.stats.slots;
           return right.stats.density - left.stats.density;
         }),
-    [inventory, sort, retention],
+    [summary, sort, retention],
   );
 
-  const used = totalSlots(inventory);
-  const sellTotal = totalValue(inventory, "sell");
-  const recycleTotal = totalValue(inventory, "recycle");
-  const averageDensity = used > 0 ? Math.max(sellTotal, recycleTotal) / used : 0;
-  const advice = capacityAdvice(inventory, capacity, mode);
+  const used = summary.slots;
+  const sellTotal = summary.sellValue;
+  const recycleTotal = summary.recycleValue;
+  const averageDensity = summary.density;
+  const advice = useMemo(
+    () => capacityAdvice(inventory, capacity, mode),
+    [inventory, capacity, mode],
+  );
   const counts = plans.reduce(
     (accumulator, plan) => {
       accumulator[plan.recommendation.kind] += 1;
@@ -178,13 +194,13 @@ export const StashView = ({
             <>
               <label className="flex items-center gap-1.5 text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">
                 Capacité
-                <Input
-                  type="number"
+                <NumberInput
                   min={1}
-                  max={2000}
+                  max={MAX_CAPACITY}
                   name="stash-capacity"
                   value={capacity}
-                  onChange={(event) => setCapacity(Math.max(1, Number(event.target.value) || 1))}
+                  onCommit={setCapacity}
+                  aria-label="Capacité du stash"
                   className="h-7 w-16 px-1.5 text-center text-xs tabular-nums"
                 />
               </label>

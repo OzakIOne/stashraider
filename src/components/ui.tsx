@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
+import { NumberInput } from "@/components/ui/number-input";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { rarityLabel, type CatalogItem } from "@/lib/catalog";
@@ -106,19 +107,14 @@ export const QtyStepper = ({
     >
       −
     </button>
-    <input
-      type="number"
+    <NumberInput
       min={1}
-      max={9999}
-      name="quantity"
       value={qty}
+      onCommit={onChange}
+      name="quantity"
       aria-label="Quantité"
-      onChange={(event) => {
-        const next = Number(event.target.value);
-        onChange(Number.isFinite(next) ? Math.max(1, Math.floor(next)) : 1);
-      }}
       className={cn(
-        "border-x border-border bg-transparent text-center font-bold tabular-nums outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
+        "rounded-none border-y-0 border-x border-border bg-transparent text-center font-bold tabular-nums [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
         compact ? "w-10 py-1 text-xs" : "w-12 py-1.5 text-[13px]",
       )}
     />
