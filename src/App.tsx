@@ -9,9 +9,10 @@ import { Progress } from "./components/ui/progress";
 import { Tabs, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./components/ui/tooltip";
 import { catalog, itemByRecipeName, type CatalogItem } from "./lib/catalog";
-import { TOAST_MS } from "./lib/constants";
+import { DEFAULT_CAPACITY, TOAST_MS } from "./lib/constants";
 import { formatCredits, statsForLines, type InventoryLine, type ValueMode } from "./lib/line-stats";
 import type { Goal } from "./lib/retention";
+import { decodeCapacity, decodeGoals, decodeInventory, decodeValueMode } from "./lib/storage";
 import { useLocalStorage } from "./lib/use-local-storage";
 
 type Tab = "stash" | "loot" | "reverse" | "method";
@@ -56,11 +57,31 @@ const GithubMark = () => (
 
 const App = () => {
   const [tab, setTab] = useState<Tab>("stash");
-  const [inventory, setInventory] = useLocalStorage<InventoryLine[]>("stashraider.inventory", []);
-  const [loot, setLoot] = useLocalStorage<InventoryLine[]>("stashraider.loot", []);
-  const [capacity, setCapacity] = useLocalStorage<number>("stashraider.capacity", 280);
-  const [mode, setMode] = useLocalStorage<ValueMode>("stashraider.value-mode", "sell");
-  const [goals, setGoals] = useLocalStorage<Goal[]>("stashraider.goals", []);
+  const [inventory, setInventory] = useLocalStorage<InventoryLine[]>({
+    key: "stashraider.inventory",
+    fallback: [],
+    decode: decodeInventory,
+  });
+  const [loot, setLoot] = useLocalStorage<InventoryLine[]>({
+    key: "stashraider.loot",
+    fallback: [],
+    decode: decodeInventory,
+  });
+  const [capacity, setCapacity] = useLocalStorage<number>({
+    key: "stashraider.capacity",
+    fallback: DEFAULT_CAPACITY,
+    decode: decodeCapacity,
+  });
+  const [mode, setMode] = useLocalStorage<ValueMode>({
+    key: "stashraider.value-mode",
+    fallback: "sell",
+    decode: decodeValueMode,
+  });
+  const [goals, setGoals] = useLocalStorage<Goal[]>({
+    key: "stashraider.goals",
+    fallback: [],
+    decode: decodeGoals,
+  });
   const [inspected, setInspected] = useState<CatalogItem | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const toastTimer = useRef<number | null>(null);

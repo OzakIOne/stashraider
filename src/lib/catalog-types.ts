@@ -3,6 +3,8 @@ export type ItemName = string & { readonly __brand: "ItemName" };
 
 const itemIdPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
+export const isItemId = (value: string): value is ItemId => itemIdPattern.test(value);
+
 export const toItemId = (value: string): ItemId => {
   if (!itemIdPattern.test(value)) throw new Error(`Invalid item id: ${value}`);
   return value as ItemId;

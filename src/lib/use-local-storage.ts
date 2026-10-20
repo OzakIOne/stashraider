@@ -1,18 +1,29 @@
 import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 
-export const useLocalStorage = <Value>(
+const readValue = <Value>(
   key: string,
   fallback: Value,
-): [Value, Dispatch<SetStateAction<Value>>] => {
-  const [value, setValue] = useState<Value>(() => {
-    try {
-      const raw = window.localStorage.getItem(key);
-      if (!raw) return fallback;
-      return JSON.parse(raw) as Value;
-    } catch {
-      return fallback;
-    }
-  });
+  decode: (input: unknown) => Value | null,
+): Value => {
+  try {
+    const raw = window.localStorage.getItem(key);
+    if (raw === null) return fallback;
+    return decode(JSON.parse(raw)) ?? fallback;
+  } catch {
+    return fallback;
+  }
+};
+
+export const useLocalStorage = <Value>({
+  key,
+  fallback,
+  decode,
+}: {
+  key: string;
+  fallback: Value;
+  decode: (input: unknown) => Value | null;
+}): [Value, Dispatch<SetStateAction<Value>>] => {
+  const [value, setValue] = useState<Value>(() => readValue(key, fallback, decode));
 
   useEffect(() => {
     try {
