@@ -1,18 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import { itemsByName, rarityLabel, typeLabel, type CatalogItem } from "@/lib/catalog";
+import {
+  itemByRecipeName,
+  rarityLabel,
+  recycleEntries,
+  typeLabel,
+  type CatalogItem,
+} from "@/lib/catalog";
 import { formatCredits, outputValue } from "@/lib/optimizer";
 import { ItemIcon } from "./ui";
 
 const YieldList = ({ item }: { item: CatalogItem }) => {
-  const entries = Object.entries(item.recycle).sort(([, left], [, right]) => right - left);
+  const entries = recycleEntries(item);
   if (entries.length === 0) {
     return <p className="text-xs text-muted-foreground">Aucun rendement connu.</p>;
   }
   return (
     <div className="grid gap-1.5">
       {entries.map(([name, qty]) => {
-        const output = itemsByName.get(name);
+        const output = itemByRecipeName(name);
         return (
           <div className="flex items-center gap-2" key={name}>
             {output ? <ItemIcon item={output} size="sm" /> : null}

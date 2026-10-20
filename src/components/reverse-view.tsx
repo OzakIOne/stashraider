@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Combobox, type ComboboxOption } from "@/components/ui/combobox";
 import { Input } from "@/components/ui/input";
 import { itemsById, rarityLabel, typeLabel, type CatalogItem } from "@/lib/catalog";
+import { toItemId, type ItemId } from "@/lib/catalog-types";
 import {
   formatCredits,
   outputValue,
@@ -14,7 +15,7 @@ import {
 import { cn } from "@/lib/utils";
 import { ItemIcon, Panel, RarityBadge, Stat } from "./ui";
 
-const quickTargets = [
+const quickTargets: ItemId[] = [
   "advanced-electrical-components",
   "electrical-components",
   "arc-alloy",
@@ -25,7 +26,7 @@ const quickTargets = [
   "metal-parts",
   "chemicals",
   "plastic-parts",
-];
+].map(toItemId);
 
 const rarityFilters = [
   { label: "Tous", value: "all" },
@@ -39,7 +40,7 @@ type Sort = "place" | "yield";
 
 export const ReverseView = ({ onInspect }: { onInspect: (item: CatalogItem) => void }) => {
   const targets = useMemo(() => reverseTargets(), []);
-  const [targetId, setTargetId] = useState("advanced-electrical-components");
+  const [targetId, setTargetId] = useState<ItemId>(toItemId("advanced-electrical-components"));
   const [needed, setNeeded] = useState(10);
   const [rarity, setRarity] = useState("all");
   const [sort, setSort] = useState<Sort>("place");
@@ -85,7 +86,7 @@ export const ReverseView = ({ onInspect }: { onInspect: (item: CatalogItem) => v
           <Combobox
             options={options}
             value={target.id}
-            onChange={setTargetId}
+            onChange={(next) => setTargetId(toItemId(next))}
             placeholder="Choisir un matériau…"
             searchPlaceholder="Chercher un matériau…"
             emptyText="Aucun matériau ne correspond."

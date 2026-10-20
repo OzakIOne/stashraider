@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { itemsById } from "./catalog";
+import { toItemId } from "./catalog-types";
 import {
   formatCredits,
   lineStats,
@@ -14,10 +15,12 @@ import {
 } from "./optimizer";
 
 const item = (id: string) => {
-  const found = itemsById.get(id);
+  const found = itemsById.get(toItemId(id));
   if (!found) throw new Error(`Missing fixture item: ${id}`);
   return found;
 };
+
+const entry = (id: string, qty: number) => ({ id: toItemId(id), qty });
 
 describe("space and value math", () => {
   it("rounds partial stacks up", () => {
@@ -33,10 +36,7 @@ describe("space and value math", () => {
 
   it("counts slots across the whole stash", () => {
     expect(
-      totalSlots([
-        { id: "advanced-electrical-components", qty: 11 },
-        { id: "rocketeer-driver", qty: 4 },
-      ]),
+      totalSlots([entry("advanced-electrical-components", 11), entry("rocketeer-driver", 4)]),
     ).toBe(5);
   });
 
@@ -47,7 +47,7 @@ describe("space and value math", () => {
 
 describe("recommendations", () => {
   it("recycles a Rocketeer Driver when the yield beats its sale price", () => {
-    const stats = lineStats({ id: "rocketeer-driver", qty: 3 });
+    const stats = lineStats(entry("rocketeer-driver", 3));
     if (!stats) throw new Error("missing Rocketeer Driver");
     expect(stats.recycleValue).toBe(12300);
     expect(stats.sellValue).toBe(9000);
@@ -55,7 +55,7 @@ describe("recommendations", () => {
   });
 
   it("keeps Advanced Electrical Components for crafting", () => {
-    const stats = lineStats({ id: "advanced-electrical-components", qty: 5 });
+    const stats = lineStats(entry("advanced-electrical-components", 5));
     if (!stats) throw new Error("missing Advanced Electrical Components");
     expect(recommend(stats).kind).toBe("keep");
   });
@@ -63,14 +63,14 @@ describe("recommendations", () => {
 
 describe("reverse lookup", () => {
   it("finds sources that recycle into Advanced Electrical Components", () => {
-    const sources = reverseSources("advanced-electrical-components");
+    const sources = reverseSources(toItemId("advanced-electrical-components"));
     const rocketeer = sources.find((source) => source.item.id === "rocketeer-driver");
     expect(rocketeer?.outputQty).toBe(2);
     expect(rocketeer?.yieldPerSlot).toBe(6);
   });
 
   it("plans enough source items for a target quantity", () => {
-    const plans = planTarget("advanced-electrical-components", 10);
+    const plans = planTarget(toItemId("advanced-electrical-components"), 10);
     const rocketeer = plans.find((plan) => plan.item.id === "rocketeer-driver");
     expect(rocketeer?.unitsNeeded).toBe(5);
     expect(rocketeer?.slotsNeeded).toBe(2);
@@ -81,11 +81,8 @@ describe("reverse lookup", () => {
 describe("objective retention", () => {
   it("keeps recyclable sources before direct components", () => {
     const plan = planRetention(
-      [
-        { id: "advanced-electrical-components", qty: 12 },
-        { id: "rocketeer-driver", qty: 4 },
-      ],
-      [{ id: "advanced-electrical-components", qty: 10 }],
+      [entry("advanced-electrical-components", 12), entry("rocketeer-driver", 4)],
+      [entry("advanced-electrical-components", 10)],
     );
 
     expect(plan.keepById["rocketeer-driver"]?.qty).toBe(4);
@@ -98,8 +95,8 @@ describe("objective retention", () => {
 
   it("reports the missing quantity when the stash cannot cover a goal", () => {
     const plan = planRetention(
-      [{ id: "advanced-electrical-components", qty: 3 }],
-      [{ id: "advanced-electrical-components", qty: 5 }],
+      [entry("advanced-electrical-components", 3)],
+      [entry("advanced-electrical-components", 5)],
     );
 
     expect(plan.keepById["advanced-electrical-components"]?.qty).toBe(3);
@@ -109,11 +106,8 @@ describe("objective retention", () => {
 
   it("prefers direct components over lower-density sources", () => {
     const plan = planRetention(
-      [
-        { id: "advanced-electrical-components", qty: 12 },
-        { id: "frequency-modulation-box", qty: 2 },
-      ],
-      [{ id: "advanced-electrical-components", qty: 10 }],
+      [entry("advanced-electrical-components", 12), entry("frequency-modulation-box", 2)],
+      [entry("advanced-electrical-components", 10)],
     );
 
     expect(plan.keepById["advanced-electrical-components"]?.qty).toBe(10);
@@ -122,7 +116,7 @@ describe("objective retention", () => {
   });
 
   it("labels the split between kept and surplus units", () => {
-    const stats = lineStats({ id: "advanced-electrical-components", qty: 12 });
+    const stats = lineStats(entry("advanced-electrical-components", 12));
     if (!stats) throw new Error("missing Advanced Electrical Components");
     const recommendation = retentionRecommendation(stats, {
       qty: 2,
@@ -138,12 +132,12 @@ describe("crafting goals", () => {
   it("reserves the ingredients for a Wolfpack", () => {
     const plan = planRetention(
       [
-        { id: "explosive-compound", qty: 1 },
-        { id: "arc-motion-core", qty: 2 },
-        { id: "rocketeer-driver", qty: 1 },
-        { id: "arc-alloy", qty: 10 },
+        entry("explosive-compound", 1),
+        entry("arc-motion-core", 2),
+        entry("rocketeer-driver", 1),
+        entry("arc-alloy", 10),
       ],
-      [{ id: "wolfpack", qty: 1 }],
+      [entry("wolfpack", 1)],
     );
 
     expect(plan.goals[0]?.mode).toBe("craft");
@@ -157,11 +151,11 @@ describe("crafting goals", () => {
   it("reserves direct ingredients for a Venator I", () => {
     const plan = planRetention(
       [
-        { id: "advanced-mechanical-components", qty: 2 },
-        { id: "medium-gun-parts", qty: 3 },
-        { id: "magnet", qty: 5 },
+        entry("advanced-mechanical-components", 2),
+        entry("medium-gun-parts", 3),
+        entry("magnet", 5),
       ],
-      [{ id: "venator-i", qty: 1 }],
+      [entry("venator-i", 1)],
     );
 
     expect(plan.goals[0]?.mode).toBe("craft");
@@ -174,12 +168,12 @@ describe("crafting goals", () => {
   it("expands a nested recipe when the component is missing", () => {
     const plan = planRetention(
       [
-        { id: "steel-spring", qty: 4 },
-        { id: "mechanical-components", qty: 4 },
-        { id: "medium-gun-parts", qty: 3 },
-        { id: "magnet", qty: 5 },
+        entry("steel-spring", 4),
+        entry("mechanical-components", 4),
+        entry("medium-gun-parts", 3),
+        entry("magnet", 5),
       ],
-      [{ id: "venator-i", qty: 1 }],
+      [entry("venator-i", 1)],
     );
 
     expect(plan.goals[0]?.ready).toBe(true);
@@ -190,11 +184,11 @@ describe("crafting goals", () => {
   it("walks the Venator upgrade chain back to Venator I", () => {
     const plan = planRetention(
       [
-        { id: "advanced-mechanical-components", qty: 3 },
-        { id: "medium-gun-parts", qty: 5 },
-        { id: "magnet", qty: 5 },
+        entry("advanced-mechanical-components", 3),
+        entry("medium-gun-parts", 5),
+        entry("magnet", 5),
       ],
-      [{ id: "venator-ii", qty: 1 }],
+      [entry("venator-ii", 1)],
     );
 
     expect(plan.goals[0]?.ready).toBe(true);
@@ -204,7 +198,7 @@ describe("crafting goals", () => {
   });
 
   it("lists missing ingredients instead of pretending the craft is ready", () => {
-    const plan = planRetention([{ id: "rocketeer-driver", qty: 1 }], [{ id: "wolfpack", qty: 1 }]);
+    const plan = planRetention([entry("rocketeer-driver", 1)], [entry("wolfpack", 1)]);
 
     expect(plan.goals[0]?.ready).toBe(false);
     expect(plan.keepById["rocketeer-driver"]?.qty).toBe(1);

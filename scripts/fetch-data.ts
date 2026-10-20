@@ -1,6 +1,17 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
+import {
+  toItemId,
+  toItemName,
+  type Catalog,
+  type CatalogItem,
+  type Ingredient,
+  type ItemId,
+  type ItemName,
+  type Recipe,
+  type UsedIn,
+} from "../src/lib/catalog-types";
 
 const API = "https://arcraiders.wiki/w/api.php";
 const ICON_DIR = "public/icons";
@@ -11,35 +22,24 @@ const ICON_WIDTH = 128;
 type CargoRow = Record<string, string>;
 type ItemRow = CargoRow & { name: string };
 
-type Ingredient = { item: string; qty: number };
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === "object" && value !== null && !Array.isArray(value);
 
-type CatalogItem = {
-  id: string;
-  name: string;
-  rarity: string;
-  rarityRank: number;
-  type: string;
-  weight: number;
-  stack: number;
-  sell: number;
-  locations: string[];
-  image: string | null;
-  recycle: Record<string, number>;
-  craftedFrom: Recipe[];
-  usedIn: UsedIn[];
+const readRecord = (value: unknown, path: string): Record<string, unknown> => {
+  if (!isRecord(value)) throw new Error(`${path} must be an object`);
+  return value;
 };
 
-type Recipe = {
-  resultQty: number;
-  station: string;
-  blueprint: boolean;
-  ingredients: Ingredient[];
+const readString = (record: Record<string, unknown>, key: string, path: string): string => {
+  const value = record[key];
+  if (typeof value !== "string") throw new Error(`${path}.${key} must be a string`);
+  return value;
 };
 
-type UsedIn = {
-  result: string;
-  qty: number;
-  station: string;
+const readArray = (record: Record<string, unknown>, key: string, path: string): unknown[] => {
+  const value = record[key];
+  if (!Array.isArray(value)) throw new Error(`${path}.${key} must be an array`);
+  return value;
 };
 
 const rarityRanks: Record<string, number> = {
@@ -65,6 +65,26 @@ const orderBy: Record<string, string> = {
   crafting: "resultItem",
 };
 
+const parseCargoRows = (payload: unknown): CargoRow[] => {
+  const body = readRecord(payload, "cargo payload");
+  if (body.error !== undefined) {
+    throw new Error(
+      `Cargo error: ${readString(readRecord(body.error, "cargo.error"), "info", "cargo.error")}`,
+    );
+  }
+  if (body.cargoquery === undefined) return [];
+  return readArray(body, "cargoquery", "cargo payload").map((entry, index) => {
+    const path = `cargoquery[${index}]`;
+    const title = readRecord(readRecord(entry, path).title, `${path}.title`);
+    return Object.fromEntries(
+      Object.entries(title).map(([key, value]) => [
+        key,
+        typeof value === "string" ? value : String(value),
+      ]),
+    );
+  });
+};
+
 const cargoQuery = async (tables: string, fields: string): Promise<CargoRow[]> => {
   const rows: CargoRow[] = [];
   let offset = 0;
@@ -78,12 +98,7 @@ const cargoQuery = async (tables: string, fields: string): Promise<CargoRow[]> =
       order_by: orderBy[tables] ?? "name",
       format: "json",
     });
-    const payload = (await fetchJson(`${API}?${params}`)) as {
-      cargoquery?: { title: CargoRow }[];
-      error?: { info: string };
-    };
-    if (payload.error) throw new Error(`Cargo error: ${payload.error.info}`);
-    const batch = (payload.cargoquery ?? []).map((entry) => entry.title);
+    const batch = parseCargoRows(await fetchJson(`${API}?${params}`));
     rows.push(...batch);
     if (batch.length < PAGE_SIZE) break;
     offset += PAGE_SIZE;
@@ -107,7 +122,7 @@ const parseIngredients = (value: string | undefined): Ingredient[] => {
       if (!match) return [];
       const [, item, qty] = match;
       if (!item || !qty) return [];
-      return [{ item: item.trim(), qty: Number(qty) }];
+      return [{ item: toItemName(item.trim()), qty: Number(qty) }];
     })
     .filter((ingredient) => ingredient.qty > 0);
 };
@@ -153,7 +168,7 @@ const parseRecipeIngredients = (value: string | undefined): Ingredient[] => {
       if (!match) return [];
       const [, qty, item] = match;
       if (!qty || !item || item === "?") return [];
-      return [{ item: item.trim(), qty: Number(qty) }];
+      return [{ item: toItemName(item.trim()), qty: Number(qty) }];
     })
     .filter((ingredient) => ingredient.qty > 0);
 };
@@ -179,7 +194,7 @@ type RawWeapon = {
 const parseWeaponPage = (
   title: string,
   text: string,
-): { items: RawWeapon[]; recipes: { result: string; recipe: Recipe }[] } => {
+): { items: RawWeapon[]; recipes: { result: ItemName; recipe: Recipe }[] } => {
   const info = parseTemplateParams(parseTemplateBody(text, "Infobox weapon"));
   const baseName = info.name || title;
   const prices = parsePriceList(info.sellprice);
@@ -209,12 +224,12 @@ const parseWeaponPage = (
     recycle: {},
   }));
 
-  const recipes: { result: string; recipe: Recipe }[] = [];
+  const recipes: { result: ItemName; recipe: Recipe }[] = [];
   const crafting = parseTemplateParams(parseTemplateBody(text, "Crafting"));
   const craftIngredients = parseRecipeIngredients(crafting.ingredients);
   if (crafting.result && craftIngredients.length > 0) {
     recipes.push({
-      result: variantCount === 1 ? baseName : crafting.result,
+      result: toItemName(variantCount === 1 ? baseName : crafting.result),
       recipe: {
         resultQty: 1,
         station: crafting.station ?? "",
@@ -228,7 +243,7 @@ const parseWeaponPage = (
     const variantIndex = index + 1;
     if (variantIndex >= variantCount) continue;
     recipes.push({
-      result: variantName(variantIndex),
+      result: toItemName(variantName(variantIndex)),
       recipe: {
         resultQty: 1,
         station: upgrade.station ? `${upgrade.station} (upgrade)` : "Upgrade",
@@ -253,6 +268,47 @@ const parseWeaponPage = (
   return { items, recipes };
 };
 
+const parseCategoryMembers = (payload: unknown): { titles: string[]; next: string | undefined } => {
+  const body = readRecord(payload, "category payload");
+  const query = body.query === undefined ? {} : readRecord(body.query, "category payload.query");
+  const members =
+    query.categorymembers === undefined
+      ? []
+      : readArray(query, "categorymembers", "category payload.query");
+  const titles = members.map((member, index) =>
+    readString(
+      readRecord(member, `categorymembers[${index}]`),
+      "title",
+      `categorymembers[${index}]`,
+    ),
+  );
+  const continuation =
+    body.continue === undefined
+      ? undefined
+      : readRecord(body.continue, "category payload.continue").cmcontinue;
+  return { titles, next: typeof continuation === "string" ? continuation : undefined };
+};
+
+const parseRevisionPages = (payload: unknown): { title: string; text: string }[] => {
+  const body = readRecord(payload, "revisions payload");
+  const query = body.query === undefined ? {} : readRecord(body.query, "revisions payload.query");
+  if (query.pages === undefined) return [];
+  const pages = readRecord(query.pages, "revisions payload.query.pages");
+  return Object.entries(pages).flatMap(([pageId, entry]) => {
+    const page = readRecord(entry, `pages.${pageId}`);
+    const title = readString(page, "title", `pages.${pageId}`);
+    if (page.revisions === undefined) return [];
+    const revision = readRecord(
+      readArray(page, "revisions", `pages.${pageId}`)[0],
+      `pages.${pageId}.revisions[0]`,
+    );
+    const slots = readRecord(revision.slots, `pages.${pageId}.revisions[0].slots`);
+    const main = readRecord(slots.main, `pages.${pageId}.revisions[0].slots.main`);
+    const text = main["*"];
+    return typeof text === "string" ? [{ title, text }] : [];
+  });
+};
+
 const fetchWeaponPages = async (): Promise<{ title: string; text: string }[]> => {
   const titles: string[] = [];
   let cmcontinue: string | undefined;
@@ -266,12 +322,9 @@ const fetchWeaponPages = async (): Promise<{ title: string; text: string }[]> =>
       format: "json",
     });
     if (cmcontinue) params.set("cmcontinue", cmcontinue);
-    const payload = (await fetchJson(`${API}?${params}`)) as {
-      query?: { categorymembers?: { title: string }[] };
-      continue?: { cmcontinue?: string };
-    };
-    titles.push(...(payload.query?.categorymembers ?? []).map((member) => member.title));
-    cmcontinue = payload.continue?.cmcontinue;
+    const members = parseCategoryMembers(await fetchJson(`${API}?${params}`));
+    titles.push(...members.titles);
+    cmcontinue = members.next;
     if (!cmcontinue) break;
   }
 
@@ -286,18 +339,7 @@ const fetchWeaponPages = async (): Promise<{ title: string; text: string }[]> =>
       titles: batch.join("|"),
       format: "json",
     });
-    const payload = (await fetchJson(`${API}?${params}`)) as {
-      query?: {
-        pages?: Record<
-          string,
-          { title: string; revisions?: { slots: { main: { "*": string } } }[] }
-        >;
-      };
-    };
-    for (const page of Object.values(payload.query?.pages ?? {})) {
-      const text = page.revisions?.[0]?.slots.main["*"];
-      if (text) pages.push({ title: page.title, text });
-    }
+    pages.push(...parseRevisionPages(await fetchJson(`${API}?${params}`)));
   }
   return pages;
 };
@@ -395,7 +437,7 @@ const main = async () => {
 
   const usedIds = new Set<string>();
 
-  const uniqueId = (name: string, rarity: string): string => {
+  const uniqueId = (name: string, rarity: string): ItemId => {
     const base = slugify(name);
     const variant = rarity ? slugify(rarity) : "variant";
     let candidate = base;
@@ -403,7 +445,7 @@ const main = async () => {
     let suffix = 2;
     while (usedIds.has(candidate)) candidate = `${base}-${variant}-${suffix++}`;
     usedIds.add(candidate);
-    return candidate;
+    return toItemId(candidate);
   };
 
   const rowsWithIds = itemRows.map((row) => ({
@@ -446,7 +488,7 @@ const main = async () => {
         (use) => use.result === result && use.qty === ingredient.qty && use.station === station,
       );
       if (!duplicateUse) {
-        uses.push({ result, qty: ingredient.qty, station });
+        uses.push({ result: toItemName(result), qty: ingredient.qty, station });
         usedInByItem.set(ingredient.item, uses);
       }
     }
@@ -525,8 +567,8 @@ const main = async () => {
   }));
 
   type Seed = {
-    id: string;
-    name: string;
+    id: ItemId;
+    name: ItemName;
     rarity: string;
     type: string;
     weight: number;
@@ -541,7 +583,7 @@ const main = async () => {
   const seeds: Seed[] = [
     ...rowsWithIds.map(({ row, id }) => ({
       id,
-      name: row.name,
+      name: toItemName(row.name),
       rarity: row.rarity || "Common",
       type: row.type || "Divers",
       weight: toNumber(row.weight),
@@ -556,7 +598,7 @@ const main = async () => {
     })),
     ...weaponRowsWithIds.map(({ item, id }) => ({
       id,
-      name: item.name,
+      name: toItemName(item.name),
       rarity: item.rarity,
       type: "Weapon",
       weight: item.weight,
@@ -569,7 +611,7 @@ const main = async () => {
     })),
   ];
 
-  const names = new Set(seeds.map((seed) => seed.name));
+  const names = new Set<string>(seeds.map((seed) => seed.name));
 
   console.info(`Downloading ${seeds.length} icons (cached files are skipped)…`);
   let downloaded = 0;
@@ -612,7 +654,7 @@ const main = async () => {
     }
   }
 
-  const catalog = {
+  const catalog: Catalog = {
     generatedAt: new Date().toISOString(),
     source: "ARC Raiders Wiki",
     sourceUrl: "https://arcraiders.wiki",
@@ -626,20 +668,22 @@ const main = async () => {
     items,
   };
 
-  type ExistingCatalog = { generatedAt?: string };
+  const readExistingCatalog = async (): Promise<Record<string, unknown> | null> => {
+    try {
+      const parsed: unknown = JSON.parse(await readFile(DATA_FILE, "utf8"));
+      return isRecord(parsed) ? parsed : null;
+    } catch {
+      return null;
+    }
+  };
 
-  let previous: ExistingCatalog | null = null;
-  try {
-    previous = JSON.parse(await readFile(DATA_FILE, "utf8")) as ExistingCatalog;
-  } catch {
-    previous = null;
-  }
-
-  if (previous?.generatedAt) {
-    const comparable = (value: ExistingCatalog) =>
+  const previous = await readExistingCatalog();
+  const previousGeneratedAt = previous?.generatedAt;
+  if (typeof previousGeneratedAt === "string" && previous) {
+    const comparable = (value: Record<string, unknown>) =>
       JSON.stringify({ ...value, generatedAt: undefined });
-    if (comparable(previous) === comparable(catalog)) {
-      catalog.generatedAt = previous.generatedAt;
+    if (comparable(previous) === comparable({ ...catalog })) {
+      catalog.generatedAt = previousGeneratedAt;
     }
   }
 
@@ -655,6 +699,6 @@ const main = async () => {
   }
 };
 
-const packageJson = JSON.parse(await readFile("package.json", "utf8")) as { name: string };
-console.info(`${packageJson.name}: syncing game data`);
+const packageJson = readRecord(JSON.parse(await readFile("package.json", "utf8")), "package.json");
+console.info(`${readString(packageJson, "name", "package.json")}: syncing game data`);
 await main();

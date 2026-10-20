@@ -1,6 +1,7 @@
-import { catalog, itemsById, itemsByName, type CatalogItem } from "./catalog";
+import { catalog, itemByRecipeName, itemsById, itemsByName, type CatalogItem } from "./catalog";
+import type { ItemId } from "./catalog-types";
 
-export type InventoryLine = { id: string; qty: number };
+export type InventoryLine = { id: ItemId; qty: number };
 export type ValueMode = "sell" | "recycle";
 export type ActionKind = "recycle" | "sell" | "keep";
 
@@ -33,7 +34,7 @@ export type TargetPlan = SourceOption & {
   leftover: number;
 };
 
-export type Goal = { id: string; qty: number };
+export type Goal = { id: ItemId; qty: number };
 export type GoalMode = "component" | "craft";
 
 export type GoalReservation = {
@@ -80,7 +81,7 @@ export const slotsFor = (qty: number, stack: number): number =>
 
 export const outputValue = (outputs: Record<string, number>, multiplier = 1): number =>
   Object.entries(outputs).reduce((total, [name, qty]) => {
-    const output = itemsByName.get(name);
+    const output = itemByRecipeName(name);
     return total + (output?.sell ?? 0) * qty * multiplier;
   }, 0);
 
@@ -221,10 +222,10 @@ export const capacityAdvice = (
 };
 
 export const reverseTargets = (): CatalogItem[] => {
-  const ids = new Set<string>();
+  const ids = new Set<ItemId>();
   for (const item of catalog.items) {
     for (const name of Object.keys(item.recycle)) {
-      const target = itemsByName.get(name);
+      const target = itemByRecipeName(name);
       if (target) ids.add(target.id);
     }
   }
@@ -234,7 +235,7 @@ export const reverseTargets = (): CatalogItem[] => {
     .sort((left, right) => left.name.localeCompare(right.name, "fr"));
 };
 
-export const reverseSources = (targetId: string): SourceOption[] => {
+export const reverseSources = (targetId: ItemId): SourceOption[] => {
   const target = itemsById.get(targetId);
   if (!target) return [];
   return catalog.items
@@ -258,7 +259,7 @@ export const reverseSources = (targetId: string): SourceOption[] => {
     );
 };
 
-export const planTarget = (targetId: string, needed: number): TargetPlan[] =>
+export const planTarget = (targetId: ItemId, needed: number): TargetPlan[] =>
   reverseSources(targetId)
     .map((source) => {
       const unitsNeeded = Math.ceil(needed / source.outputQty);
@@ -321,11 +322,11 @@ const componentGoalTypes = new Set([
 ]);
 
 export const planRetention = (inventory: InventoryLine[], goals: Goal[]): RetentionPlan => {
-  const available = new Map(inventory.map((line) => [line.id, line.qty]));
-  const keepById: Record<string, KeepEntry> = {};
+  const available = new Map<ItemId, number>(inventory.map((line) => [line.id, line.qty]));
+  const keepById: Record<ItemId, KeepEntry> = {};
   const lines = statsForLines(inventory);
 
-  const addKeep = (id: string, qty: number, reason: string) => {
+  const addKeep = (id: ItemId, qty: number, reason: string) => {
     if (qty <= 0) return;
     const entry = keepById[id] ?? { qty: 0, reasons: [] };
     entry.qty += qty;

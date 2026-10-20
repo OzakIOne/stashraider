@@ -6,6 +6,7 @@ import { Combobox, type ComboboxOption } from "@/components/ui/combobox";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { itemsById, typeLabel, type CatalogItem } from "@/lib/catalog";
+import { toItemId, type ItemId } from "@/lib/catalog-types";
 import type { Goal, RetentionPlan } from "@/lib/optimizer";
 import { cn } from "@/lib/utils";
 import { ItemIcon, QtyStepper, RarityBadge } from "./ui";
@@ -27,9 +28,9 @@ export const GoalsPanel = ({
   onUpdate: (id: string, qty: number) => void;
   onRemove: (id: string) => void;
 }) => {
-  const [targetId, setTargetId] = useState("");
+  const [targetId, setTargetId] = useState<ItemId | null>(null);
   const [qty, setQty] = useState(10);
-  const target = itemsById.get(targetId);
+  const target = targetId ? itemsById.get(targetId) : undefined;
 
   const options = useMemo<ComboboxOption[]>(
     () =>
@@ -66,10 +67,11 @@ export const GoalsPanel = ({
           <Combobox
             className="h-8 min-w-0 flex-1 font-normal sm:w-72 sm:flex-none"
             options={options}
-            value={targetId}
+            value={targetId ?? ""}
             onChange={(next) => {
-              setTargetId(next);
-              const selected = itemsById.get(next);
+              const nextId = toItemId(next);
+              setTargetId(nextId);
+              const selected = itemsById.get(nextId);
               if (selected) setQty(equipmentTypes.has(selected.type) ? 1 : 10);
             }}
             placeholder="Choisir un objectif…"

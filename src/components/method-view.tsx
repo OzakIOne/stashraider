@@ -1,4 +1,4 @@
-import { catalog, itemsByName } from "@/lib/catalog";
+import { catalog, itemByRecipeName } from "@/lib/catalog";
 import { formatCredits, outputValue } from "@/lib/optimizer";
 import { ItemIcon, Panel } from "./ui";
 
@@ -17,8 +17,8 @@ const rules = [
 ];
 
 export const MethodView = () => {
-  const rocketeer = itemsByName.get("Rocketeer Driver");
-  const advancedElectrical = itemsByName.get("Advanced Electrical Components");
+  const rocketeer = itemByRecipeName("Rocketeer Driver");
+  const advancedElectrical = itemByRecipeName("Advanced Electrical Components");
   const weaponCount = catalog.items.filter((item) => item.type === "Weapon").length;
 
   return (

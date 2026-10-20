@@ -1,4 +1,5 @@
 import { catalog, type CatalogItem } from "./catalog";
+import type { ItemId } from "./catalog-types";
 import type { InventoryLine } from "./optimizer";
 
 export type ImportResult = {
@@ -41,7 +42,7 @@ const parseLine = (raw: string): { name: string; qty: number } | null => {
 };
 
 export const parseInventoryText = (text: string): ImportResult => {
-  const quantities = new Map<string, number>();
+  const quantities = new Map<ItemId, number>();
   const unknown: string[] = [];
 
   for (const raw of text.split(/\r?\n/)) {

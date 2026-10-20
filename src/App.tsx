@@ -8,7 +8,7 @@ import { StashView } from "./components/stash-view";
 import { Progress } from "./components/ui/progress";
 import { Tabs, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./components/ui/tooltip";
-import { catalog, type CatalogItem } from "./lib/catalog";
+import { catalog, itemByRecipeName, type CatalogItem } from "./lib/catalog";
 import {
   formatCredits,
   statsForLines,
@@ -30,18 +30,26 @@ const tabs: { id: Tab; label: string; hint: string }[] = [
 
 const isTab = (value: string): value is Tab => tabs.some((entry) => entry.id === value);
 
-const demoStash: InventoryLine[] = [
-  { id: "rocketeer-driver", qty: 4 },
-  { id: "advanced-electrical-components", qty: 12 },
-  { id: "arc-alloy", qty: 30 },
-  { id: "processor", qty: 6 },
-  { id: "frequency-modulation-box", qty: 2 },
-  { id: "vaporizer-regulator", qty: 1 },
-  { id: "tactical-mk-3-smoke", qty: 1 },
-  { id: "glitched-arc-light-ring", qty: 1 },
-];
+const demoLines = (
+  entries: { name: string; qty: number }[],
+): { id: NonNullable<ReturnType<typeof itemByRecipeName>>["id"]; qty: number }[] =>
+  entries.flatMap(({ name, qty }) => {
+    const item = itemByRecipeName(name);
+    return item ? [{ id: item.id, qty }] : [];
+  });
 
-const demoGoals: Goal[] = [{ id: "advanced-electrical-components", qty: 10 }];
+const demoStash: InventoryLine[] = demoLines([
+  { name: "Rocketeer Driver", qty: 4 },
+  { name: "Advanced Electrical Components", qty: 12 },
+  { name: "ARC Alloy", qty: 30 },
+  { name: "Processor", qty: 6 },
+  { name: "Frequency Modulation Box", qty: 2 },
+  { name: "Vaporizer Regulator", qty: 1 },
+  { name: "Tactical Mk. 3 Smoke", qty: 1 },
+  { name: "Glitched ARC Light Ring", qty: 1 },
+]);
+
+const demoGoals: Goal[] = demoLines([{ name: "Advanced Electrical Components", qty: 10 }]);
 
 const shortDate = new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "short" });
 
