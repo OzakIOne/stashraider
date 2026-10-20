@@ -148,9 +148,9 @@ const App = () => {
                 Chaque slot <em>compte.</em>
               </h1>
               <p>
-                Monte ton inventaire, fixe tes objectifs de composants, et le site réserve ce qu'il
-                faut avant de désigner le surplus à vendre. Il croise stacks, prix et rendements de
-                recyclage pour dire quoi garder, vendre ou démonter.
+                Monte ton inventaire, fixe tes objectifs de composants ou d'objets à crafter, et le
+                site réserve ce qu'il faut avant de désigner le surplus à vendre. Il croise stacks,
+                prix et rendements de recyclage pour dire quoi garder, vendre ou démonter.
               </p>
               <div className="hero__meta">
                 <span className="dot" />

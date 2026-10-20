@@ -1,5 +1,5 @@
 import { useDeferredValue, useMemo, useState } from "react";
-import { searchItems, type CatalogItem } from "../lib/catalog";
+import { catalog, searchItems, type CatalogItem } from "../lib/catalog";
 import { formatCredits } from "../lib/optimizer";
 import { ItemIcon, RarityBadge } from "./ui";
 
@@ -46,7 +46,7 @@ export const ItemSearch = ({
           placeholder="Chercher un item, un type…"
           aria-label="Chercher un item"
         />
-        <kbd>563</kbd>
+        <kbd>{catalog.counts.items}</kbd>
       </div>
       <div className="chips">
         {rarities.map((label) => (

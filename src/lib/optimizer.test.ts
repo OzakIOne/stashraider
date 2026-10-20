@@ -133,3 +133,86 @@ describe("objective retention", () => {
     expect(recommendation.detail).toContain(formatCredits(17500));
   });
 });
+
+describe("crafting goals", () => {
+  it("reserves the ingredients for a Wolfpack", () => {
+    const plan = planRetention(
+      [
+        { id: "explosive-compound", qty: 1 },
+        { id: "arc-motion-core", qty: 2 },
+        { id: "rocketeer-driver", qty: 1 },
+        { id: "arc-alloy", qty: 10 },
+      ],
+      [{ id: "wolfpack", qty: 1 }],
+    );
+
+    expect(plan.goals[0]?.mode).toBe("craft");
+    expect(plan.goals[0]?.ready).toBe(true);
+    expect(plan.keepById["explosive-compound"]?.qty).toBe(1);
+    expect(plan.keepById["arc-motion-core"]?.qty).toBe(2);
+    expect(plan.keepById["rocketeer-driver"]?.qty).toBe(1);
+    expect(plan.surplusUnits).toBe(10);
+  });
+
+  it("reserves direct ingredients for a Venator I", () => {
+    const plan = planRetention(
+      [
+        { id: "advanced-mechanical-components", qty: 2 },
+        { id: "medium-gun-parts", qty: 3 },
+        { id: "magnet", qty: 5 },
+      ],
+      [{ id: "venator-i", qty: 1 }],
+    );
+
+    expect(plan.goals[0]?.mode).toBe("craft");
+    expect(plan.goals[0]?.ready).toBe(true);
+    expect(plan.keepById["advanced-mechanical-components"]?.qty).toBe(2);
+    expect(plan.keepById["medium-gun-parts"]?.qty).toBe(3);
+    expect(plan.keepById["magnet"]?.qty).toBe(5);
+  });
+
+  it("expands a nested recipe when the component is missing", () => {
+    const plan = planRetention(
+      [
+        { id: "steel-spring", qty: 4 },
+        { id: "mechanical-components", qty: 4 },
+        { id: "medium-gun-parts", qty: 3 },
+        { id: "magnet", qty: 5 },
+      ],
+      [{ id: "venator-i", qty: 1 }],
+    );
+
+    expect(plan.goals[0]?.ready).toBe(true);
+    expect(plan.keepById["steel-spring"]?.qty).toBe(4);
+    expect(plan.keepById["mechanical-components"]?.qty).toBe(4);
+  });
+
+  it("walks the Venator upgrade chain back to Venator I", () => {
+    const plan = planRetention(
+      [
+        { id: "advanced-mechanical-components", qty: 3 },
+        { id: "medium-gun-parts", qty: 5 },
+        { id: "magnet", qty: 5 },
+      ],
+      [{ id: "venator-ii", qty: 1 }],
+    );
+
+    expect(plan.goals[0]?.ready).toBe(true);
+    expect(plan.keepById["advanced-mechanical-components"]?.qty).toBe(3);
+    expect(plan.keepById["medium-gun-parts"]?.qty).toBe(5);
+    expect(plan.keepById["magnet"]?.qty).toBe(5);
+  });
+
+  it("lists missing ingredients instead of pretending the craft is ready", () => {
+    const plan = planRetention([{ id: "rocketeer-driver", qty: 1 }], [{ id: "wolfpack", qty: 1 }]);
+
+    expect(plan.goals[0]?.ready).toBe(false);
+    expect(plan.keepById["rocketeer-driver"]?.qty).toBe(1);
+    expect(plan.goals[0]?.missing).toEqual(
+      expect.arrayContaining([
+        { name: "Chemicals", qty: 12 },
+        { name: "ARC Alloy", qty: 16 },
+      ]),
+    );
+  });
+});

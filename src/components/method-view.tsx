@@ -11,6 +11,7 @@ const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
 export const MethodView = () => {
   const rocketeer = itemsByName.get("Rocketeer Driver");
   const advancedElectrical = itemsByName.get("Advanced Electrical Components");
+  const weaponCount = catalog.items.filter((item) => item.type === "Weapon").length;
 
   return (
     <div className="method">
@@ -54,6 +55,14 @@ export const MethodView = () => {
               Pour chaque composant voulu, les sources recyclables plus denses qu'un stack du
               composant direct sont réservées d'abord, puis le composant direct, puis les sources
               moins denses. Tout ce qui reste est du surplus à vendre ou recycler.
+            </p>
+          </section>
+          <section>
+            <h3>6. Les recettes</h3>
+            <p>
+              Pour une arme ou un équipement, la recette est dépliée récursivement. Les ingrédients
+              directs passent avant les sources recyclables et les sous-recettes. Les manques sont
+              listés jusqu'aux composants de base.
             </p>
           </section>
         </div>
@@ -108,8 +117,12 @@ export const MethodView = () => {
               Le salvage n'est pas pris en compte : seuls les rendements de recyclage comptent.
             </li>
             <li>
-              Les armes ne sont pas encore dans la base Cargo : le site couvre les 563 objets
-              référencés.
+              Les armes sont lues depuis les pages wiki ({weaponCount} variantes), pas depuis la
+              table Cargo. Les blueprints ne sont pas vérifiés : le plan suppose la recette apprise.
+            </li>
+            <li>
+              Quelques variantes d'armes n'ont pas de prix de vente sur la wiki : elles s'affichent
+              à 0 CR.
             </li>
             <li>
               Un patch peut changer un rendement : relance la synchronisation avant de décider.
@@ -139,8 +152,9 @@ export const MethodView = () => {
           </div>
         </div>
         <p className="muted">
-          Le catalogue est généré depuis les tables Cargo de la wiki (items, recycling, crafting) et
-          les icônes sont copiées en local. Pour rafraîchir après un patch :
+          Le catalogue est généré depuis les tables Cargo de la wiki (items, recycling, crafting),
+          complété par les pages d'armes pour les variantes et leurs recettes. Les icônes sont
+          copiées en local. Pour rafraîchir après un patch :
         </p>
         <pre className="code">
           <code>pnpm data:update</code>

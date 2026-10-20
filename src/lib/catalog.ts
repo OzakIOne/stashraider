@@ -69,6 +69,7 @@ export const typeLabels: Record<string, string> = {
   Nature: "Ressource naturelle",
   Ammunition: "Munitions",
   Shield: "Bouclier",
+  Weapon: "Arme",
   "Research Item": "Recherche",
   "Quest Item": "Objet de quête",
   Key: "Clé",

@@ -3,6 +3,8 @@ import { itemsById, typeLabel, type CatalogItem } from "../lib/catalog";
 import type { Goal, RetentionPlan } from "../lib/optimizer";
 import { ItemIcon, QtyStepper } from "./ui";
 
+const equipmentTypes = new Set(["Weapon", "Quick Use", "Augment", "Mods", "Shield"]);
+
 export const GoalsPanel = ({
   goals,
   plan,
@@ -54,7 +56,11 @@ export const GoalsPanel = ({
         <select
           name="goal-target"
           value={target?.id ?? ""}
-          onChange={(event) => setTargetId(event.target.value)}
+          onChange={(event) => {
+            setTargetId(event.target.value);
+            const selected = itemsById.get(event.target.value);
+            if (selected) setQty(equipmentTypes.has(selected.type) ? 1 : 10);
+          }}
         >
           {groups.map(([label, items]) => (
             <optgroup label={label} key={label}>
@@ -88,9 +94,9 @@ export const GoalsPanel = ({
 
       {goals.length === 0 ? (
         <p className="goals__empty">
-          Ajoute un composant à préparer. L'optimiseur réserve les sources recyclables plus denses
-          qu'un stack du composant direct, complète avec le composant direct, puis désigne le reste
-          comme surplus.
+          Ajoute un composant, une arme ou un équipement. Les composants réservent d'abord les
+          sources recyclables plus denses qu'un stack direct. Les objets craftables déplient leur
+          recette et réservent les ingrédients ; le reste devient du surplus.
         </p>
       ) : (
         <div className="goals__list">
@@ -104,9 +110,7 @@ export const GoalsPanel = ({
                   <ItemIcon item={goal.item} size="sm" />
                   <div>
                     <strong>{goal.item.name}</strong>
-                    <small>
-                      {goal.covered}/{goal.needed} couverts
-                    </small>
+                    <small>{goal.ready ? "Prêt" : `${goal.covered}/${goal.needed} couverts`}</small>
                   </div>
                   <QtyStepper
                     qty={goal.needed}
@@ -126,39 +130,41 @@ export const GoalsPanel = ({
                   <span style={{ width: `${coveredPercent}%` }} />
                 </div>
                 <div className="goal__counts">
-                  <span>Recyclage {Math.min(goal.sourceCovered, goal.needed)}</span>
-                  <span>Direct {Math.min(goal.directKept, goal.needed)}</span>
-                  {goal.gap > 0 ? (
-                    <span className="danger">
-                      {goal.gap} manquant{goal.gap > 1 ? "s" : ""}
-                    </span>
+                  {goal.mode === "craft" ? <span>Recette</span> : null}
+                  {goal.mode === "component" ? (
+                    <span>Recyclage {Math.min(goal.sourceCovered, goal.needed)}</span>
+                  ) : null}
+                  {goal.mode === "component" || goal.directKept > 0 ? (
+                    <span>Direct {Math.min(goal.directKept, goal.needed)}</span>
+                  ) : null}
+                  {goal.ready ? (
+                    <span className="ok">{goal.mode === "craft" ? "prêt" : "couvert"}</span>
                   ) : (
-                    <span className="ok">couvert</span>
+                    <span className="danger">
+                      {goal.missing.length} ingrédient{goal.missing.length > 1 ? "s" : ""} manquant
+                      {goal.missing.length > 1 ? "s" : ""}
+                    </span>
                   )}
                 </div>
                 {reserved.length > 0 || goal.directKept > 0 ? (
                   <div className="goal__reserved">
                     {reserved.map((entry) => (
-                      <span key={entry.item.id}>
+                      <span key={`${entry.item.id}-${entry.reason}`}>
                         {entry.keepQty}× {entry.item.name}
-                        <small>
-                          → {entry.produced}× {goal.item.name}
-                          {entry.bonus.length > 0
-                            ? ` · +${entry.bonus.map((bonus) => `${bonus.qty}× ${bonus.name}`).join(", ")}`
-                            : ""}
-                        </small>
+                        <small>{entry.reason}</small>
                       </span>
                     ))}
-                    {goal.directKept > 0 ? (
-                      <span>
-                        {goal.directKept}× {goal.item.name}
-                        <small>direct</small>
-                      </span>
-                    ) : null}
                   </div>
-                ) : (
+                ) : null}
+                {goal.missing.length > 0 ? (
+                  <p className="goal__missing">
+                    Manque :{" "}
+                    {goal.missing.map((entry) => `${entry.qty}× ${entry.name}`).join(" · ")}
+                  </p>
+                ) : null}
+                {reserved.length === 0 && goal.missing.length === 0 ? (
                   <p className="goal__missing">Aucun item du stash ne couvre cet objectif.</p>
-                )}
+                ) : null}
               </article>
             );
           })}
