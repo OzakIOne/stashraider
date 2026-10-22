@@ -6,6 +6,9 @@ import { buildRecycleGraph, recycleGraph, recycleProfile } from "./recycle-graph
 const rocketeer = toItemId("rocketeer-driver");
 const advancedElectrical = toItemId("advanced-electrical-components");
 const metalParts = toItemId("metal-parts");
+const oil = toItemId("oil");
+const processor = toItemId("processor");
+const rubberParts = toItemId("rubber-parts");
 
 describe("recycle graph", () => {
   it("keeps every recyclable item and every material in the graph", () => {
@@ -82,6 +85,38 @@ describe("recycle graph filters", () => {
     expect(filtered.materialCount).toBe(0);
     expect(filtered.width).toBeLessThan(recycleGraph.width);
     expect(recycleProfile(advancedElectrical, filtered)?.depth).toBe(1);
+  });
+});
+
+describe("recycle graph optimized mode", () => {
+  it("keeps only edges that beat the material stack per slot", () => {
+    const optimized = buildRecycleGraph({ optimizedOnly: true });
+
+    expect(optimized.edges.length).toBeGreaterThan(0);
+    expect(optimized.edges.every((edge) => edge.qtyPerStack > edge.to.item.stack)).toBe(true);
+    expect(optimized.edges.every((edge) => edge.from.depth > edge.to.depth)).toBe(true);
+    expect(
+      optimized.nodes.filter((node) => !node.isSource).every((node) => node.parentCount > 0),
+    ).toBe(true);
+  });
+
+  it("drops materials that no source can beat, such as oil", () => {
+    const optimized = buildRecycleGraph({ optimizedOnly: true });
+    const oilParents = recycleGraph.edges.filter((edge) => edge.to.item.id === oil);
+
+    expect(optimized.nodesById.has(oil)).toBe(false);
+    expect(optimized.nodesById.has(processor)).toBe(true);
+    expect(optimized.nodesById.has(rubberParts)).toBe(true);
+    expect(oilParents.length).toBeGreaterThan(0);
+    expect(oilParents.every((edge) => edge.qtyPerStack <= edge.to.item.stack)).toBe(true);
+  });
+
+  it("recomputes the optimized graph after hiding base materials", () => {
+    const optimized = buildRecycleGraph({ optimizedOnly: true, includeMaterials: false });
+
+    expect(optimized.nodesById.has(rubberParts)).toBe(false);
+    expect(optimized.nodes.every((node) => Object.keys(node.item.recycle).length > 0)).toBe(true);
+    expect(optimized.edges.every((edge) => edge.from.depth > edge.to.depth)).toBe(true);
   });
 });
 

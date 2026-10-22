@@ -91,20 +91,26 @@ const FilterChip = ({
   active,
   label,
   onClick,
+  strikeWhenOff = true,
+  title,
 }: {
   active: boolean;
   label: string;
   onClick: () => void;
+  strikeWhenOff?: boolean;
+  title?: string;
 }) => (
   <button
     type="button"
     onClick={onClick}
     aria-pressed={active}
+    title={title}
     className={cn(
       "rounded-full border px-2 py-0.5 text-[10.5px] font-semibold transition-colors",
       active
         ? "border-primary/45 bg-primary/10 text-primary"
-        : "border-border text-muted-foreground line-through hover:border-input hover:text-foreground",
+        : "border-border text-muted-foreground hover:border-input hover:text-foreground",
+      !active && strikeWhenOff && "line-through",
     )}
   >
     {label}
@@ -120,6 +126,7 @@ export const GraphView = ({ onInspect }: { onInspect: (item: CatalogItem) => voi
 const GraphViewCanvas = ({ onInspect }: { onInspect: (item: CatalogItem) => void }) => {
   const [showWeapons, setShowWeapons] = useState(true);
   const [showMaterials, setShowMaterials] = useState(true);
+  const [optimizedOnly, setOptimizedOnly] = useState(false);
   const [selected, setSelected] = useState<ItemId | null>(null);
   const [hovered, setHovered] = useState<ItemId | null>(null);
   const [query, setQuery] = useState("");
@@ -127,12 +134,26 @@ const GraphViewCanvas = ({ onInspect }: { onInspect: (item: CatalogItem) => void
   const canvasRef = useRef<HTMLDivElement | null>(null);
   const { getViewport, setCenter, setViewport } = useReactFlow();
 
-  const graph = useMemo(
+  const filteredGraph = useMemo(
     () =>
       showWeapons && showMaterials
         ? catalogGraph
         : buildRecycleGraph({ includeWeapons: showWeapons, includeMaterials: showMaterials }),
     [showWeapons, showMaterials],
+  );
+  const optimizedGraph = useMemo(
+    () =>
+      buildRecycleGraph({
+        includeWeapons: showWeapons,
+        includeMaterials: showMaterials,
+        optimizedOnly: true,
+      }),
+    [showWeapons, showMaterials],
+  );
+  const graph = optimizedOnly ? optimizedGraph : filteredGraph;
+  const optimizedTargetCount = useMemo(
+    () => new Set(optimizedGraph.edges.map((edge) => edge.to.item.id)).size,
+    [optimizedGraph],
   );
   const weaponCount = useMemo(
     () => catalogGraph.nodes.filter((node) => node.item.type === "Weapon").length,
@@ -154,7 +175,8 @@ const GraphViewCanvas = ({ onInspect }: { onInspect: (item: CatalogItem) => void
   const fitWidth = useCallback(() => {
     if (viewportWidth === 0) return;
     const zoom = Math.min(1.1, Math.max(0.6, (viewportWidth - 32) / graph.width));
-    void setViewport({ x: 16, y: 16, zoom }, { duration: 250 });
+    const x = Math.max(16, (viewportWidth - graph.width * zoom) / 2);
+    void setViewport({ x, y: 16, zoom }, { duration: 250 });
   }, [graph, viewportWidth, setViewport]);
 
   useEffect(() => {
@@ -199,12 +221,13 @@ const GraphViewCanvas = ({ onInspect }: { onInspect: (item: CatalogItem) => void
     if (hovered && !graph.nodesById.has(hovered)) setHovered(null);
   }, [graph, selected, hovered]);
 
+  const targetIds = useMemo(() => new Set(graph.edges.map((edge) => edge.to.item.id)), [graph]);
   const materials = useMemo(
     () =>
       graph.nodes
-        .filter((node) => !node.isSource)
+        .filter((node) => (optimizedOnly ? targetIds.has(node.item.id) : !node.isSource))
         .sort((left, right) => right.parentCount - left.parentCount),
-    [graph],
+    [graph, optimizedOnly, targetIds],
   );
 
   const flowNodes = useMemo<RecycleFlowNode[]>(
@@ -324,6 +347,18 @@ const GraphViewCanvas = ({ onInspect }: { onInspect: (item: CatalogItem) => void
           label={`Matériaux de base (${baseCount})`}
           onClick={() => setShowMaterials((current) => !current)}
         />
+        <div className="ml-auto flex items-center gap-1.5">
+          <span className="text-[10px] font-bold tracking-[0.14em] text-muted-foreground uppercase">
+            Mode
+          </span>
+          <FilterChip
+            active={optimizedOnly}
+            label={`Optimisé (${optimizedTargetCount})`}
+            strikeWhenOff={false}
+            title="Garde uniquement les liens où un stack de la source rend plus d'unités que le stack du matériau."
+            onClick={() => setOptimizedOnly((current) => !current)}
+          />
+        </div>
       </div>
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 px-3 py-1.5 text-[10.5px] text-muted-foreground">
@@ -337,13 +372,19 @@ const GraphViewCanvas = ({ onInspect }: { onInspect: (item: CatalogItem) => void
         ) : null}
         <span>Colonnes = profondeur de recyclage</span>
         <span>Badge ×N = stack de l'item</span>
-        <span>Molette pour zoomer, glisser pour déplacer</span>
+        {optimizedOnly ? (
+          <span className="text-primary/90">
+            Optimisé : rendement du stack &gt; stack du matériau
+          </span>
+        ) : (
+          <span>Molette pour zoomer, glisser pour déplacer</span>
+        )}
       </div>
 
       <div className="grid gap-3 px-3 pb-3 lg:grid-cols-[minmax(0,1fr)_330px]">
         <div
           ref={canvasRef}
-          className="graph-flow h-[64vh] min-h-[460px] overflow-hidden rounded-xl border border-border bg-[#06080b]"
+          className="graph-flow relative h-[64vh] min-h-[460px] overflow-hidden rounded-xl border border-border bg-[#06080b]"
         >
           <ReactFlow
             nodes={flowNodes}
@@ -378,6 +419,15 @@ const GraphViewCanvas = ({ onInspect }: { onInspect: (item: CatalogItem) => void
               maskColor="rgba(6,8,11,0.72)"
             />
           </ReactFlow>
+          {graph.nodes.length === 0 ? (
+            <div className="pointer-events-none absolute inset-0 z-10 grid place-items-center px-6 text-center">
+              <p className="max-w-[280px] text-xs leading-relaxed text-muted-foreground">
+                {optimizedOnly
+                  ? "Aucun recyclage ne bat le stack de base avec ces filtres."
+                  : "Aucun item à afficher avec ces filtres."}
+              </p>
+            </div>
+          ) : null}
         </div>
 
         <aside className="grid content-start gap-2 rounded-xl border border-border bg-black/25 p-3 lg:max-h-[calc(64vh+2px)] lg:overflow-auto">
@@ -397,13 +447,20 @@ const GraphViewCanvas = ({ onInspect }: { onInspect: (item: CatalogItem) => void
                   <li>Le badge ×N est la taille de stack de l'item.</li>
                   <li>Survole un item pour isoler ses liens, clique pour le détail complet.</li>
                   <li>Les étiquettes apparaissent au survol : quantité par item et par stack.</li>
-                  <li>Mini-carte en haut à droite pour naviguer dans les gros paquets.</li>
+                  {optimizedOnly ? (
+                    <li>
+                      Mode optimisé : seuls les liens où un stack complet de la source rend plus
+                      d'unités que le stack du matériau restent affichés.
+                    </li>
+                  ) : (
+                    <li>Mini-carte en haut à droite pour naviguer dans les gros paquets.</li>
+                  )}
                 </ul>
               </section>
               {materials.length > 0 ? (
                 <section className="grid gap-1.5 border-t border-border pt-2">
                   <h3 className="text-[10px] font-bold tracking-[0.14em] text-muted-foreground uppercase">
-                    Matériaux les plus demandés
+                    {optimizedOnly ? "Matériaux optimisables" : "Matériaux les plus demandés"}
                   </h3>
                   {materials.slice(0, 8).map((node) => (
                     <button
@@ -424,9 +481,9 @@ const GraphViewCanvas = ({ onInspect }: { onInspect: (item: CatalogItem) => void
                 </section>
               ) : null}
               <p className="border-t border-border pt-2 text-[10.5px] text-muted-foreground">
-                {graph.sourceCount} items recyclables · {graph.materialCount} matériaux de base ·{" "}
-                {graph.edges.length} liens. Les items sans rendement de recyclage ne sont pas
-                affichés.
+                {optimizedOnly
+                  ? `${graph.sourceCount} sources · ${optimizedTargetCount} matériaux cibles · ${graph.edges.length} liens optimisés. Seuls les liens où un stack de source rend plus que le stack du matériau restent.`
+                  : `${graph.sourceCount} items recyclables · ${graph.materialCount} matériaux de base · ${graph.edges.length} liens. Les items sans rendement de recyclage ne sont pas affichés.`}
                 {graph.unknownTargets.length > 0
                   ? ` Matériau sans fiche wiki ignoré : ${graph.unknownTargets.join(", ")}.`
                   : null}

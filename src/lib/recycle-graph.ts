@@ -11,6 +11,7 @@ const ORDERING_PASSES = 4;
 export type GraphFilters = {
   includeWeapons?: boolean;
   includeMaterials?: boolean;
+  optimizedOnly?: boolean;
 };
 
 export type GraphNode = {
@@ -117,98 +118,69 @@ const orderLayers = ({
   }
 };
 
-const depthFor = (
+const registerNode = (
+  nodesById: Map<ItemId, GraphNode>,
   item: CatalogItem,
-  cache: Map<string, number>,
-  visibleIds: Set<ItemId>,
-  visiting: Set<string>,
-): number => {
-  const cached = cache.get(item.name);
-  if (cached !== undefined) return cached;
-  if (visiting.has(item.name)) return 0;
-  visiting.add(item.name);
-  let depth = 0;
-  for (const name of Object.keys(item.recycle)) {
-    const child = itemByRecipeName(name);
-    if (!child || !visibleIds.has(child.id)) continue;
-    depth = Math.max(depth, 1 + depthFor(child, cache, visibleIds, visiting));
+  isSource: boolean,
+): GraphNode => {
+  const existing = nodesById.get(item.id);
+  if (existing) {
+    existing.isSource = existing.isSource || isSource;
+    return existing;
   }
-  visiting.delete(item.name);
-  cache.set(item.name, depth);
-  return depth;
+  const node: GraphNode = {
+    item,
+    depth: 0,
+    isSource,
+    childCount: 0,
+    parentCount: 0,
+    x: 0,
+    y: 0,
+  };
+  nodesById.set(item.id, node);
+  return node;
 };
 
-export const buildRecycleGraph = (filters: GraphFilters = {}): RecycleGraph => {
-  const resolved = {
-    includeWeapons: filters.includeWeapons ?? true,
-    includeMaterials: filters.includeMaterials ?? true,
-  };
-  const unknownTargets = new Set<string>();
-  const sources = catalog.items.filter(
-    (item) => Object.keys(item.recycle).length > 0 && !isHidden(item, resolved),
-  );
-
-  const nodesById = new Map<ItemId, GraphNode>();
-  const register = (item: CatalogItem, isSource: boolean) => {
-    const existing = nodesById.get(item.id);
-    if (existing) {
-      existing.isSource = existing.isSource || isSource;
-      return existing;
-    }
-    const node: GraphNode = {
-      item,
-      depth: 0,
-      isSource,
-      childCount: Object.keys(item.recycle).length,
-      parentCount: 0,
-      x: 0,
-      y: 0,
-    };
-    nodesById.set(item.id, node);
-    return node;
-  };
-
-  for (const item of sources) register(item, true);
-  for (const item of sources) {
-    for (const name of Object.keys(item.recycle)) {
-      const target = itemByRecipeName(name);
-      if (!target) {
-        unknownTargets.add(name);
-        continue;
-      }
-      if (isHidden(target, resolved)) continue;
-      register(target, false);
-    }
-  }
-
-  const edges: GraphEdge[] = [];
-  for (const item of sources) {
-    const from = nodesById.get(item.id);
-    if (!from) continue;
-    for (const [name, qtyPerItem] of recycleEntries(item)) {
-      const target = itemByRecipeName(name);
-      const to = target ? nodesById.get(target.id) : undefined;
-      if (!to) continue;
-      edges.push({ from, to, qtyPerItem, qtyPerStack: qtyPerItem * item.stack });
-    }
-  }
-
-  const visibleIds = new Set(nodesById.keys());
-  const depths = new Map<string, number>();
-  for (const node of nodesById.values()) {
-    node.depth = depthFor(node.item, depths, visibleIds, new Set());
-  }
-
+const finalizeGraph = ({
+  nodesById,
+  edges,
+  unknownTargets,
+}: {
+  nodesById: Map<ItemId, GraphNode>;
+  edges: GraphEdge[];
+  unknownTargets: Set<string>;
+}): RecycleGraph => {
   const childIds = new Map<ItemId, ItemId[]>();
   const parentIds = new Map<ItemId, ItemId[]>();
+
+  for (const node of nodesById.values()) {
+    node.childCount = 0;
+    node.parentCount = 0;
+  }
   for (const edge of edges) {
-    childIds.set(edge.from.item.id, [...(childIds.get(edge.from.item.id) ?? []), edge.to.item.id]);
-    parentIds.set(edge.to.item.id, [...(parentIds.get(edge.to.item.id) ?? []), edge.from.item.id]);
+    edge.from.childCount += 1;
+    edge.to.parentCount += 1;
+    const fromId = edge.from.item.id;
+    const toId = edge.to.item.id;
+    childIds.set(fromId, [...(childIds.get(fromId) ?? []), toId]);
+    parentIds.set(toId, [...(parentIds.get(toId) ?? []), fromId]);
   }
-  for (const [id, parents] of parentIds) {
-    const node = nodesById.get(id);
-    if (node) node.parentCount = parents.length;
-  }
+
+  const depths = new Map<ItemId, number>();
+  const depthOf = (id: ItemId, visiting: Set<ItemId>): number => {
+    const cached = depths.get(id);
+    if (cached !== undefined) return cached;
+    if (visiting.has(id)) return 0;
+    visiting.add(id);
+    let depth = 0;
+    for (const childId of childIds.get(id) ?? []) {
+      depth = Math.max(depth, 1 + depthOf(childId, visiting));
+    }
+    visiting.delete(id);
+    depths.set(id, depth);
+    return depth;
+  };
+  for (const node of nodesById.values()) node.depth = depthOf(node.item.id, new Set());
 
   const maxDepth = Math.max(0, ...[...nodesById.values()].map((node) => node.depth));
   const layers = new Map<number, GraphNode[]>();
@@ -249,6 +221,59 @@ export const buildRecycleGraph = (filters: GraphFilters = {}): RecycleGraph => {
     nodeHeight: NODE_HEIGHT,
     unknownTargets: [...unknownTargets].sort((left, right) => left.localeCompare(right, "fr")),
   };
+};
+
+export const buildRecycleGraph = (filters: GraphFilters = {}): RecycleGraph => {
+  const resolved = {
+    includeWeapons: filters.includeWeapons ?? true,
+    includeMaterials: filters.includeMaterials ?? true,
+    optimizedOnly: filters.optimizedOnly ?? false,
+  };
+  const unknownTargets = new Set<string>();
+  const sources = catalog.items.filter(
+    (item) => Object.keys(item.recycle).length > 0 && !isHidden(item, resolved),
+  );
+
+  const nodesById = new Map<ItemId, GraphNode>();
+  for (const item of sources) registerNode(nodesById, item, true);
+  for (const item of sources) {
+    for (const name of Object.keys(item.recycle)) {
+      const target = itemByRecipeName(name);
+      if (!target) {
+        unknownTargets.add(name);
+        continue;
+      }
+      if (isHidden(target, resolved)) continue;
+      registerNode(nodesById, target, false);
+    }
+  }
+
+  const edges: GraphEdge[] = [];
+  for (const item of sources) {
+    const from = nodesById.get(item.id);
+    if (!from) continue;
+    for (const [name, qtyPerItem] of recycleEntries(item)) {
+      const target = itemByRecipeName(name);
+      const to = target ? nodesById.get(target.id) : undefined;
+      if (!to) continue;
+      edges.push({ from, to, qtyPerItem, qtyPerStack: qtyPerItem * item.stack });
+    }
+  }
+
+  if (!resolved.optimizedOnly) {
+    return finalizeGraph({ nodesById, edges, unknownTargets });
+  }
+
+  const optimizedEdges = edges.filter((edge) => edge.qtyPerStack > edge.to.item.stack);
+  const optimizedNodes = new Map<ItemId, GraphNode>();
+  for (const edge of optimizedEdges) {
+    optimizedNodes.set(edge.from.item.id, edge.from);
+    optimizedNodes.set(edge.to.item.id, edge.to);
+  }
+  const optimizedSources = new Set(optimizedEdges.map((edge) => edge.from.item.id));
+  for (const node of optimizedNodes.values()) node.isSource = optimizedSources.has(node.item.id);
+
+  return finalizeGraph({ nodesById: optimizedNodes, edges: optimizedEdges, unknownTargets });
 };
 
 export const recycleGraph = buildRecycleGraph();
