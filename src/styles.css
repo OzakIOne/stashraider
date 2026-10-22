@@ -110,3 +110,68 @@
     auto;
   mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
 }
+
+.graph-flow {
+  --xy-controls-button-background-color: rgba(10, 14, 20, 0.92);
+  --xy-controls-button-background-color-hover: rgba(30, 38, 50, 0.96);
+  --xy-controls-button-color: #8e9aad;
+  --xy-controls-button-color-hover: #f6a723;
+  --xy-controls-button-border-color: rgba(148, 163, 184, 0.14);
+  --xy-controls-box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.14);
+  --xy-minimap-background-color: #080b10;
+  --xy-minimap-mask-background-color: rgba(6, 8, 11, 0.72);
+  --xy-minimap-node-background-color: #334155;
+  --xy-minimap-node-stroke-color: rgba(148, 163, 184, 0.4);
+  --xy-attribution-background-color: transparent;
+}
+
+.graph-flow .react-flow__node {
+  cursor: pointer;
+}
+
+.graph-flow .react-flow__controls {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.graph-flow .react-flow__controls-button {
+  width: 26px;
+  height: 26px;
+  border-bottom-color: var(--border);
+}
+
+.graph-flow .react-flow__controls-button svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+.graph-flow .react-flow__minimap {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.graph-flow .react-flow__attribution {
+  background: transparent;
+  font-size: 9px;
+}
+
+.graph-flow .react-flow__attribution a {
+  color: rgba(142, 154, 173, 0.45);
+}
+
+.graph-flow .react-flow__edge-path {
+  transition:
+    stroke 150ms ease,
+    opacity 150ms ease;
+}
+
+.graph-flow .graph-handle {
+  width: 1px;
+  height: 1px;
+  min-width: 0;
+  min-height: 0;
+  border: 0;
+  opacity: 0;
+}

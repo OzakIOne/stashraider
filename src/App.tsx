@@ -1,5 +1,6 @@
 import { BoxesIcon } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { GraphView } from "./components/graph-view";
 import { ItemModal } from "./components/item-modal";
 import { LootView } from "./components/loot-view";
 import { MethodView } from "./components/method-view";
@@ -15,12 +16,13 @@ import type { Goal } from "./lib/retention";
 import { decodeCapacity, decodeGoals, decodeInventory, decodeValueMode } from "./lib/storage";
 import { useLocalStorage } from "./lib/use-local-storage";
 
-type Tab = "stash" | "loot" | "reverse" | "method";
+type Tab = "stash" | "loot" | "reverse" | "graph" | "method";
 
 const tabs: { id: Tab; label: string; hint: string }[] = [
   { id: "stash", label: "Stash", hint: "Garder, vendre ou recycler chaque ligne" },
   { id: "loot", label: "Butin", hint: "Ce qu'il faut ramener quand la place manque" },
   { id: "reverse", label: "Recyclage", hint: "Le meilleur item à démonter pour un matériau" },
+  { id: "graph", label: "Graphe", hint: "Tous les rendements de recyclage, item par item" },
   { id: "method", label: "Méthode", hint: "Formules, source et limites" },
 ];
 
@@ -270,6 +272,8 @@ const App = () => {
           ) : null}
 
           {tab === "reverse" ? <ReverseView onInspect={setInspected} /> : null}
+
+          {tab === "graph" ? <GraphView onInspect={setInspected} /> : null}
 
           {tab === "method" ? <MethodView /> : null}
         </main>
