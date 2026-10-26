@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-20T00:38:36.690Z",
+  "generatedAt": "2026-10-26T14:06:03.019Z",
   "source": "ARC Raiders Wiki",
   "sourceUrl": "https://arcraiders.wiki",
   "counts": {
-    "items": 655,
+    "items": 657,
     "recycling": 654,
     "crafting": 299,
     "unknownOutputs": 1
@@ -556,7 +556,7 @@
       "image": "/icons/snap-hook.webp",
       "recycle": {
         "Power Rod": 1,
-        "Rope": 3
+        "Steel Cable": 2
       },
       "craftedFrom": [
         {
@@ -6835,6 +6835,36 @@
       "usedIn": []
     },
     {
+      "id": "pendola-pass-railyard-key",
+      "name": "Pendola Pass Railyard Key",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Key",
+      "weight": 0.25,
+      "stack": 1,
+      "sell": 100,
+      "locations": [],
+      "image": "/icons/pendola-pass-railyard-key.webp",
+      "recycle": {},
+      "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "pendola-pass-train-station-key",
+      "name": "Pendola Pass Train Station Key",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Key",
+      "weight": 0.25,
+      "stack": 1,
+      "sell": 100,
+      "locations": [],
+      "image": "/icons/pendola-pass-train-station-key.webp",
+      "recycle": {},
+      "craftedFrom": [],
+      "usedIn": []
+    },
+    {
       "id": "playing-cards",
       "name": "Playing Cards",
       "rarity": "Rare",
@@ -12320,7 +12350,7 @@
       "stack": 1,
       "sell": 100,
       "locations": [],
-      "image": null,
+      "image": "/icons/pendola-pass-old-town-key.webp",
       "recycle": {},
       "craftedFrom": [],
       "usedIn": []
