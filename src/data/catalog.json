@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-26T14:06:03.019Z",
+  "generatedAt": "2026-11-02T16:57:54.823Z",
   "source": "ARC Raiders Wiki",
   "sourceUrl": "https://arcraiders.wiki",
   "counts": {
-    "items": 657,
-    "recycling": 654,
+    "items": 665,
+    "recycling": 659,
     "crafting": 299,
     "unknownOutputs": 1
   },
@@ -25,7 +25,9 @@
         "ARC"
       ],
       "image": "/icons/amplification-module-mk-i.webp",
-      "recycle": {},
+      "recycle": {
+        "Amplified Fragments": 7
+      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -42,7 +44,9 @@
         "ARC"
       ],
       "image": "/icons/amplification-module-mk-ii.webp",
-      "recycle": {},
+      "recycle": {
+        "Amplified Fragments": 7
+      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -59,7 +63,9 @@
         "ARC"
       ],
       "image": "/icons/amplification-module-mk-iii.webp",
-      "recycle": {},
+      "recycle": {
+        "Amplified Fragments": 7
+      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -76,7 +82,9 @@
         "ARC"
       ],
       "image": "/icons/amplification-module-mk-iv.webp",
-      "recycle": {},
+      "recycle": {
+        "Amplified Fragments": 7
+      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -93,7 +101,9 @@
         "ARC"
       ],
       "image": "/icons/amplification-module-mk-v.webp",
-      "recycle": {},
+      "recycle": {
+        "Amplified Fragments": 7
+      },
       "craftedFrom": [],
       "usedIn": []
     },
@@ -363,7 +373,7 @@
       "rarity": "Legendary",
       "rarityRank": 4,
       "type": "Research Item",
-      "weight": 1,
+      "weight": 0.5,
       "stack": 1,
       "sell": 3000,
       "locations": [],
@@ -556,7 +566,7 @@
       "image": "/icons/snap-hook.webp",
       "recycle": {
         "Power Rod": 1,
-        "Steel Cable": 2
+        "Rope": 3
       },
       "craftedFrom": [
         {
@@ -605,7 +615,9 @@
       "weight": 0.5,
       "stack": 50,
       "sell": 500,
-      "locations": [],
+      "locations": [
+        "ARC"
+      ],
       "image": "/icons/amplified-fragments.webp",
       "recycle": {},
       "craftedFrom": [],
@@ -1542,6 +1554,23 @@
       "usedIn": []
     },
     {
+      "id": "fancy-plate",
+      "name": "Fancy Plate",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Trinket",
+      "weight": 0.5,
+      "stack": 3,
+      "sell": 7000,
+      "locations": [
+        "Old World"
+      ],
+      "image": "/icons/fancy-plate.webp",
+      "recycle": {},
+      "craftedFrom": [],
+      "usedIn": []
+    },
+    {
       "id": "fluted-rotor-core",
       "name": "Fluted Rotor Core",
       "rarity": "Epic",
@@ -2196,6 +2225,23 @@
       "usedIn": []
     },
     {
+      "id": "mask-fragment",
+      "name": "Mask Fragment",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Trinket",
+      "weight": 0.5,
+      "stack": 3,
+      "sell": 7000,
+      "locations": [
+        "Old World"
+      ],
+      "image": "/icons/mask-fragment.webp",
+      "recycle": {},
+      "craftedFrom": [],
+      "usedIn": []
+    },
+    {
       "id": "padded-stock",
       "name": "Padded Stock",
       "rarity": "Epic",
@@ -2392,6 +2438,21 @@
       "sell": 5000,
       "locations": [],
       "image": "/icons/pressure-regulator.webp",
+      "recycle": {},
+      "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "propellant-valve-assembly",
+      "name": "Propellant Valve Assembly",
+      "rarity": "Epic",
+      "rarityRank": 3,
+      "type": "Topside Material",
+      "weight": 0.5,
+      "stack": 3,
+      "sell": 5000,
+      "locations": [],
+      "image": "/icons/propellant-valve-assembly.webp",
       "recycle": {},
       "craftedFrom": [],
       "usedIn": []
@@ -7135,6 +7196,21 @@
       "usedIn": []
     },
     {
+      "id": "railway-lantern",
+      "name": "Railway Lantern",
+      "rarity": "Rare",
+      "rarityRank": 2,
+      "type": "Trinket",
+      "weight": 0.5,
+      "stack": 3,
+      "sell": 3000,
+      "locations": [],
+      "image": "/icons/railway-lantern.webp",
+      "recycle": {},
+      "craftedFrom": [],
+      "usedIn": []
+    },
+    {
       "id": "rascal-i",
       "name": "Rascal I",
       "rarity": "Rare",
@@ -10626,6 +10702,25 @@
       "usedIn": []
     },
     {
+      "id": "dead-flowers",
+      "name": "Dead Flowers",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Trinket",
+      "weight": 0.5,
+      "stack": 5,
+      "sell": 640,
+      "locations": [
+        "Old World",
+        "Residential",
+        "Commercial"
+      ],
+      "image": "/icons/dead-flowers.webp",
+      "recycle": {},
+      "craftedFrom": [],
+      "usedIn": []
+    },
+    {
       "id": "deflated-football",
       "name": "Deflated Football",
       "rarity": "Uncommon",
@@ -12405,6 +12500,23 @@
       "usedIn": []
     },
     {
+      "id": "potted-plant",
+      "name": "Potted Plant",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Trinket",
+      "weight": 0.4,
+      "stack": 2,
+      "sell": 1000,
+      "locations": [
+        "Residential"
+      ],
+      "image": "/icons/potted-plant.webp",
+      "recycle": {},
+      "craftedFrom": [],
+      "usedIn": []
+    },
+    {
       "id": "pottery",
       "name": "Pottery",
       "rarity": "Uncommon",
@@ -12562,6 +12674,21 @@
       "sell": 100,
       "locations": [],
       "image": "/icons/riven-tides-crane-house-keycard.webp",
+      "recycle": {},
+      "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "rock-salt",
+      "name": "Rock Salt",
+      "rarity": "Uncommon",
+      "rarityRank": 1,
+      "type": "Trinket",
+      "weight": 0.3,
+      "stack": 5,
+      "sell": 640,
+      "locations": [],
+      "image": "/icons/rock-salt.webp",
       "recycle": {},
       "craftedFrom": [],
       "usedIn": []
@@ -17982,6 +18109,21 @@
       "sell": 0,
       "locations": [],
       "image": "/icons/project-heartwood-blueprints.webp",
+      "recycle": {},
+      "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "project-pathos-empathy-core",
+      "name": "Project Pathos Empathy Core",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Quest Item",
+      "weight": 0.5,
+      "stack": 1,
+      "sell": 0,
+      "locations": [],
+      "image": "/icons/project-pathos-empathy-core.webp",
       "recycle": {},
       "craftedFrom": [],
       "usedIn": []
