@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-02T16:57:54.823Z",
+  "generatedAt": "2026-11-09T17:21:56.790Z",
   "source": "ARC Raiders Wiki",
   "sourceUrl": "https://arcraiders.wiki",
   "counts": {
-    "items": 665,
-    "recycling": 659,
-    "crafting": 299,
+    "items": 666,
+    "recycling": 665,
+    "crafting": 298,
     "unknownOutputs": 1
   },
   "unknownOutputs": [
@@ -566,7 +566,7 @@
       "image": "/icons/snap-hook.webp",
       "recycle": {
         "Power Rod": 1,
-        "Rope": 3
+        "Steel Cable": 3
       },
       "craftedFrom": [
         {
@@ -1207,7 +1207,10 @@
         "ARC"
       ],
       "image": "/icons/bully-fragmenter.webp",
-      "recycle": {},
+      "recycle": {
+        "Explosive Compound": 1,
+        "ARC Alloy": 1
+      },
       "craftedFrom": [],
       "usedIn": [
         {
@@ -1880,25 +1883,13 @@
       "type": "Recyclable",
       "weight": 0.5,
       "stack": 3,
-      "sell": 0,
+      "sell": 3000,
       "locations": [],
       "image": "/icons/insulation-roll.webp",
       "recycle": {
         "Durable Cloth": 2
       },
-      "craftedFrom": [
-        {
-          "resultQty": 1,
-          "station": "Refiner 1",
-          "blueprint": false,
-          "ingredients": [
-            {
-              "item": "Fabric",
-              "qty": 14
-            }
-          ]
-        }
-      ],
+      "craftedFrom": [],
       "usedIn": []
     },
     {
@@ -3519,6 +3510,11 @@
           "station": "Gunsmith 2"
         },
         {
+          "result": "Anvil II",
+          "qty": 1,
+          "station": "Gunsmith 1"
+        },
+        {
           "result": "Anvil III",
           "qty": 1,
           "station": "Gunsmith 1"
@@ -3861,7 +3857,10 @@
       "sell": 5000,
       "locations": [],
       "image": "/icons/anvil-i.webp",
-      "recycle": {},
+      "recycle": {
+        "Heavy Gun Parts": 2,
+        "Advanced Mechanical Components": 1
+      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -3917,11 +3916,11 @@
               "qty": 1
             },
             {
-              "item": "Mechanical Components",
-              "qty": 3
+              "item": "Advanced Mechanical Components",
+              "qty": 1
             },
             {
-              "item": "Simple Gun Parts",
+              "item": "Heavy Gun Parts",
               "qty": 1
             }
           ]
@@ -3990,7 +3989,10 @@
       "sell": 13000,
       "locations": [],
       "image": "/icons/anvil-iv.webp",
-      "recycle": {},
+      "recycle": {
+        "Heavy Gun Parts": 3,
+        "Advanced Mechanical Components": 3
+      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -5778,6 +5780,11 @@
           "result": "Anvil I",
           "qty": 3,
           "station": "Gunsmith 2"
+        },
+        {
+          "result": "Anvil II",
+          "qty": 1,
+          "station": "Gunsmith 1"
         },
         {
           "result": "Anvil III",
@@ -8639,7 +8646,7 @@
       "image": "/icons/tether-launcher.webp",
       "recycle": {
         "Rope": 1,
-        "Cable Stripper": 1
+        "Mechanical Components": 1
       },
       "craftedFrom": [
         {
@@ -11992,11 +11999,6 @@
           "station": "Research Station 2"
         },
         {
-          "result": "Anvil II",
-          "qty": 3,
-          "station": "Gunsmith 1"
-        },
-        {
           "result": "Arpeggio I",
           "qty": 6,
           "station": "Gunsmith 2"
@@ -13148,11 +13150,6 @@
       },
       "craftedFrom": [],
       "usedIn": [
-        {
-          "result": "Anvil II",
-          "qty": 1,
-          "station": "Gunsmith 1"
-        },
         {
           "result": "Arpeggio I",
           "qty": 6,
@@ -15980,11 +15977,6 @@
           "station": "Inventory"
         },
         {
-          "result": "Insulation Roll",
-          "qty": 14,
-          "station": "Refiner 1"
-        },
-        {
           "result": "White Flag",
           "qty": 10,
           "station": "Medical Lab 1"
@@ -16004,6 +15996,21 @@
         "Residential"
       ],
       "image": "/icons/faded-photograph.webp",
+      "recycle": {},
+      "craftedFrom": [],
+      "usedIn": []
+    },
+    {
+      "id": "fallen-emperor",
+      "name": "Fallen Emperor",
+      "rarity": "Common",
+      "rarityRank": 0,
+      "type": "Divers",
+      "weight": 0,
+      "stack": 1,
+      "sell": 0,
+      "locations": [],
+      "image": "/icons/fallen-emperor.webp",
       "recycle": {},
       "craftedFrom": [],
       "usedIn": []
