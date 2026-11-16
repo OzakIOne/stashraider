@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-09T17:21:56.790Z",
+  "generatedAt": "2026-11-16T16:54:48.669Z",
   "source": "ARC Raiders Wiki",
   "sourceUrl": "https://arcraiders.wiki",
   "counts": {
-    "items": 666,
-    "recycling": 665,
+    "items": 665,
+    "recycling": 667,
     "crafting": 298,
     "unknownOutputs": 1
   },
@@ -1453,7 +1453,7 @@
       "rarityRank": 3,
       "type": "Quick Use",
       "weight": 2,
-      "stack": 3,
+      "stack": 1,
       "sell": 0,
       "locations": [],
       "image": "/icons/emperor-beacon.webp",
@@ -9817,10 +9817,13 @@
       "type": "Weapon",
       "weight": 3,
       "stack": 1,
-      "sell": 0,
+      "sell": 6000,
       "locations": [],
       "image": "/icons/bantam-ii.webp",
-      "recycle": {},
+      "recycle": {
+        "Gun Parts": 2,
+        "Mechanical Components": 2
+      },
       "craftedFrom": [
         {
           "resultQty": 1,
@@ -9858,7 +9861,7 @@
       "type": "Weapon",
       "weight": 3,
       "stack": 1,
-      "sell": 0,
+      "sell": 8000,
       "locations": [],
       "image": "/icons/bantam-iii.webp",
       "recycle": {
@@ -9902,7 +9905,7 @@
       "type": "Weapon",
       "weight": 3,
       "stack": 1,
-      "sell": 0,
+      "sell": 11000,
       "locations": [],
       "image": "/icons/bantam-iv.webp",
       "recycle": {
@@ -15996,21 +15999,6 @@
         "Residential"
       ],
       "image": "/icons/faded-photograph.webp",
-      "recycle": {},
-      "craftedFrom": [],
-      "usedIn": []
-    },
-    {
-      "id": "fallen-emperor",
-      "name": "Fallen Emperor",
-      "rarity": "Common",
-      "rarityRank": 0,
-      "type": "Divers",
-      "weight": 0,
-      "stack": 1,
-      "sell": 0,
-      "locations": [],
-      "image": "/icons/fallen-emperor.webp",
       "recycle": {},
       "craftedFrom": [],
       "usedIn": []
